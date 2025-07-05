@@ -1,8 +1,10 @@
-
-import { ExternalLink, Tag, Upload } from "lucide-react";
+import { ExternalLink, Tag, Upload, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const PortfolioSection = () => {
+  const navigate = useNavigate();
+  
   const projects = [
     {
       title: "Samadhan Prakoshth – Grievance Redressal Portal",
@@ -71,6 +73,53 @@ const PortfolioSection = () => {
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             Technology solutions that bridge the gap between public systems and citizen needs
           </p>
+        </div>
+
+        {/* Special Data Assets Card */}
+        <div className="mb-12">
+          <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-slate-500/10 backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-[1.02] border border-cyan-300/30 dark:border-cyan-600/30">
+            <div className="p-8">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl">
+                    <BarChart3 className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">
+                      Data Assets & Dashboards
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-300">
+                      Comprehensive portfolio from India Data Insights – Sattva Consulting
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                Explore my complete collection of interactive dashboards, data stories, SDG reports, and analytical work created during my tenure as Data Analyst. Features 8+ interactive dashboards, 6 SDG reports, research articles, and Instagram data storytelling content.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {["Interactive Dashboards", "SDG Reports", "Data Stories", "Research Articles"].map((tag, tagIndex) => (
+                  <span 
+                    key={tagIndex}
+                    className="flex items-center px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-xs font-medium"
+                  >
+                    <Tag className="w-3 h-3 mr-1" />
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+
+              <Button 
+                onClick={() => navigate('/data-assets')}
+                className="bg-gradient-to-r from-cyan-600 via-blue-600 to-slate-700 hover:from-cyan-700 hover:via-blue-700 hover:to-slate-800 text-white px-8 py-3 rounded-full font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-xl hover:shadow-cyan-500/30 group/btn"
+              >
+                View Data Portfolio
+                <ExternalLink className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300" />
+              </Button>
+            </div>
+          </div>
         </div>
 
         {/* Projects Masonry Grid */}
