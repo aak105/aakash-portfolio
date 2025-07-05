@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Mail, Linkedin, Github, Instagram, MapPin, Send } from "lucide-react";
+import { Mail, Linkedin, Github, Instagram, MapPin, Send, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,7 +15,9 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+    // Auto-send to: aakashsharma.cs1@gmail.com
+    const mailtoLink = `mailto:aakashsharma.cs1@gmail.com?subject=Contact from ${formData.name}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
+    window.location.href = mailtoLink;
     console.log('Form submitted:', formData);
   };
 
@@ -30,35 +32,35 @@ const ContactSection = () => {
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      url: '#',
-      color: 'hover:text-blue-600'
+      url: 'https://www.linkedin.com/in/aakashsharma8a6888131/',
+      color: 'hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/20'
     },
     {
       name: 'GitHub',
       icon: Github,
       url: '#',
-      color: 'hover:text-gray-800 dark:hover:text-gray-200'
+      color: 'hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-950/20'
     },
     {
       name: 'Instagram',
       icon: Instagram,
-      url: '#',
-      color: 'hover:text-pink-600'
+      url: 'https://instagram.com/aakash_10_5',
+      color: 'hover:text-pink-600 hover:bg-pink-50 dark:hover:bg-pink-950/20'
     },
     {
       name: 'Email',
       icon: Mail,
-      url: 'mailto:aakash@example.com',
-      color: 'hover:text-red-600'
+      url: 'mailto:aakashsharma.cs1@gmail.com',
+      color: 'hover:text-cyan-600 hover:bg-cyan-50 dark:hover:bg-cyan-950/20'
     }
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900 transition-colors duration-500">
+    <section id="contact" className="py-20 bg-gradient-to-br from-slate-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900 transition-colors duration-500">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-800 to-blue-700 dark:from-slate-100 dark:to-blue-300 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent">
             Let's Connect
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
@@ -68,7 +70,7 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-3xl p-8 border border-white/20 dark:border-slate-700/20 animate-fade-in">
+          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-3xl p-8 border border-cyan-200/30 dark:border-cyan-700/30 animate-fade-in shadow-lg">
             <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6">Send a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -82,7 +84,7 @@ const ContactSection = () => {
                   type="text"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="mt-2 bg-white/50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-200"
+                  className="mt-2 bg-white/80 dark:bg-slate-700/80 border-cyan-200 dark:border-cyan-600 focus:border-cyan-500 dark:focus:border-cyan-400 transition-all duration-300 rounded-xl"
                   placeholder="Your full name"
                   required
                 />
@@ -98,7 +100,7 @@ const ContactSection = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="mt-2 bg-white/50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-200"
+                  className="mt-2 bg-white/80 dark:bg-slate-700/80 border-cyan-200 dark:border-cyan-600 focus:border-cyan-500 dark:focus:border-cyan-400 transition-all duration-300 rounded-xl"
                   placeholder="your.email@example.com"
                   required
                 />
@@ -114,7 +116,7 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={5}
-                  className="mt-2 bg-white/50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-200 resize-none"
+                  className="mt-2 bg-white/80 dark:bg-slate-700/80 border-cyan-200 dark:border-cyan-600 focus:border-cyan-500 dark:focus:border-cyan-400 transition-all duration-300 resize-none rounded-xl"
                   placeholder="Tell me about your project or idea..."
                   required
                 />
@@ -122,10 +124,10 @@ const ContactSection = () => {
 
               <Button 
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="w-full bg-gradient-to-r from-cyan-600 via-blue-600 to-slate-700 hover:from-cyan-700 hover:via-blue-700 hover:to-slate-800 text-white py-4 rounded-xl text-lg font-semibold transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/30 group"
               >
                 Send Message
-                <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                <Send className="ml-3 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
               </Button>
             </form>
           </div>
@@ -133,9 +135,9 @@ const ContactSection = () => {
           {/* Contact Info & Social Links */}
           <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             {/* Location */}
-            <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-slate-700/20">
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 shadow-lg">
               <div className="flex items-center mb-4">
-                <MapPin className="w-6 h-6 text-blue-500 mr-3" />
+                <MapPin className="w-6 h-6 text-cyan-500 mr-3" />
                 <h4 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Location</h4>
               </div>
               <p className="text-slate-600 dark:text-slate-300">
@@ -144,33 +146,48 @@ const ContactSection = () => {
               </p>
             </div>
 
+            {/* Contact Info */}
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 shadow-lg">
+              <div className="flex items-center mb-4">
+                <Mail className="w-6 h-6 text-cyan-500 mr-3" />
+                <h4 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Email</h4>
+              </div>
+              <p className="text-slate-600 dark:text-slate-300">
+                aakashsharma.cs1@gmail.com
+              </p>
+            </div>
+
             {/* Social Links */}
-            <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-slate-700/20">
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 shadow-lg">
               <h4 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Connect With Me</h4>
-              <div className="flex flex-wrap gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.url}
-                    className={`flex items-center justify-center w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 ${social.color} transition-all duration-300 transform hover:scale-110 hover:shadow-lg`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center justify-center p-4 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 ${social.color} transition-all duration-300 transform hover:scale-110 hover:shadow-lg group`}
                     title={social.name}
                   >
-                    <social.icon className="w-5 h-5" />
+                    <social.icon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-200" />
+                    <span className="font-medium text-sm">{social.name}</span>
                   </a>
                 ))}
               </div>
             </div>
 
             {/* Quote */}
-            <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/10 dark:to-purple-400/10 rounded-2xl p-6 border border-blue-200/20 dark:border-blue-700/20">
-              <blockquote className="text-lg italic text-slate-700 dark:text-slate-300 text-center">
+            <div className="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-slate-500/10 dark:from-cyan-400/10 dark:via-blue-400/10 dark:to-slate-400/10 rounded-2xl p-8 border border-cyan-200/20 dark:border-cyan-700/20 shadow-lg">
+              <blockquote className="text-xl italic text-slate-700 dark:text-slate-300 text-center mb-6 leading-relaxed">
                 "I believe in building tools that serve people, not the other way around."
               </blockquote>
-              <div className="text-center mt-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold mx-auto">
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 via-blue-600 to-slate-700 flex items-center justify-center text-white text-lg font-bold mx-auto mb-3 shadow-lg">
                   AS
                 </div>
-                <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">Aakash Sharma</p>
+                <p className="text-slate-600 dark:text-slate-400 font-medium">Aakash Sharma</p>
+                <p className="text-slate-500 dark:text-slate-500 text-sm">Data-Driven Governance Consultant</p>
               </div>
             </div>
           </div>
@@ -178,7 +195,7 @@ const ContactSection = () => {
       </div>
 
       {/* Footer */}
-      <div className="mt-20 pt-8 border-t border-slate-200/20 dark:border-slate-700/20">
+      <div className="mt-20 pt-8 border-t border-slate-200/30 dark:border-slate-700/30">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-slate-500 dark:text-slate-400">
             © 2024 Aakash Sharma. Built with passion for impact-driven technology.

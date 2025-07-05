@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ArrowRight, Download, Mail } from "lucide-react";
+import { ArrowRight, Download, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
@@ -24,119 +24,135 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
+      {/* Enhanced Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-slate-600/5 dark:from-blue-400/10 dark:via-purple-400/10 dark:to-slate-400/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/10 via-blue-900/10 to-cyan-500/5 dark:from-slate-800/10 dark:via-blue-800/10 dark:to-cyan-400/10"></div>
         
-        {/* Floating Data Points */}
-        {Array.from({ length: 20 }).map((_, i) => (
+        {/* Animated Network Lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-20 dark:opacity-30">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <g key={i}>
+              <line
+                x1={`${10 + Math.random() * 80}%`}
+                y1={`${10 + Math.random() * 80}%`}
+                x2={`${20 + Math.random() * 60}%`}
+                y2={`${20 + Math.random() * 60}%`}
+                stroke="currentColor"
+                strokeWidth="0.5"
+                className="text-cyan-400 dark:text-cyan-300 animate-pulse"
+                style={{ 
+                  animationDelay: `${i * 0.3}s`,
+                  animationDuration: `${3 + Math.random() * 2}s`
+                }}
+              />
+              <circle
+                cx={`${10 + Math.random() * 80}%`}
+                cy={`${10 + Math.random() * 80}%`}
+                r="2"
+                fill="currentColor"
+                className="text-cyan-500 dark:text-cyan-400 animate-pulse"
+                style={{ 
+                  animationDelay: `${i * 0.5}s`,
+                  animationDuration: `${2 + Math.random() * 1}s`
+                }}
+              />
+            </g>
+          ))}
+        </svg>
+
+        {/* Glowing Data Points */}
+        {Array.from({ length: 25 }).map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-blue-400/30 rounded-full animate-pulse"
+            className="absolute w-1 h-1 bg-cyan-400/40 rounded-full animate-pulse shadow-lg shadow-cyan-400/20"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
-              animationDuration: `${2 + Math.random() * 2}s`
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 3}s`
             }}
           />
         ))}
-
-        {/* Neural Network Lines */}
-        <svg className="absolute inset-0 w-full h-full opacity-20 dark:opacity-10">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <line
-              key={i}
-              x1={`${Math.random() * 100}%`}
-              y1={`${Math.random() * 100}%`}
-              x2={`${Math.random() * 100}%`}
-              y2={`${Math.random() * 100}%`}
-              stroke="currentColor"
-              strokeWidth="1"
-              className="text-blue-300 dark:text-blue-600 animate-pulse"
-              style={{ animationDelay: `${i * 0.5}s` }}
-            />
-          ))}
-        </svg>
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Profile Image with 3D Effect */}
-        <div className="mb-8 flex justify-center">
+        {/* Enhanced Profile Section */}
+        <div className="mb-12 flex justify-center">
           <div className="relative group">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1 transform rotate-3 group-hover:rotate-6 transition-transform duration-300">
-              <div className="w-full h-full rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-4xl font-bold text-blue-600 dark:text-blue-400">
+            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-cyan-500 via-blue-600 to-slate-700 p-1 transform rotate-2 group-hover:rotate-6 transition-all duration-500 shadow-2xl shadow-cyan-500/20">
+              <div className="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center text-5xl font-bold text-transparent bg-gradient-to-br from-cyan-600 via-blue-700 to-slate-800 bg-clip-text">
                 AS
               </div>
             </div>
-            <div className="absolute -bottom-2 -right-2 bg-green-500 w-8 h-8 rounded-full flex items-center justify-center">
-              <span className="text-white text-xs font-bold">✓</span>
+            <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-cyan-500 to-blue-600 w-12 h-12 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <span className="text-white text-sm font-bold">✓</span>
             </div>
           </div>
         </div>
 
-        {/* Main Headline */}
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-slate-800 via-blue-700 to-purple-700 dark:from-slate-100 dark:via-blue-300 dark:to-purple-300 bg-clip-text text-transparent animate-fade-in">
-          Bridging Public Systems with Data, Technology, and Purpose.
+        {/* Updated Headline */}
+        <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent animate-fade-in">
+          Solving Public Problems with Data, Design, and Grit.
         </h1>
 
-        {/* Subtext */}
-        <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
-          I'm <span className="font-semibold text-blue-600 dark:text-blue-400">Aakash Sharma</span>, a consultant working at the intersection of public governance, social impact, and data systems. From building grievance redressal tech to simplifying metadata for inclusion, I help governments and civil society solve real problems with tech-powered insights.
+        {/* Updated Bio */}
+        <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-5xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          I'm <span className="font-semibold text-cyan-600 dark:text-cyan-400">Aakash Sharma</span> – a technologist-turned-governance consultant blending data systems, AI tools, and policy to drive change on the ground. From tracking 1.3L+ grievances to automating data pipelines, my work helps governments think, act, and scale smarter.
         </p>
 
-        {/* Stats Cards */}
-        <div className="flex flex-wrap justify-center gap-6 mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+        {/* Enhanced Stats Cards */}
+        <div className="flex flex-wrap justify-center gap-8 mb-16 animate-fade-in" style={{ animationDelay: '0.6s' }}>
           {[
-            { label: 'Years Experience', value: '5+' },
-            { label: 'Projects Delivered', value: '15+' },
-            { label: 'Lives Impacted', value: '10K+' }
+            { label: '6+ Years in Public Data & Governance', value: '6+', icon: '📊' },
+            { label: 'Built Dashboards for NITI Aayog & Chief Secretary\'s Office', value: '50+', icon: '🏛️' },
+            { label: 'Led Projects on Grievance Redressal, SDGs, DEI Data', value: '1.3L+', icon: '🎯' }
           ].map((stat, index) => (
-            <div key={index} className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-slate-700/20 hover:scale-105 transition-transform duration-300">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{stat.value}</div>
-              <div className="text-slate-600 dark:text-slate-300 text-sm">{stat.label}</div>
+            <div key={index} className="group bg-white/70 dark:bg-slate-800/70 backdrop-blur-md rounded-3xl p-8 border border-cyan-200/30 dark:border-cyan-700/30 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 max-w-xs">
+              <div className="text-4xl mb-2">{stat.icon}</div>
+              <div className="text-4xl font-bold text-transparent bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text group-hover:scale-110 transition-transform duration-300">{stat.value}</div>
+              <div className="text-slate-600 dark:text-slate-300 text-sm leading-tight">{stat.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Call-to-Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: '0.9s' }}>
+        {/* Enhanced Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in" style={{ animationDelay: '0.9s' }}>
           <Button 
             onClick={scrollToProjects}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+            className="bg-gradient-to-r from-cyan-600 via-blue-600 to-slate-700 hover:from-cyan-700 hover:via-blue-700 hover:to-slate-800 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:shadow-cyan-500/30 group"
           >
-            View My Projects
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+            View Projects
+            <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform duration-300" />
           </Button>
           
           <Button 
             variant="outline" 
-            className="border-2 border-slate-300 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 group"
+            className="border-2 border-slate-400 dark:border-slate-500 hover:border-cyan-500 dark:hover:border-cyan-400 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-10 py-4 rounded-full text-lg font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-lg hover:bg-cyan-50 dark:hover:bg-cyan-950/20 group"
           >
-            <Download className="mr-2 w-5 h-5 group-hover:animate-bounce" />
-            Download CV
+            <Download className="mr-3 w-5 h-5 group-hover:animate-bounce" />
+            Download Resume
           </Button>
           
           <Button 
-            onClick={scrollToContact}
+            onClick={() => window.open('https://www.linkedin.com/in/aakashsharma8a6888131/', '_blank')}
             variant="ghost" 
-            className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 group"
+            className="text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-10 py-4 rounded-full text-lg font-semibold transition-all duration-500 transform hover:scale-110 hover:bg-cyan-50 dark:hover:bg-cyan-950/20 group"
           >
-            <Mail className="mr-2 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
-            Let's Connect
+            <Linkedin className="mr-3 w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+            Connect on LinkedIn
           </Button>
         </div>
       </div>
 
-      {/* Parallax Mouse Effect */}
+      {/* Enhanced Parallax Mouse Effect */}
       <div 
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-30"
         style={{
-          transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`
+          transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
         }}
       >
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-128 h-128 bg-gradient-to-r from-blue-500/10 to-slate-500/10 rounded-full blur-3xl"></div>
       </div>
     </section>
   );
