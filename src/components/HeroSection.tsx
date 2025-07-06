@@ -22,6 +22,13 @@ const HeroSection = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const downloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/aakash-sharma-cv.pdf';
+    link.download = 'Aakash_Sharma_CV.pdf';
+    link.click();
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Enhanced Animated Background */}
@@ -76,20 +83,6 @@ const HeroSection = () => {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Enhanced Profile Section */}
-        <div className="mb-12 flex justify-center">
-          <div className="relative group">
-            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-cyan-500 via-blue-600 to-slate-700 p-1 transform rotate-2 group-hover:rotate-6 transition-all duration-500 shadow-2xl shadow-cyan-500/20">
-              <div className="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center text-5xl font-bold text-transparent bg-gradient-to-br from-cyan-600 via-blue-700 to-slate-800 bg-clip-text">
-                AS
-              </div>
-            </div>
-            <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-cyan-500 to-blue-600 w-12 h-12 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <span className="text-white text-sm font-bold">✓</span>
-            </div>
-          </div>
-        </div>
-
         {/* Updated Headline */}
         <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent animate-fade-in">
           Solving Public Problems with Data, Design, and Grit.
@@ -126,6 +119,7 @@ const HeroSection = () => {
           </Button>
           
           <Button 
+            onClick={downloadCV}
             variant="outline" 
             className="border-2 border-slate-400 dark:border-slate-500 hover:border-cyan-500 dark:hover:border-cyan-400 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 px-10 py-4 rounded-full text-lg font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-lg hover:bg-cyan-50 dark:hover:bg-cyan-950/20 group"
           >
