@@ -1,9 +1,9 @@
 
-import { Calendar, Clock, ArrowRight, Edit, Plus } from "lucide-react";
+import { Calendar, Clock, ArrowRight, Edit, Plus, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const BlogSection = () => {
-  const categories = ["Governance", "AI & Ethics", "Tools", "Personal Journey"];
+  const categories = ["Governance", "AI & Ethics", "Tools", "Personal Journey", "Personal Write-ups"];
   
   const articles = [
     {
@@ -41,6 +41,36 @@ const BlogSection = () => {
       date: "Oct 22, 2024",
       color: "from-orange-500 to-red-500",
       featured: false
+    },
+    {
+      title: "Unifying India's Government Web Portals: Streamlining Development and Enhancing Accessibility",
+      excerpt: "Exploring the challenges of disparate government web portals and the importance of a standardized framework for better interoperability and user experience.",
+      category: "Personal Write-ups",
+      readTime: "8 min read",
+      date: "May 15, 2023",
+      color: "from-indigo-500 to-purple-500",
+      featured: false,
+      linkedinUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7068137790332448768/"
+    },
+    {
+      title: "Implementing Technology in Government Systems: A Delicate Balance for Success",
+      excerpt: "The importance of balancing technological advancements with maintaining integrity and continuity in government systems during digital transformation.",
+      category: "Personal Write-ups",
+      readTime: "10 min read",
+      date: "Jun 28, 2023",
+      color: "from-teal-500 to-blue-500",
+      featured: false,
+      linkedinUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7079273979156307968/"
+    },
+    {
+      title: "Lost in Translation: The Cost of the 'Chinese Whisper' Effect on Public Welfare Policies",
+      excerpt: "How communication distortion in policy implementation leads to wasted resources and the need for effective communication strategies in governance.",
+      category: "Personal Write-ups",
+      readTime: "6 min read",
+      date: "Apr 20, 2023",
+      color: "from-rose-500 to-pink-500",
+      featured: false,
+      linkedinUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7056311826413682688/"
     }
   ];
 
@@ -88,9 +118,7 @@ const BlogSection = () => {
                 {/* Gradient Header */}
                 <div className={`h-3 bg-gradient-to-r ${article.color}`}></div>
                 
-                {/* Content */}
                 <div className="p-8">
-                  {/* Meta Info */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="px-4 py-2 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm font-semibold">
                       {article.category}
@@ -101,17 +129,14 @@ const BlogSection = () => {
                     </div>
                   </div>
 
-                  {/* Title */}
                   <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300 leading-tight">
                     {article.title}
                   </h3>
 
-                  {/* Excerpt */}
                   <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
                     {article.excerpt}
                   </p>
 
-                  {/* Footer */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-slate-500 text-sm">
                       <Clock className="w-4 h-4 mr-2" />
@@ -134,7 +159,6 @@ const BlogSection = () => {
                     </div>
                   </div>
 
-                  {/* Read More Arrow */}
                   <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <ArrowRight className="w-6 h-6 text-cyan-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
                   </div>
@@ -153,12 +177,9 @@ const BlogSection = () => {
               style={{ animationDelay: `${(index + 2) * 0.15}s` }}
             >
               <div className="relative overflow-hidden rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:shadow-lg hover:shadow-cyan-500/5 transition-all duration-300 transform hover:scale-105 border border-cyan-200/10 dark:border-cyan-700/10">
-                {/* Gradient Header */}
                 <div className={`h-2 bg-gradient-to-r ${article.color}`}></div>
                 
-                {/* Content */}
                 <div className="p-6">
-                  {/* Meta Info */}
                   <div className="flex items-center justify-between mb-3">
                     <span className="px-3 py-1 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-xs font-medium">
                       {article.category}
@@ -169,26 +190,35 @@ const BlogSection = () => {
                     </div>
                   </div>
 
-                  {/* Title */}
                   <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300 leading-tight">
                     {article.title}
                   </h3>
 
-                  {/* Excerpt */}
                   <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
                     {article.excerpt}
                   </p>
 
-                  {/* Footer */}
                   <div className="flex items-center justify-between text-xs">
                     <div className="flex items-center text-slate-500">
                       <Clock className="w-3 h-3 mr-1" />
                       {article.readTime}
                     </div>
                     
-                    <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-1">
-                      <Edit className="w-3 h-3" />
-                    </Button>
+                    <div className="flex items-center gap-2">
+                      {article.linkedinUrl && (
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-1"
+                          onClick={() => window.open(article.linkedinUrl, '_blank')}
+                        >
+                          <ExternalLink className="w-3 h-3 text-blue-600" />
+                        </Button>
+                      )}
+                      <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-1">
+                        <Edit className="w-3 h-3" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
