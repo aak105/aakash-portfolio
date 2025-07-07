@@ -140,45 +140,6 @@ const DataAssets = () => {
     }
   ];
 
-  const experiences = [
-    {
-      title: "Consultant",
-      organization: "Chief Secretary's Office, Government of Haryana",
-      period: "Jul 2024 – Present",
-      location: "Chandigarh, India",
-      description: "Led grievance analytics for 1.3L+ cases; implemented dashboards for ERP, OBPAS & HR systems across state departments.",
-      skills: ["Data Analytics", "Dashboard Development", "ERP Systems"],
-      logo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=center"
-    },
-    {
-      title: "CMGGA Fellow",
-      organization: "Yamunanagar District Administration",
-      period: "Mar 2023 – Jun 2024",
-      location: "Yamunanagar, India",
-      description: "Worked on 35+ schemes; boosted education, water access, livelihoods, Amrit Sarovar project implementation.",
-      skills: ["Project Management", "Field Implementation", "Scheme Monitoring"],
-      logo: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=60&h=60&fit=crop&crop=center"
-    },
-    {
-      title: "Associate Consultant (Data Analyst)",
-      organization: "Sattva Consulting",
-      period: "Oct 2021 – Mar 2023",
-      location: "Bangalore, India",
-      description: "Built 50+ dashboards; automated data pipelines; contributed to NITI Aayog's portal development.",
-      skills: ["Power BI", "Data Engineering", "Python"],
-      logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=60&h=60&fit=crop&crop=center"
-    },
-    {
-      title: "Young Professional",
-      organization: "SIRD Punjab (UNDP Partnership)",
-      period: "Sep 2020 – Oct 2021",
-      location: "Chandigarh, India",
-      description: "Created SDG framework; impacted 13K+ panchayats; trained 6K+ elected women representatives.",
-      skills: ["SGD Framework", "Capacity Building", "Rural Governance"],
-      logo: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=60&h=60&fit=crop&crop=center"
-    }
-  ];
-
   return (
     <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'dark' : ''}`}>
       {/* Dark/Light Mode Toggle */}
