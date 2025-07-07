@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Moon, Sun } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import RecommendedReading from "@/components/RecommendedReading";
 import CVSection from "@/components/CVSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import BlogSection from "@/components/BlogSection";
@@ -19,6 +20,7 @@ import AnimatedBackground from "@/components/AnimatedBackground";
  * - Animated background throughout the page
  * - Navigation between sections
  * - Responsive design with smooth transitions
+ * - Proper spacing and visual hierarchy
  */
 const Index = () => {
   // Theme state management
@@ -52,10 +54,11 @@ const Index = () => {
         {/* Global Animated Background */}
         <AnimatedBackground variant="primary" />
         
-        {/* Content Sections */}
+        {/* Content Sections with Proper Spacing */}
         <div className="relative z-10">
           <HeroSection />
           <AboutSection />
+          <RecommendedReading />
           <CVSection />
           <PortfolioSection />
           <BlogSection />

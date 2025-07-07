@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 interface Project {
   id: string;
@@ -50,8 +51,7 @@ const PortfolioSection = () => {
       category: "Data Analytics",
       techStack: ["Python", "Tableau", "SQL", "Power BI"],
       impact: "Enabled researchers to identify voting patterns and political trends across multiple states",
-      icon: <BarChart className="w-6 h-6" />,
-      image: "https://images.unsplash.com/photo-1577415124269-fc1140a69e91?w=400&h=250&fit=crop"
+      icon: <BarChart className="w-6 h-6" />
     },
     {
       title: "Agri Market Intelligence System",
@@ -59,8 +59,7 @@ const PortfolioSection = () => {
       category: "Agricultural Analytics",
       techStack: ["Python", "Data Analytics", "Market Research", "Visualization"],
       impact: "Helped startup understand yield patterns and pricing trends for better financial products",
-      icon: <TrendingUp className="w-6 h-6" />,
-      image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=250&fit=crop"
+      icon: <TrendingUp className="w-6 h-6" />
     },
     {
       title: "Disability Data Platform - Belongg AI",
@@ -68,8 +67,7 @@ const PortfolioSection = () => {
       category: "AI/ML",
       techStack: ["LLMs", "Vector Database", "SQL", "Data Cleaning", "Python"],
       impact: "Automated metadata generation and improved accessibility data quality by 90%",
-      icon: <Database className="w-6 h-6" />,
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop"
+      icon: <Database className="w-6 h-6" />
     },
     {
       title: "Citizen Grievance Portal",
@@ -77,8 +75,7 @@ const PortfolioSection = () => {
       category: "Governance Tech",
       techStack: ["Dashboard Development", "Analytics", "Workflow Management"],
       impact: "Processed 130,000+ grievances with 80% resolution rate",
-      icon: <Users className="w-6 h-6" />,
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop"
+      icon: <Users className="w-6 h-6" />
     },
     {
       title: "SDG Integration Framework",
@@ -86,8 +83,7 @@ const PortfolioSection = () => {
       category: "Public Policy",
       techStack: ["Data Framework", "KPI Design", "Survey Tools", "Analytics"],
       impact: "Enabled data-led planning across 13,000+ panchayats",
-      icon: <FileText className="w-6 h-6" />,
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop"
+      icon: <FileText className="w-6 h-6" />
     },
     {
       title: "NITI Aayog Dashboard",
@@ -95,15 +91,15 @@ const PortfolioSection = () => {
       category: "Government Analytics",
       techStack: ["Power BI", "DAX", "Data Integration", "Tableau"],
       impact: "Streamlined policy monitoring and state performance tracking at national level",
-      icon: <BarChart className="w-6 h-6" />,
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop"
+      icon: <BarChart className="w-6 h-6" />
     }
   ];
 
   if (isLoading) {
     return (
-      <section id="portfolio" className="py-20 bg-slate-50 dark:bg-slate-800">
-        <div className="container mx-auto px-6">
+      <section id="portfolio" className="py-20 bg-slate-50 dark:bg-slate-800 relative">
+        <AnimatedBackground variant="secondary" />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="animate-pulse">
             <div className="h-8 bg-slate-200 dark:bg-slate-700 rounded w-48 mb-8 mx-auto"></div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -118,8 +114,10 @@ const PortfolioSection = () => {
   }
 
   return (
-    <section id="portfolio" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-500">
-      <div className="container mx-auto px-6">
+    <section id="portfolio" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-500 relative">
+      <AnimatedBackground variant="secondary" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 dark:text-slate-100 mb-6">
             Projects & Impact
@@ -154,16 +152,27 @@ const PortfolioSection = () => {
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <div className="text-center p-4">
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">20+</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">Dashboards Built for decision-making and monitoring</div>
+                </div>
+                <div className="text-center p-4">
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">100+</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">Data Assets Developed including visualizations, indicators, and reports</div>
+                </div>
+                <div className="text-center p-4">
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">Interactive Data Assets</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">Datasets Handled from NFHS, Census, State MIS, and international databases</div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div className="text-center p-4">
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">10+</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">Tech Tools Used (SQL, Python, Tableau, Google Cloud, Metabase, etc.)</div>
                 </div>
                 <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">1000+</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">Datasets Curated</div>
-                </div>
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">90%</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">Efficiency Improvement</div>
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">6</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">Domains Covered: Governance, Education, Health, Nutrition, Livelihood, Gender</div>
                 </div>
               </div>
 
@@ -183,35 +192,28 @@ const PortfolioSection = () => {
           </div>
         </div>
 
-        {/* CV Projects Section */}
+        {/* CV Projects Section - No Images */}
         <div className="mb-16">
           <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-8 text-center">
             Featured Projects
           </h3>
           <div className="grid md:grid-cols-2 gap-8">
             {cvProjects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 overflow-hidden">
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  <div className="absolute top-4 left-4 text-white">
-                    {project.icon}
-                  </div>
-                </div>
-                
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                          {project.icon}
+                        </div>
+                        <Badge variant="outline" className="text-xs">
+                          {project.category}
+                        </Badge>
+                      </div>
                       <CardTitle className="text-xl font-serif text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
                         {project.title}
                       </CardTitle>
-                      <Badge variant="outline" className="text-xs mb-2">
-                        {project.category}
-                      </Badge>
                     </div>
                   </div>
                 </CardHeader>
@@ -241,7 +243,7 @@ const PortfolioSection = () => {
           </div>
         </div>
 
-        {/* Database Projects */}
+        {/* Database Projects - No Images */}
         {projects.length > 0 && (
           <div>
             <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-8 text-center">
@@ -250,16 +252,6 @@ const PortfolioSection = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
                 <Card key={project.id} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
-                  {project.image_url && (
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={project.image_url} 
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between">
                       <CardTitle className="text-xl font-serif text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">

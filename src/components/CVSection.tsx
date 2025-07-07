@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Calendar, MapPin, Download, Code, Database, BarChart3, Mail, Phone, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,9 +10,9 @@ import AnimatedBackground from "@/components/AnimatedBackground";
  * CVSection Component - Enhanced with Better Code Structure
  * 
  * Comprehensive CV section featuring:
- * - Skills categorized without percentages 
+ * - Skills in highlighted boxes/ovals 
  * - Professional timeline with hover details
- * - Expandable work experience cards
+ * - Horizontal education cards
  * - Clean, well-commented code structure for easy maintenance
  */
 const CVSection = () => {
@@ -21,7 +22,7 @@ const CVSection = () => {
 
   /**
    * Skills Data Structure - Organized by Categories
-   * Removed percentages for cleaner presentation
+   * Skills will be displayed in highlighted boxes
    */
   const skillsData = {
     coreSkills: {
@@ -180,7 +181,7 @@ const CVSection = () => {
   };
 
   /**
-   * Render Skills Section with Categories
+   * Render Skills Section with Highlighted Boxes
    */
   const renderSkillsSection = () => (
     <div className="grid md:grid-cols-2 gap-8">
@@ -199,13 +200,12 @@ const CVSection = () => {
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {skills.map((skill, index) => (
-                      <Badge 
+                      <div 
                         key={index} 
-                        variant="secondary" 
-                        className="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                        className="px-3 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-400/20 dark:to-purple-400/20 border border-blue-200 dark:border-blue-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md"
                       >
                         {skill}
-                      </Badge>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -294,30 +294,31 @@ const CVSection = () => {
   );
 
   /**
-   * Render Education Section
+   * Render Education Section - Horizontal Layout
    */
   const renderEducationSection = () => (
-    <div className="space-y-4">
+    <div className="grid md:grid-cols-3 gap-6">
       {education.map((edu, index) => (
-        <Card key={index} className="bg-gradient-to-r from-blue-50 to-slate-50 dark:from-blue-900/20 dark:to-slate-800 border-blue-200/50 dark:border-blue-800/50">
-          <CardContent className="p-6">
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">
-                  {edu.degree}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-300 mb-1">
-                  {edu.institution}
-                </p>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {edu.duration}
-                </p>
-                {edu.achievement && (
-                  <Badge variant="secondary" className="mt-2 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
-                    {edu.achievement}
-                  </Badge>
-                )}
+        <Card key={index} className="bg-gradient-to-br from-blue-50 to-slate-50 dark:from-blue-900/20 dark:to-slate-800 border-blue-200/50 dark:border-blue-800/50 hover:shadow-lg transition-shadow duration-300">
+          <CardContent className="p-6 text-center">
+            <div className="mb-4">
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-blue-600 dark:text-blue-400 font-bold text-lg">{index + 1}</span>
               </div>
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2 text-sm leading-tight">
+                {edu.degree}
+              </h3>
+              <p className="text-slate-600 dark:text-slate-300 text-xs mb-1">
+                {edu.institution}
+              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                {edu.duration}
+              </p>
+              {edu.achievement && (
+                <Badge variant="secondary" className="mt-2 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 text-xs">
+                  {edu.achievement}
+                </Badge>
+              )}
             </div>
           </CardContent>
         </Card>

@@ -1,0 +1,104 @@
+
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { BookOpen } from "lucide-react";
+import AnimatedBackground from "@/components/AnimatedBackground";
+
+const RecommendedReading = () => {
+  // Inspiring books collection
+  const inspiringBooks = [
+    {
+      title: "Mastering the Data Paradox",
+      author: "Nitin Seth",
+      description: "A pragmatic guide for navigating the overload and underuse of data in the AI era.",
+      goodreads: "#",
+      amazon: "#"
+    },
+    {
+      title: "Homo Deus: A Brief History of Tomorrow",
+      author: "Yuval Noah Harari", 
+      description: "An exploration of humanity's future shaped by data, algorithms, and human desires.",
+      goodreads: "#",
+      amazon: "#"
+    },
+    {
+      title: "I Too Had a Dream",
+      author: "Verghese Kurien",
+      description: "An inspiring memoir on cooperative action, systems thinking, and rural transformation.",
+      goodreads: "#",
+      amazon: "#"
+    },
+    {
+      title: "World Development Report 2021: Data for Better Lives",
+      author: "World Bank",
+      description: "A foundational document exploring how public data can be responsibly used for development and inclusion.",
+      goodreads: "#",
+      amazon: "#"
+    },
+    {
+      title: "The Third Way: India's Revolutionary Approach to Data",
+      author: "Rahul Matthan",
+      description: "A compelling framework for India's distinct path in data governance, balancing innovation and public interest.",
+      goodreads: "#",
+      amazon: "#"
+    },
+    {
+      title: "The Emperor's Mirror",
+      author: "Dr. N. Bhaskaran Rao",
+      description: "A powerful critique of media narratives and their influence on perception, policy, and democratic discourse.",
+      goodreads: "#",
+      amazon: "#"
+    }
+  ];
+
+  return (
+    <section id="reading" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-500 relative">
+      {/* Animated Background */}
+      <AnimatedBackground variant="tertiary" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <BookOpen className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100">
+                📚 Recommended Reading
+              </h3>
+            </div>
+            <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Books that have shaped my thinking on data, governance, and social impact
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {inspiringBooks.map((book, index) => (
+              <Card key={index} className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-2">
+                    {book.title}
+                  </h4>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+                    by {book.author}
+                  </p>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                    {book.description}
+                  </p>
+                  <div className="flex gap-2">
+                    <Badge variant="outline" className="text-xs">
+                      📖 Goodreads
+                    </Badge>
+                    <Badge variant="outline" className="text-xs">
+                      🛒 Amazon
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default RecommendedReading;

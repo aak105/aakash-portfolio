@@ -7,8 +7,8 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 /**
  * AboutSection Component
  * 
- * Comprehensive about section featuring personal story, mission, vision,
- * and inspiring books. Enhanced with animated background and clean layout.
+ * Comprehensive about section featuring personal story, vision, mission,
+ * and core values. Enhanced with animated background and clean layout.
  */
 const AboutSection = () => {
   // Core values and interests
@@ -17,52 +17,6 @@ const AboutSection = () => {
     { icon: Target, label: "Impact", color: "text-blue-500" },
     { icon: Lightbulb, label: "Innovation", color: "text-yellow-500" },
     { icon: BookOpen, label: "Learning", color: "text-green-500" }
-  ];
-
-  // Inspiring books collection
-  const inspiringBooks = [
-    {
-      title: "Mastering the Data Paradox",
-      author: "Nitin Seth",
-      description: "A pragmatic guide for navigating the overload and underuse of data in the AI era.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "Homo Deus: A Brief History of Tomorrow",
-      author: "Yuval Noah Harari", 
-      description: "An exploration of humanity's future shaped by data, algorithms, and human desires.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "I Too Had a Dream",
-      author: "Verghese Kurien",
-      description: "An inspiring memoir on cooperative action, systems thinking, and rural transformation.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "World Development Report 2021: Data for Better Lives",
-      author: "World Bank",
-      description: "A foundational document exploring how public data can be responsibly used for development and inclusion.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "The Third Way: India's Revolutionary Approach to Data",
-      author: "Rahul Matthan",
-      description: "A compelling framework for India's distinct path in data governance, balancing innovation and public interest.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "The Emperor's Mirror",
-      author: "Dr. N. Bhaskaran Rao",
-      description: "A powerful critique of media narratives and their influence on perception, policy, and democratic discourse.",
-      goodreads: "#",
-      amazon: "#"
-    }
   ];
 
   return (
@@ -81,56 +35,76 @@ const AboutSection = () => {
 
         <div className="max-w-6xl mx-auto space-y-16">
           
-          {/* Personal Story */}
-          <Card className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700">
-            <CardContent className="p-8">
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-                  I'm Aakash Sharma — a data and governance professional working at the intersection of public policy, technology, and social impact.
-                </p>
-                
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-                  Born and raised in a small town in Rajasthan, I've always believed that quiet, thoughtful systems can create real change. My journey started with computer science and led me through grassroots governance, rural management, and data analytics — shaping me into someone who builds with empathy, not just efficiency.
-                </p>
-                
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-                  Over the years, I've worked with district administrations, think tanks, and consulting firms — from managing citizen grievance portals in the Chief Secretary's Office to automating dashboards with Sattva's India Data Insights, and co-creating inclusive metadata tools as a Belongg AI fellow.
-                </p>
-                
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-                  What ties my work together is a clear belief: <strong>data should serve people, not just systems</strong>. Whether I'm working with tribal communities, state governments, or public platforms — I focus on ethical data use, open systems, and inclusive design.
-                </p>
-                
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                  Outside work, I find inspiration in music, mountains, and meaningful conversations. I write about data ethics and governance, and explore how we can build public systems that are not only efficient, but also just and compassionate.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Personal Story and Core Values Side by Side */}
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Personal Story */}
+            <Card className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700">
+              <CardContent className="p-8">
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+                    I'm Aakash Sharma — a data and governance professional working at the intersection of public policy, technology, and social impact.
+                  </p>
+                  
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+                    Born and raised in a small town in Rajasthan, I've always believed that quiet, thoughtful systems can create real change. My journey started with computer science and led me through grassroots governance, rural management, and data analytics — shaping me into someone who builds with empathy, not just efficiency.
+                  </p>
+                  
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+                    Over the years, I've worked with district administrations, think tanks, and consulting firms — from managing citizen grievance portals in the Chief Secretary's Office to automating dashboards with Sattva's India Data Insights, and co-creating inclusive metadata tools as a Belongg AI fellow.
+                  </p>
+                  
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+                    What ties my work together is a clear belief: <strong>data should serve people, not just systems</strong>. Whether I'm working with tribal communities, state governments, or public platforms — I focus on ethical data use, open systems, and inclusive design.
+                  </p>
+                  
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                    Outside work, I find inspiration in music, mountains, and meaningful conversations. I write about data ethics and governance, and explore how we can build public systems that are not only efficient, but also just and compassionate.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
 
-          {/* Core Values */}
-          <div className="grid md:grid-cols-4 gap-6">
-            {coreValues.map((value, index) => {
-              const IconComponent = value.icon;
-              return (
-                <Card key={index} className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6 text-center">
-                    <div className="flex justify-center mb-4">
-                      <div className="p-3 bg-slate-100 dark:bg-slate-700 rounded-full">
-                        <IconComponent className={`w-6 h-6 ${value.color}`} />
-                      </div>
-                    </div>
-                    <h3 className="font-medium text-slate-800 dark:text-slate-200">
-                      {value.label}
-                    </h3>
-                  </CardContent>
-                </Card>
-              );
-            })}
+            {/* Core Values */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-8">
+                💼 Core Values
+              </h3>
+              <div className="grid grid-cols-2 gap-6">
+                {coreValues.map((value, index) => {
+                  const IconComponent = value.icon;
+                  return (
+                    <Card key={index} className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow duration-300">
+                      <CardContent className="p-6 text-center">
+                        <div className="flex justify-center mb-4">
+                          <div className="p-3 bg-slate-100 dark:bg-slate-700 rounded-full">
+                            <IconComponent className={`w-6 h-6 ${value.color}`} />
+                          </div>
+                        </div>
+                        <h3 className="font-medium text-slate-800 dark:text-slate-200">
+                          {value.label}
+                        </h3>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
-          {/* Mission & Vision */}
+          {/* Vision & Mission */}
           <div className="grid md:grid-cols-2 gap-8">
+            {/* Vision First */}
+            <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border-green-200/50 dark:border-green-800/50">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4">
+                  🌟 Vision
+                </h3>
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                  To make a significant and lasting contribution to the world of open and public data.
+                </p>
+              </CardContent>
+            </Card>
+
             {/* Mission */}
             <Card className="bg-gradient-to-br from-blue-50 to-slate-50 dark:from-blue-900/20 dark:to-slate-800 border-blue-200/50 dark:border-blue-800/50">
               <CardContent className="p-8">
@@ -142,51 +116,16 @@ const AboutSection = () => {
                 </p>
               </CardContent>
             </Card>
-
-            {/* Vision */}
-            <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border-green-200/50 dark:border-green-800/50">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4">
-                  🌟 Vision
-                </h3>
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                  To make a significant and lasting contribution to the world of open and public data — building systems that are ethical, accessible, and impactful. I envision a future where public data is not just open, but actively used to drive meaningful change, especially for communities that have long been underserved or excluded.
-                </p>
-              </CardContent>
-            </Card>
           </div>
 
-          {/* Books That Inspire Me */}
-          <div>
-            <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 text-center mb-8">
-              📚 Books That Inspire Me
+          {/* Insights and Perspectives Section Placeholder */}
+          <div className="text-center py-8">
+            <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4">
+              💡 Insights & Perspectives
             </h3>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {inspiringBooks.map((book, index) => (
-                <Card key={index} className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-2">
-                      {book.title}
-                    </h4>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
-                      by {book.author}
-                    </p>
-                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
-                      {book.description}
-                    </p>
-                    <div className="flex gap-2">
-                      <Badge variant="outline" className="text-xs">
-                        📖 Goodreads
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        🛒 Amazon
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Through my work across government, consulting, and grassroots programs, I've developed unique perspectives on how data can transform public systems and create meaningful impact for communities.
+            </p>
           </div>
         </div>
       </div>

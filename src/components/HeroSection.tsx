@@ -44,7 +44,7 @@ const HeroSection = () => {
         setContent({
           title: "Solving Public Problems with Data, Design, and Grit",
           subtitle: "I'm Aakash Sharma – a technologist-turned-governance consultant blending data systems, AI tools, and policy to drive change on the ground.",
-          quote: "Here's someone who cares deeply, works quietly, thinks structurally, and builds for people.",
+          quote: "You can't manage what you don't measure",
           cta: "Let's build better systems together"
         });
       } finally {
@@ -58,7 +58,7 @@ const HeroSection = () => {
   // Loading state with skeleton UI
   if (isLoading) {
     return (
-      <section id="home" className="min-h-screen flex items-center justify-center relative">
+      <section id="home" className="min-h-screen flex items-center justify-center relative pt-20">
         <AnimatedBackground variant="primary" />
         <div className="animate-pulse relative z-10">
           <div className="h-8 bg-slate-200 dark:bg-slate-700 rounded w-96 mb-4"></div>
@@ -69,16 +69,16 @@ const HeroSection = () => {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Animated Background */}
       <AnimatedBackground variant="primary" />
       
       {/* Background Icons - Enhanced with better positioning */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="absolute top-20 left-20 animate-pulse">
+        <div className="absolute top-32 left-20 animate-pulse">
           <Database className="w-16 h-16 text-blue-300 dark:text-blue-600" />
         </div>
-        <div className="absolute top-40 right-32 animate-pulse delay-1000">
+        <div className="absolute top-52 right-32 animate-pulse delay-1000">
           <BarChart3 className="w-12 h-12 text-green-300 dark:text-green-600" />
         </div>
         <div className="absolute bottom-40 left-40 animate-pulse delay-2000">
@@ -107,21 +107,22 @@ const HeroSection = () => {
             <blockquote className="text-base md:text-lg italic font-serif text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">
               "{content?.quote}"
             </blockquote>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">- Peter Drucker</p>
           </div>
 
           {/* Statistics Section - Key Performance Metrics */}
-          <div className="grid grid-cols-3 gap-8 py-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-3 gap-8 py-8 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">5+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Years Experience</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Years of Experience across government, consulting, and grassroots programs</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400 mb-2">80+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Data Assets</div>
+              <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400 mb-2">30+</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Total Projects Executed in public sector and social impact</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">1000+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Datasets Curated</div>
+              <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">100+</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Government Schemes Worked On across 30+ departments</div>
             </div>
           </div>
 
