@@ -19,7 +19,29 @@ const AboutSection = () => {
     { icon: BookOpen, label: "Learning", color: "text-green-500" }
   ];
 
-  
+  // Books that inspire me - data for the books section
+  const inspiringBooks = [
+    {
+      title: "The Righteous Mind",
+      author: "Jonathan Haidt",
+      description: "A fascinating exploration of moral psychology that helps understand how people make ethical decisions and why we disagree on moral issues."
+    },
+    {
+      title: "Thinking, Fast and Slow",
+      author: "Daniel Kahneman",
+      description: "A groundbreaking work on behavioral economics and cognitive biases that shape how we think and make decisions."
+    },
+    {
+      title: "The Power of Now",
+      author: "Eckhart Tolle",
+      description: "A transformative guide to spiritual enlightenment and present-moment awareness that has influenced millions worldwide."
+    },
+    {
+      title: "Sapiens",
+      author: "Yuval Noah Harari",
+      description: "A compelling narrative about the history of humankind and how we became the dominant species on Earth."
+    }
+  ];
 
   return (
     <section id="about" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-500 relative">
