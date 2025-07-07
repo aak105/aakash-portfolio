@@ -46,9 +46,8 @@ const Index = () => {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${darkMode ? 'dark' : ''}`}>
-      {/* Navigation */}
       <Navigation />
-
+      
       {/* Main Content with Animated Background */}
       <main className="relative bg-gradient-to-br from-slate-50 via-stone-50 to-blue-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900/20 transition-colors duration-500">
         {/* Global Animated Background */}
@@ -56,16 +55,36 @@ const Index = () => {
         
         {/* Content Sections with Proper Spacing */}
         <div className="relative z-10">
-          <HeroSection />
-          <AboutSection />
-          <RecommendedReading />
-          <CVSection />
-          <PortfolioSection />
-          <BlogSection />
-          <ContactSection />
+          <section id="home" className="min-h-screen py-20">
+            <HeroSection />
+          </section>
+          
+          <section id="about" className="min-h-screen py-20">
+            <AboutSection />
+          </section>
+
+          <section id="cv" className="min-h-screen py-20">
+            <CVSection />
+          </section>
+
+          <section id="portfolio" className="min-h-screen py-20">
+            <PortfolioSection />
+          </section>
+
+          <section id="blog" className="min-h-screen py-20">
+            <BlogSection />
+          </section>
+
+          <section id="recommended-reading" className="min-h-screen py-20">
+            <RecommendedReading />
+          </section>
+
+          <section id="contact" className="min-h-screen py-20">
+            <ContactSection />
+          </section>
         </div>
       </main>
-
+      
       {/* Dark/Light Mode Toggle - Bottom Right Position */}
       <button
         onClick={toggleTheme}

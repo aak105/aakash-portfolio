@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface AnimatedBackgroundProps {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -9,8 +9,8 @@ interface AnimatedBackgroundProps {
 /**
  * AnimatedBackground Component
  * 
- * Creates a data and network-themed animated background with floating geometric shapes,
- * data nodes, and connecting lines that blend seamlessly with the current color scheme.
+ * Creates a subtle, elegant animated background with soft elements
+ * and light colors that blend seamlessly with white for a sophisticated feel.
  * 
  * @param variant - Color variant for different sections
  * @param className - Additional CSS classes
@@ -19,77 +19,200 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
   variant = 'primary', 
   className = '' 
 }) => {
-  // Define color schemes for different variants
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  
+  // Define subtle color schemes for different variants
   const getVariantStyles = () => {
     switch (variant) {
       case 'secondary':
-        return 'from-green-100/20 via-blue-100/20 to-purple-100/20 dark:from-green-900/10 dark:via-blue-900/10 dark:to-purple-900/10';
+        return 'from-green-50 via-blue-50 to-purple-50 dark:from-green-900/5 dark:via-blue-900/5 dark:to-purple-900/5';
       case 'tertiary':
-        return 'from-orange-100/20 via-pink-100/20 to-yellow-100/20 dark:from-orange-900/10 dark:via-pink-900/10 dark:to-yellow-900/10';
+        return 'from-orange-50 via-pink-50 to-yellow-50 dark:from-orange-900/5 dark:via-pink-900/5 dark:to-yellow-900/5';
       default:
-        return 'from-blue-100/20 via-slate-100/20 to-stone-100/20 dark:from-blue-900/10 dark:via-slate-900/10 dark:to-stone-900/10';
+        return 'from-blue-50 via-slate-50 to-stone-50 dark:from-blue-900/5 dark:via-slate-900/5 dark:to-stone-900/5';
     }
   };
 
+  // Get elegant, light colors for elements
+  const getElementColors = () => {
+    switch (variant) {
+      case 'secondary':
+        return ['rgba(236, 253, 245, 0.4)', 'rgba(235, 248, 255, 0.4)', 'rgba(243, 242, 255, 0.4)'];
+      case 'tertiary':
+        return ['rgba(255, 247, 237, 0.4)', 'rgba(253, 242, 248, 0.4)', 'rgba(254, 252, 232, 0.4)'];
+      default:
+        return ['rgba(239, 246, 255, 0.4)', 'rgba(248, 250, 252, 0.4)', 'rgba(245, 245, 244, 0.4)'];
+    }
+  };
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Set canvas dimensions to match parent container
+    const resizeCanvas = () => {
+      const parent = canvas.parentElement;
+      if (parent) {
+        canvas.width = parent.offsetWidth;
+        canvas.height = parent.offsetHeight;
+      }
+    };
+
+    // Initial resize
+    resizeCanvas();
+    
+    // Resize on window resize
+    window.addEventListener('resize', resizeCanvas);
+
+    // Elegant floating elements
+    class ElegantElement {
+      x: number;
+      y: number;
+      size: number;
+      color: string;
+      vx: number;
+      vy: number;
+      opacity: number;
+      shape: 'circle' | 'square' | 'line';
+      rotationAngle: number;
+      rotationSpeed: number;
+
+      constructor(x: number, y: number, size: number, color: string) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.color = color;
+        this.vx = (Math.random() - 0.5) * 0.2; // Very slow movement
+        this.vy = (Math.random() - 0.5) * 0.2;
+        this.opacity = 0.1 + Math.random() * 0.3; // Very subtle opacity
+        this.shape = Math.random() < 0.6 ? 'circle' : Math.random() < 0.9 ? 'square' : 'line';
+        this.rotationAngle = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.01; // Very slow rotation
+      }
+
+      update(width: number, height: number) {
+        // Update position very slowly
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Gentle bounce off edges
+        if (this.x < -this.size || this.x > width + this.size) {
+          this.vx = -this.vx;
+        }
+        if (this.y < -this.size || this.y > height + this.size) {
+          this.vy = -this.vy;
+        }
+
+        // Subtle rotation
+        this.rotationAngle += this.rotationSpeed;
+
+        // Very subtle opacity pulsing
+        this.opacity = 0.1 + 0.2 * (0.5 + Math.sin(Date.now() * 0.0005) * 0.5);
+      }
+
+      draw(ctx: CanvasRenderingContext2D) {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        
+        // Apply color with transparency
+        const colorWithOpacity = this.color.replace('0.4', `${this.opacity}`);
+        ctx.fillStyle = colorWithOpacity;
+        ctx.strokeStyle = colorWithOpacity;
+        
+        // Apply rotation for some shapes
+        if (this.shape !== 'circle') {
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rotationAngle);
+          ctx.translate(-this.x, -this.y);
+        }
+
+        // Draw shape based on type
+        switch (this.shape) {
+          case 'square':
+            ctx.fillRect(this.x - this.size/2, this.y - this.size/2, this.size, this.size);
+            break;
+          case 'line':
+            ctx.beginPath();
+            ctx.moveTo(this.x - this.size, this.y);
+            ctx.lineTo(this.x + this.size, this.y);
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+            break;
+          default: // circle
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size/2, 0, Math.PI * 2);
+            ctx.fill();
+            break;
+        }
+        
+        ctx.restore();
+      }
+    }
+
+    // Create elegant elements
+    const elementColors = getElementColors();
+    const elements: ElegantElement[] = [];
+    const elementCount = Math.floor(canvas.width * canvas.height / 40000); // Fewer elements for minimalism
+    
+    for (let i = 0; i < elementCount; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const size = 5 + Math.random() * 15; // Larger, softer elements
+      const color = elementColors[Math.floor(Math.random() * elementColors.length)];
+      elements.push(new ElegantElement(x, y, size, color));
+    }
+
+    // Animation loop
+    const animate = () => {
+      if (!canvas || !ctx) return;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Update and draw elements
+      for (const element of elements) {
+        element.update(canvas.width, canvas.height);
+        element.draw(ctx);
+      }
+
+      // Add occasional subtle connecting lines
+      if (Math.random() < 0.01) {
+        const randomElement1 = elements[Math.floor(Math.random() * elements.length)];
+        const randomElement2 = elements[Math.floor(Math.random() * elements.length)];
+        
+        if (randomElement1 && randomElement2) {
+          ctx.beginPath();
+          ctx.moveTo(randomElement1.x, randomElement1.y);
+          ctx.lineTo(randomElement2.x, randomElement2.y);
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+          ctx.lineWidth = 0.2;
+          ctx.stroke();
+        }
+      }
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, [variant]);
+
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-      {/* Main gradient background */}
+      {/* Main gradient background - very subtle */}
       <div className={`absolute inset-0 bg-gradient-to-br ${getVariantStyles()}`} />
       
-      {/* Data Network Theme - Floating geometric shapes with continuous movement */}
-      <div className="absolute inset-0">
-        
-        {/* Large data nodes - slow movement */}
-        <div className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-blue-200/10 to-purple-200/10 dark:from-blue-800/10 dark:to-purple-800/10 animate-pulse opacity-30 -top-48 -left-48 animate-float-slow" />
-        
-        {/* Medium data nodes - medium movement */}
-        <div className="absolute w-64 h-64 rounded-full bg-gradient-to-br from-green-200/10 to-blue-200/10 dark:from-green-800/10 dark:to-blue-800/10 animate-pulse opacity-20 top-1/3 right-10 animate-float-medium" />
-        
-        {/* Small data nodes - fast movement */}
-        <div className="absolute w-32 h-32 rounded-full bg-gradient-to-br from-purple-200/10 to-pink-200/10 dark:from-purple-800/10 dark:to-pink-800/10 animate-pulse opacity-25 bottom-1/4 left-1/4 animate-float-fast" />
-        
-        {/* Network connection lines - Data theme */}
-        <div className="absolute w-px h-32 bg-gradient-to-b from-transparent via-slate-300/20 to-transparent dark:via-slate-600/20 top-20 left-1/3 animate-fade-in-out transform rotate-45" />
-        <div className="absolute w-px h-48 bg-gradient-to-b from-transparent via-blue-300/20 to-transparent dark:via-blue-600/20 bottom-20 right-1/3 animate-fade-in-out delay-1000 transform -rotate-45" />
-        <div className="absolute w-24 h-px bg-gradient-to-r from-transparent via-green-300/20 to-transparent dark:via-green-600/20 top-1/2 left-1/2 animate-fade-in-out delay-500 transform -rotate-12" />
-        
-        {/* Data points pattern - Network nodes */}
-        <div className="absolute grid grid-cols-8 gap-8 opacity-10 top-10 right-10">
-          {Array.from({ length: 16 }).map((_, i) => (
-            <div 
-              key={i} 
-              className="w-2 h-2 bg-blue-400 dark:bg-blue-500 rounded-full animate-pulse relative" 
-              style={{ animationDelay: `${i * 200}ms` }}
-            >
-              {/* Connection lines between data points */}
-              {i % 3 === 0 && (
-                <div className="absolute w-8 h-px bg-slate-300/20 dark:bg-slate-600/20 top-1 left-2 animate-fade-in-out" />
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Additional network elements */}
-        <div className="absolute bottom-10 left-10 opacity-10">
-          <div className="grid grid-cols-4 gap-4">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="flex items-center space-x-2">
-                <div className="w-1.5 h-1.5 bg-purple-400 dark:bg-purple-500 rounded-full animate-pulse" />
-                <div className="w-8 h-px bg-purple-300/30 dark:bg-purple-600/30" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Hexagonal data structures */}
-        <div className="absolute top-1/4 right-1/4 opacity-5">
-          <div className="w-16 h-16 border border-slate-400/30 dark:border-slate-500/30 transform rotate-45 animate-pulse delay-2000" />
-        </div>
-        <div className="absolute bottom-1/3 left-1/3 opacity-5">
-          <div className="w-12 h-12 border border-blue-400/30 dark:border-blue-500/30 rounded-full animate-pulse delay-1500" />
-        </div>
-        
-      </div>
+      {/* Elegant animation canvas */}
+      <canvas 
+        ref={canvasRef} 
+        className="absolute inset-0 w-full h-full"
+      />
     </div>
   );
 };

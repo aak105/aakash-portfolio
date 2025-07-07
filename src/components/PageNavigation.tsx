@@ -13,6 +13,7 @@ const PageNavigation = () => {
     { id: 'cv', name: 'CV', icon: '📄' },
     { id: 'portfolio', name: 'Portfolio', icon: '💼' },
     { id: 'blog', name: 'Blog', icon: '📝' },
+    { id: 'recommended-reading', name: 'Reading', icon: '📚' },
     { id: 'contact', name: 'Contact', icon: '📧' }
   ];
 
