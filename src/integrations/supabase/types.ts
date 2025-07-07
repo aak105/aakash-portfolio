@@ -14,7 +14,177 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admin_users: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          is_admin: boolean | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          is_admin?: boolean | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          is_admin?: boolean | null
+        }
+        Relationships: []
+      }
+      blog_posts: {
+        Row: {
+          content: string | null
+          created_at: string | null
+          excerpt: string | null
+          id: string
+          image_url: string | null
+          published: boolean | null
+          reading_time: number | null
+          slug: string
+          tags: string[] | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string | null
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean | null
+          reading_time?: number | null
+          slug: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          content?: string | null
+          created_at?: string | null
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean | null
+          reading_time?: number | null
+          slug?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      data_assets: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          dataset_url: string | null
+          description: string | null
+          file_size: string | null
+          format: string | null
+          id: string
+          last_updated: string | null
+          tags: string[] | null
+          title: string
+          visualization_url: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          dataset_url?: string | null
+          description?: string | null
+          file_size?: string | null
+          format?: string | null
+          id?: string
+          last_updated?: string | null
+          tags?: string[] | null
+          title: string
+          visualization_url?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          dataset_url?: string | null
+          description?: string | null
+          file_size?: string | null
+          format?: string | null
+          id?: string
+          last_updated?: string | null
+          tags?: string[] | null
+          title?: string
+          visualization_url?: string | null
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          description: string | null
+          featured: boolean | null
+          github_url: string | null
+          id: string
+          image_url: string | null
+          long_description: string | null
+          project_url: string | null
+          tech_stack: string[] | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          featured?: boolean | null
+          github_url?: string | null
+          id?: string
+          image_url?: string | null
+          long_description?: string | null
+          project_url?: string | null
+          tech_stack?: string[] | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          featured?: boolean | null
+          github_url?: string | null
+          id?: string
+          image_url?: string | null
+          long_description?: string | null
+          project_url?: string | null
+          tech_stack?: string[] | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      site_content: {
+        Row: {
+          content: Json
+          id: string
+          section: string
+          updated_at: string | null
+        }
+        Insert: {
+          content: Json
+          id?: string
+          section: string
+          updated_at?: string | null
+        }
+        Update: {
+          content?: Json
+          id?: string
+          section?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

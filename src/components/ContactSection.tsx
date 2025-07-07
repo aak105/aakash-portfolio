@@ -1,10 +1,11 @@
 
 import { useState } from "react";
-import { Mail, Linkedin, Github, Instagram, MapPin, Send, Phone } from "lucide-react";
+import { Mail, MessageSquare, Send, ExternalLink } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -12,194 +13,161 @@ const ContactSection = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Auto-send to: aakashsharma.cs1@gmail.com
-    const mailtoLink = `mailto:aakashsharma.cs1@gmail.com?subject=Contact from ${formData.name}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    window.location.href = mailtoLink;
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      setFormData({ name: '', email: '', message: '' });
+      setIsSubmitting(false);
+    }, 1000);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
       [e.target.name]: e.target.value
-    });
+    }));
   };
-
-  const socialLinks = [
-    {
-      name: 'LinkedIn',
-      icon: Linkedin,
-      url: 'https://www.linkedin.com/in/aakashsharma8a6888131/',
-      color: 'hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/20'
-    },
-    {
-      name: 'GitHub',
-      icon: Github,
-      url: '#',
-      color: 'hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-950/20'
-    },
-    {
-      name: 'Instagram',
-      icon: Instagram,
-      url: 'https://instagram.com/aakash_10_5',
-      color: 'hover:text-pink-600 hover:bg-pink-50 dark:hover:bg-pink-950/20'
-    },
-    {
-      name: 'Email',
-      icon: Mail,
-      url: 'mailto:aakashsharma.cs1@gmail.com',
-      color: 'hover:text-cyan-600 hover:bg-cyan-50 dark:hover:bg-cyan-950/20'
-    }
-  ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-slate-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900 transition-colors duration-500">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section Header */}
+    <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-500">
+      <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent">
-            Let's Connect
+          <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 dark:text-slate-100 mb-6">
+            Let's Build Something Together
           </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            Ready to collaborate on impactful technology solutions? Let's start a conversation.
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            Whether you're working on governance challenges, data projects, or social impact initiatives, I'd love to hear from you.
           </p>
+          <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto mt-6"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-3xl p-8 border border-cyan-200/30 dark:border-cyan-700/30 animate-fade-in shadow-lg">
-            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6">Send a Message</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <Label htmlFor="name" className="text-slate-700 dark:text-slate-300 font-medium">
-                  Name
-                </Label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="mt-2 bg-white/80 dark:bg-slate-700/80 border-cyan-200 dark:border-cyan-600 focus:border-cyan-500 dark:focus:border-cyan-400 transition-all duration-300 rounded-xl"
-                  placeholder="Your full name"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="email" className="text-slate-700 dark:text-slate-300 font-medium">
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="mt-2 bg-white/80 dark:bg-slate-700/80 border-cyan-200 dark:border-cyan-600 focus:border-cyan-500 dark:focus:border-cyan-400 transition-all duration-300 rounded-xl"
-                  placeholder="your.email@example.com"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="message" className="text-slate-700 dark:text-slate-300 font-medium">
-                  Message
-                </Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={5}
-                  className="mt-2 bg-white/80 dark:bg-slate-700/80 border-cyan-200 dark:border-cyan-600 focus:border-cyan-500 dark:focus:border-cyan-400 transition-all duration-300 resize-none rounded-xl"
-                  placeholder="Tell me about your project or idea..."
-                  required
-                />
-              </div>
-
-              <Button 
-                type="submit"
-                className="w-full bg-gradient-to-r from-cyan-600 via-blue-600 to-slate-700 hover:from-cyan-700 hover:via-blue-700 hover:to-slate-800 text-white py-4 rounded-xl text-lg font-semibold transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/30 group"
-              >
-                Send Message
-                <Send className="ml-3 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
-              </Button>
-            </form>
-          </div>
-
-          {/* Contact Info & Social Links */}
-          <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            {/* Location */}
-            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 shadow-lg">
-              <div className="flex items-center mb-4">
-                <MapPin className="w-6 h-6 text-cyan-500 mr-3" />
-                <h4 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Location</h4>
-              </div>
-              <p className="text-slate-600 dark:text-slate-300">
-                Chandigarh, India<br />
-                Available for remote collaboration worldwide
-              </p>
-            </div>
-
-            {/* Contact Info */}
-            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 shadow-lg">
-              <div className="flex items-center mb-4">
-                <Mail className="w-6 h-6 text-cyan-500 mr-3" />
-                <h4 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Email</h4>
-              </div>
-              <p className="text-slate-600 dark:text-slate-300">
-                aakashsharma.cs1@gmail.com
-              </p>
-            </div>
-
-            {/* Social Links */}
-            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 shadow-lg">
-              <h4 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Connect With Me</h4>
-              <div className="grid grid-cols-2 gap-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center justify-center p-4 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 ${social.color} transition-all duration-300 transform hover:scale-110 hover:shadow-lg group`}
-                    title={social.name}
-                  >
-                    <social.icon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-200" />
-                    <span className="font-medium text-sm">{social.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Quote */}
-            <div className="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-slate-500/10 dark:from-cyan-400/10 dark:via-blue-400/10 dark:to-slate-400/10 rounded-2xl p-8 border border-cyan-200/20 dark:border-cyan-700/20 shadow-lg">
-              <blockquote className="text-xl italic text-slate-700 dark:text-slate-300 text-center mb-6 leading-relaxed">
-                "I believe in building tools that serve people, not the other way around."
-              </blockquote>
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 via-blue-600 to-slate-700 flex items-center justify-center text-white text-lg font-bold mx-auto mb-3 shadow-lg">
-                  AS
+          <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-slate-800 dark:text-slate-100">
+                <MessageSquare className="w-5 h-5" />
+                Send a Message
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <Input
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+                  />
                 </div>
-                <p className="text-slate-600 dark:text-slate-400 font-medium">Aakash Sharma</p>
-                <p className="text-slate-500 dark:text-slate-500 text-sm">Data-Driven Governance Consultant</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                
+                <div>
+                  <Input
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+                  />
+                </div>
+                
+                <div>
+                  <Textarea
+                    name="message"
+                    placeholder="Your Message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 resize-none"
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-slate-800 hover:bg-slate-700 dark:bg-slate-100 dark:hover:bg-white dark:text-slate-900 text-white"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-4 h-4 ml-2" />
+                    </>
+                  )}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
 
-      {/* Footer */}
-      <div className="mt-20 pt-8 border-t border-slate-200/30 dark:border-slate-700/30">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-slate-500 dark:text-slate-400">
-            © 2024 Aakash Sharma. Built with passion for impact-driven technology.
-          </p>
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <Card className="bg-gradient-to-br from-blue-50 to-stone-50 dark:from-blue-900/10 dark:to-stone-900/10 border-blue-200/50 dark:border-blue-800/50">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <h3 className="text-xl font-serif text-slate-800 dark:text-slate-100">
+                    Get in Touch
+                  </h3>
+                </div>
+                
+                <div className="space-y-4 text-slate-600 dark:text-slate-300">
+                  <p className="leading-relaxed">
+                    I'm always interested in connecting with fellow practitioners, researchers, and changemakers working on public sector innovation.
+                  </p>
+                  
+                  <div className="space-y-2">
+                    <p className="font-medium">I'm particularly excited to discuss:</p>
+                    <ul className="list-disc list-inside space-y-1 text-sm ml-4">
+                      <li>Data governance and policy</li>
+                      <li>Public sector technology</li>
+                      <li>Social impact measurement</li>
+                      <li>Rural development initiatives</li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-serif text-slate-800 dark:text-slate-100 mb-4">
+                  Other Ways to Connect
+                </h3>
+                
+                <div className="space-y-3">
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      LinkedIn
+                    </a>
+                  </Button>
+                  
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Twitter
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

@@ -1,219 +1,154 @@
-import { ExternalLink, Tag, Upload, BarChart3 } from "lucide-react";
+
+import { useState, useEffect } from "react";
+import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  long_description: string;
+  tech_stack: string[];
+  image_url: string;
+  project_url: string;
+  github_url: string;
+  category: string;
+  featured: boolean;
+}
 
 const PortfolioSection = () => {
-  const navigate = useNavigate();
-  
-  const projects = [
-    {
-      title: "Samadhan Prakoshth – Grievance Redressal Portal",
-      date: "Jul 2024 – Present",
-      role: "Lead Consultant",
-      description: "Led monitoring of 1.3L+ complaints with 80% resolution rate. Built comprehensive policy dashboards for tracking citizen grievances across multiple government departments. Implemented automated escalation workflows and real-time analytics.",
-      tags: ["AI", "Governance", "Data4Good"],
-      color: "from-cyan-500 to-blue-500",
-      files: ["Sample grievance dashboard screenshots", "SOP PDFs"]
-    },
-    {
-      title: "Antyodaya Parivar Yojana",
-      date: "Mar 2023 – Jun 2024",
-      role: "Implementation Lead",
-      description: "Supported 3000+ BPL families with comprehensive livelihood mapping and tracking systems. Developed beneficiary databases and impact measurement frameworks for poverty alleviation schemes.",
-      tags: ["Rural Development", "Data Systems", "Impact Tracking"],
-      color: "from-green-500 to-emerald-500",
-      files: ["Beneficiary tracking dashboards", "Impact reports"]
-    },
-    {
-      title: "Amrit Sarovar Monitoring",
-      date: "2023 – 2024",
-      role: "Monitoring Consultant",
-      description: "Oversaw 119 pond restorations generating 20 lakh income impact. Built monitoring systems for water conservation projects and community engagement tracking.",
-      tags: ["Environment", "Community Impact", "Monitoring"],
-      color: "from-blue-500 to-teal-500",
-      files: ["Restoration progress reports", "Community impact studies"]
-    },
-    {
-      title: "Tablet Scheme Adoption",
-      date: "2023",
-      role: "Data Analyst",
-      description: "Improved technology adoption across 15K+ students using data-led review systems. Developed usage analytics and learning outcome tracking mechanisms.",
-      tags: ["EdTech", "Data Analytics", "Digital Inclusion"],
-      color: "from-purple-500 to-pink-500",
-      files: ["Usage analytics reports", "Learning outcome data"]
-    },
-    {
-      title: "Metadata Automation – Belongg AI",
-      date: "2023",
-      role: "AI Consultant",
-      description: "Used LLMs to automate insights from unstructured disability data. Developed AI-powered classification systems for diversity and inclusion datasets.",
-      tags: ["AI", "DEI", "Automation"],
-      color: "from-indigo-500 to-purple-500",
-      files: ["AI model documentation", "Classification results"]
-    },
-    {
-      title: "NITI Aayog Dashboard",
-      date: "2021 – 2023",
-      role: "Data Engineer",
-      description: "Contributed to 'NITI for States' portal with data engineering and Power BI development. Built state-level governance indicators and policy tracking systems.",
-      tags: ["Government Tech", "Data Engineering", "Policy Analytics"],
-      color: "from-orange-500 to-red-500",
-      files: ["Dashboard screenshots", "Technical documentation"]
-    }
-  ];
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  return (
-    <section id="portfolio" className="py-20 bg-gradient-to-br from-slate-50 via-white to-cyan-50 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent">
-            Impact Portfolio
-          </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            Technology solutions that bridge the gap between public systems and citizen needs
-          </p>
-        </div>
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('projects')
+          .select('*')
+          .order('created_at', { ascending: false });
 
-        {/* Special Data Assets Card */}
-        <div className="mb-12">
-          <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-slate-500/10 backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-[1.02] border border-cyan-300/30 dark:border-cyan-600/30">
-            <div className="p-8">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl">
-                    <BarChart3 className="w-8 h-8 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">
-                      Data Assets & Dashboards
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-300">
-                      Comprehensive portfolio from India Data Insights – Sattva Consulting
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                Explore my complete collection of interactive dashboards, data stories, SDG reports, and analytical work created during my tenure as Data Analyst. Features 8+ interactive dashboards, 6 SDG reports, research articles, and Instagram data storytelling content.
-              </p>
+        if (error) throw error;
+        setProjects(data || []);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-              <div className="flex flex-wrap gap-2 mb-6">
-                {["Interactive Dashboards", "SDG Reports", "Data Stories", "Research Articles"].map((tag, tagIndex) => (
-                  <span 
-                    key={tagIndex}
-                    className="flex items-center px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-xs font-medium"
-                  >
-                    <Tag className="w-3 h-3 mr-1" />
-                    #{tag}
-                  </span>
-                ))}
-              </div>
+    fetchProjects();
+  }, []);
 
-              <Button 
-                onClick={() => navigate('/data-assets')}
-                className="bg-gradient-to-r from-cyan-600 via-blue-600 to-slate-700 hover:from-cyan-700 hover:via-blue-700 hover:to-slate-800 text-white px-8 py-3 rounded-full font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-xl hover:shadow-cyan-500/30 group/btn"
-              >
-                View Data Portfolio
-                <ExternalLink className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300" />
-              </Button>
+  if (isLoading) {
+    return (
+      <section id="portfolio" className="py-20 bg-slate-50 dark:bg-slate-800">
+        <div className="container mx-auto px-6">
+          <div className="animate-pulse">
+            <div className="h-8 bg-slate-200 dark:bg-slate-700 rounded w-48 mb-8 mx-auto"></div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-64 bg-slate-200 dark:bg-slate-700 rounded-lg"></div>
+              ))}
             </div>
           </div>
         </div>
+      </section>
+    );
+  }
 
-        {/* Projects Masonry Grid */}
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div 
-              key={index}
-              className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 transform hover:scale-105 animate-fade-in border border-cyan-200/20 dark:border-cyan-700/20"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              {/* Gradient Header */}
-              <div className={`h-3 bg-gradient-to-r ${project.color}`}></div>
-              
-              {/* Content */}
-              <div className="p-8">
-                {/* Date & Role */}
-                <div className="flex justify-between items-start mb-4">
-                  <span className="text-sm text-slate-500 font-medium">{project.date}</span>
-                  <span className="px-3 py-1 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-xs font-medium">
-                    {project.role}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300 leading-tight">
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed text-sm">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span 
-                      key={tagIndex}
-                      className="flex items-center px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-full text-xs font-medium hover:bg-cyan-100 dark:hover:bg-cyan-900/30 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors duration-200"
-                    >
-                      <Tag className="w-3 h-3 mr-1" />
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Files Section */}
-                <div className="mb-6 p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
-                  <div className="flex items-center mb-2">
-                    <Upload className="w-4 h-4 text-slate-500 mr-2" />
-                    <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Project Files</span>
-                  </div>
-                  <div className="space-y-1">
-                    {project.files.map((file, fileIndex) => (
-                      <div key={fileIndex} className="text-xs text-slate-500 dark:text-slate-400 pl-6">
-                        • {file}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-3">
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className="text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 hover:bg-cyan-50 dark:hover:bg-cyan-950/20 p-2 h-auto font-semibold group/btn flex-1"
-                  >
-                    View Case Study
-                    <ExternalLink className="ml-2 w-3 h-3 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-200" />
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    className="border-cyan-300 dark:border-cyan-600 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-950/20 p-2 h-auto text-xs"
-                  >
-                    <Upload className="w-3 h-3" />
-                  </Button>
-                </div>
-              </div>
-
-              {/* Hover Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-            </div>
-          ))}
+  return (
+    <section id="portfolio" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-500">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 dark:text-slate-100 mb-6">
+            Projects & Impact
+          </h2>
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            Building systems that bridge technology and governance for meaningful change
+          </p>
+          <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto mt-6"></div>
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <p className="text-lg text-slate-600 dark:text-slate-300 mb-6">
-            Interested in collaborating on impactful technology solutions?
-          </p>
-          <Button className="bg-gradient-to-r from-cyan-600 via-blue-600 to-slate-700 hover:from-cyan-700 hover:via-blue-700 hover:to-slate-800 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:shadow-cyan-500/30">
-            Let's Build Something Together
+        {projects.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-slate-500 dark:text-slate-400 text-lg">
+              Projects will be displayed here once added to the database.
+            </p>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <Card key={project.id} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+                <CardHeader className="pb-4">
+                  <div className="flex items-start justify-between">
+                    <CardTitle className="text-xl font-serif text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {project.title}
+                    </CardTitle>
+                    {project.featured && (
+                      <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                        Featured
+                      </Badge>
+                    )}
+                  </div>
+                  {project.category && (
+                    <Badge variant="outline" className="w-fit text-xs">
+                      {project.category}
+                    </Badge>
+                  )}
+                </CardHeader>
+                
+                <CardContent className="space-y-4">
+                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  {project.tech_stack && project.tech_stack.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {project.tech_stack.map((tech, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                  
+                  <div className="flex items-center gap-2 pt-2">
+                    {project.project_url && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a href={project.project_url} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 mr-1" />
+                          View
+                        </a>
+                      </Button>
+                    )}
+                    {project.github_url && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a href={project.github_url} target="_blank" rel="noopener noreferrer">
+                          <Github className="w-4 h-4 mr-1" />
+                          Code
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+
+        <div className="text-center mt-12">
+          <Button 
+            variant="outline" 
+            size="lg"
+            onClick={() => window.open('/data-assets', '_blank')}
+            className="group"
+          >
+            Explore Data Assets
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>

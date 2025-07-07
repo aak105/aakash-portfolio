@@ -1,236 +1,138 @@
 
-import { Calendar, Clock, ArrowRight, Edit, Plus, ExternalLink } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string;
+  image_url: string;
+  published: boolean;
+  tags: string[];
+  reading_time: number;
+  created_at: string;
+}
+
 const BlogSection = () => {
-  const categories = ["Governance", "AI & Ethics", "Tools", "Personal Journey", "Personal Write-ups"];
-  
-  const articles = [
-    {
-      title: "From Metadata to Inclusion: What I Learned at Belongg AI",
-      excerpt: "How AI-powered classification systems can transform diversity and inclusion data processing, reducing manual work by 80% while improving data discoverability.",
-      category: "AI & Ethics",
-      readTime: "8 min read",
-      date: "Dec 15, 2024",
-      color: "from-purple-500 to-pink-500",
-      featured: true
-    },
-    {
-      title: "Tracking Governance with Data: My Journey with Samadhan",
-      excerpt: "Inside the development of a grievance redressal system that processes 1.3L+ complaints and maintains an 80% resolution rate.",
-      category: "Governance",
-      readTime: "12 min read",
-      date: "Nov 28, 2024",
-      color: "from-blue-500 to-cyan-500",
-      featured: true
-    },
-    {
-      title: "Using Python to Fix a 2-Day Manual Process",
-      excerpt: "A technical deep-dive into automating data pipelines that save hundreds of hours and reduce human error in government reporting.",
-      category: "Tools",
-      readTime: "10 min read",
-      date: "Nov 10, 2024",
-      color: "from-green-500 to-emerald-500",
-      featured: false
-    },
-    {
-      title: "When SDGs Met Panchayats: The UNDP Framework I Helped Build",
-      excerpt: "Building a comprehensive SDG monitoring system that impacted 13K+ panchayats and trained 6K+ elected women representatives.",
-      category: "Personal Journey",
-      readTime: "15 min read",
-      date: "Oct 22, 2024",
-      color: "from-orange-500 to-red-500",
-      featured: false
-    },
-    {
-      title: "Unifying India's Government Web Portals: Streamlining Development and Enhancing Accessibility",
-      excerpt: "Exploring the challenges of disparate government web portals and the importance of a standardized framework for better interoperability and user experience.",
-      category: "Personal Write-ups",
-      readTime: "8 min read",
-      date: "May 15, 2023",
-      color: "from-indigo-500 to-purple-500",
-      featured: false,
-      linkedinUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7068137790332448768/"
-    },
-    {
-      title: "Implementing Technology in Government Systems: A Delicate Balance for Success",
-      excerpt: "The importance of balancing technological advancements with maintaining integrity and continuity in government systems during digital transformation.",
-      category: "Personal Write-ups",
-      readTime: "10 min read",
-      date: "Jun 28, 2023",
-      color: "from-teal-500 to-blue-500",
-      featured: false,
-      linkedinUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7079273979156307968/"
-    },
-    {
-      title: "Lost in Translation: The Cost of the 'Chinese Whisper' Effect on Public Welfare Policies",
-      excerpt: "How communication distortion in policy implementation leads to wasted resources and the need for effective communication strategies in governance.",
-      category: "Personal Write-ups",
-      readTime: "6 min read",
-      date: "Apr 20, 2023",
-      color: "from-rose-500 to-pink-500",
-      featured: false,
-      linkedinUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7056311826413682688/"
-    }
-  ];
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('published', true)
+          .order('created_at', { ascending: false })
+          .limit(3);
+
+        if (error) throw error;
+        setPosts(data || []);
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section id="blog" className="py-20 bg-white dark:bg-slate-900">
+        <div className="container mx-auto px-6">
+          <div className="animate-pulse">
+            <div className="h-8 bg-slate-200 dark:bg-slate-700 rounded w-48 mb-8 mx-auto"></div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-64 bg-slate-200 dark:bg-slate-700 rounded-lg"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section id="blog" className="py-20 bg-gradient-to-br from-white via-slate-50 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
+    <section id="blog" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-500">
+      <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent">
-            Insights & Perspectives
+          <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 dark:text-slate-100 mb-6">
+            Thoughts & Insights
           </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            Thoughts on governance, technology, and the intersection where real change happens
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            Reflections on governance, technology, and the intersection of policy and practice
           </p>
+          <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto mt-6"></div>
         </div>
 
-        {/* Category Filter & Add Post Button */}
-        <div className="flex flex-wrap justify-between items-center gap-4 mb-12">
-          <div className="flex flex-wrap gap-4">
-            {categories.map((category, index) => (
-              <button
-                key={index}
-                className="px-6 py-3 rounded-full border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-950/20 transition-all duration-300 hover:scale-105 font-medium"
-              >
-                {category}
-              </button>
+        {posts.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-slate-500 dark:text-slate-400 text-lg">
+              Blog posts will be displayed here once published.
+            </p>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map((post) => (
+              <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-xl font-serif text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    {post.title}
+                  </CardTitle>
+                  
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {new Date(post.created_at).toLocaleDateString()}
+                    </div>
+                    {post.reading_time && (
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {post.reading_time} min read
+                      </div>
+                    )}
+                  </div>
+                </CardHeader>
+                
+                <CardContent className="space-y-4">
+                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed line-clamp-3">
+                    {post.excerpt || post.content?.substring(0, 150) + '...'}
+                  </p>
+                  
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {post.tags.slice(0, 3).map((tag, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                  
+                  <Button variant="ghost" size="sm" className="p-0 h-auto text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300">
+                    Read more
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </Button>
+                </CardContent>
+              </Card>
             ))}
           </div>
-          
-          <Button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 group">
-            <Plus className="mr-2 w-4 h-4 group-hover:rotate-90 transition-transform duration-300" />
-            Write New Post
-          </Button>
-        </div>
+        )}
 
-        {/* Featured Articles */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          {articles.filter(article => article.featured).map((article, index) => (
-            <article 
-              key={index}
-              className="group cursor-pointer animate-fade-in"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              <div className="relative overflow-hidden rounded-3xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-md hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 transform hover:scale-105 border border-cyan-200/20 dark:border-cyan-700/20">
-                {/* Gradient Header */}
-                <div className={`h-3 bg-gradient-to-r ${article.color}`}></div>
-                
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="px-4 py-2 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm font-semibold">
-                      {article.category}
-                    </span>
-                    <div className="flex items-center text-slate-500 text-sm">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      {article.date}
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300 leading-tight">
-                    {article.title}
-                  </h3>
-
-                  <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                    {article.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-slate-500 text-sm">
-                      <Clock className="w-4 h-4 mr-2" />
-                      {article.readTime}
-                    </div>
-                    
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold">
-                          AS
-                        </div>
-                        <div className="ml-3">
-                          <span className="text-slate-600 dark:text-slate-300 text-sm font-medium block">Aakash Sharma</span>
-                        </div>
-                      </div>
-                      
-                      <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Edit className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ArrowRight className="w-6 h-6 text-cyan-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {/* Regular Articles Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {articles.filter(article => !article.featured).map((article, index) => (
-            <article 
-              key={index}
-              className="group cursor-pointer animate-fade-in"
-              style={{ animationDelay: `${(index + 2) * 0.15}s` }}
-            >
-              <div className="relative overflow-hidden rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:shadow-lg hover:shadow-cyan-500/5 transition-all duration-300 transform hover:scale-105 border border-cyan-200/10 dark:border-cyan-700/10">
-                <div className={`h-2 bg-gradient-to-r ${article.color}`}></div>
-                
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-3 py-1 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-xs font-medium">
-                      {article.category}
-                    </span>
-                    <div className="flex items-center text-slate-500 text-xs">
-                      <Calendar className="w-3 h-3 mr-1" />
-                      {article.date}
-                    </div>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300 leading-tight">
-                    {article.title}
-                  </h3>
-
-                  <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
-                    {article.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center text-slate-500">
-                      <Clock className="w-3 h-3 mr-1" />
-                      {article.readTime}
-                    </div>
-                    
-                    <div className="flex items-center gap-2">
-                      {article.linkedinUrl && (
-                        <Button 
-                          variant="ghost" 
-                          size="sm" 
-                          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-1"
-                          onClick={() => window.open(article.linkedinUrl, '_blank')}
-                        >
-                          <ExternalLink className="w-3 h-3 text-blue-600" />
-                        </Button>
-                      )}
-                      <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-1">
-                        <Edit className="w-3 h-3" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <Button className="bg-gradient-to-r from-cyan-600 via-blue-600 to-slate-700 hover:from-cyan-700 hover:via-blue-700 hover:to-slate-800 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:shadow-cyan-500/30 group">
-            Read All Posts
-            <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+        <div className="text-center mt-12">
+          <Button variant="outline" size="lg" className="group">
+            View All Posts
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
