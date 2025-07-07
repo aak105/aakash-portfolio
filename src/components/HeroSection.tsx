@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ChevronDown, Quote } from "lucide-react";
+import { ChevronDown, Quote, Database, BarChart3, Users } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 
@@ -56,13 +56,38 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Subtle background pattern */}
+      {/* Background with subtle pattern and icons */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-transparent to-stone-100 dark:from-blue-900/20 dark:to-stone-900/20"></div>
+        
+        {/* Floating background icons */}
+        <div className="absolute top-20 left-20 animate-pulse">
+          <Database className="w-16 h-16 text-blue-300 dark:text-blue-600" />
+        </div>
+        <div className="absolute top-40 right-32 animate-pulse delay-1000">
+          <BarChart3 className="w-12 h-12 text-green-300 dark:text-green-600" />
+        </div>
+        <div className="absolute bottom-40 left-40 animate-pulse delay-2000">
+          <Users className="w-14 h-14 text-purple-300 dark:text-purple-600" />
+        </div>
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
+          {/* Profile Image with AI-generated placeholder */}
+          <div className="flex justify-center mb-8">
+            <div className="relative">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-100 to-slate-200 dark:from-blue-900 to-slate-700 flex items-center justify-center border-4 border-white dark:border-slate-800 shadow-xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" 
+                  alt="Aakash Sharma" 
+                  className="w-28 h-28 rounded-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-2 border-white dark:border-slate-800"></div>
+            </div>
+          </div>
+
           {/* Main Title */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light text-slate-800 dark:text-slate-100 leading-tight tracking-tight">
@@ -74,12 +99,28 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Quote */}
+          {/* Quote with enhanced styling */}
           <div className="relative py-8">
-            <Quote className="w-8 h-8 text-slate-400 dark:text-slate-500 mx-auto mb-4" />
+            <Quote className="w-8 h-8 text-blue-400 dark:text-blue-500 mx-auto mb-4" />
             <blockquote className="text-base md:text-lg italic font-serif text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">
               "{content?.quote}"
             </blockquote>
+          </div>
+
+          {/* Stats Section */}
+          <div className="grid grid-cols-3 gap-8 py-8 max-w-2xl mx-auto">
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">5+</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Years Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400 mb-2">50+</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Data Assets</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">1000+</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Datasets Curated</div>
+            </div>
           </div>
 
           {/* CTA */}

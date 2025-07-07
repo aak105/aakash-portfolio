@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ExternalLink, Github, ArrowRight, Database } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Database, TrendingUp, Users, FileText, BarChart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -49,42 +49,54 @@ const PortfolioSection = () => {
       description: "Comprehensive analysis of India's political and election data with interactive dashboards for researchers",
       category: "Data Analytics",
       techStack: ["Python", "Tableau", "SQL", "Power BI"],
-      impact: "Enabled researchers to identify voting patterns and political trends across multiple states"
+      impact: "Enabled researchers to identify voting patterns and political trends across multiple states",
+      icon: <BarChart className="w-6 h-6" />,
+      image: "https://images.unsplash.com/photo-1577415124269-fc1140a69e91?w=400&h=250&fit=crop"
     },
     {
       title: "Agri Market Intelligence System",
       description: "Market analysis platform for mustard and wheat crop data serving rural agri-finance decisions",
       category: "Agricultural Analytics",
       techStack: ["Python", "Data Analytics", "Market Research", "Visualization"],
-      impact: "Helped startup understand yield patterns and pricing trends for better financial products"
+      impact: "Helped startup understand yield patterns and pricing trends for better financial products",
+      icon: <TrendingUp className="w-6 h-6" />,
+      image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=250&fit=crop"
     },
     {
       title: "Disability Data Platform - Belongg AI",
       description: "AI-powered data cleaning and query generation system for accessibility research",
       category: "AI/ML",
       techStack: ["LLMs", "Vector Database", "SQL", "Data Cleaning", "Python"],
-      impact: "Automated metadata generation and improved accessibility data quality by 90%"
+      impact: "Automated metadata generation and improved accessibility data quality by 90%",
+      icon: <Database className="w-6 h-6" />,
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop"
     },
     {
       title: "Citizen Grievance Portal",
       description: "End-to-end grievance management system for Haryana state government",
       category: "Governance Tech",
       techStack: ["Dashboard Development", "Analytics", "Workflow Management"],
-      impact: "Processed 130,000+ grievances with 80% resolution rate"
+      impact: "Processed 130,000+ grievances with 80% resolution rate",
+      icon: <Users className="w-6 h-6" />,
+      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop"
     },
     {
       title: "SDG Integration Framework",
       description: "Comprehensive framework integrating SDGs into panchayat-level planning across Punjab",
       category: "Public Policy",
       techStack: ["Data Framework", "KPI Design", "Survey Tools", "Analytics"],
-      impact: "Enabled data-led planning across 13,000+ panchayats"
+      impact: "Enabled data-led planning across 13,000+ panchayats",
+      icon: <FileText className="w-6 h-6" />,
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop"
     },
     {
       title: "NITI Aayog Dashboard",
       description: "Executive dashboard for NITI for States Portal integrating diverse government datasets",
       category: "Government Analytics",
       techStack: ["Power BI", "DAX", "Data Integration", "Tableau"],
-      impact: "Streamlined policy monitoring and state performance tracking at national level"
+      impact: "Streamlined policy monitoring and state performance tracking at national level",
+      icon: <BarChart className="w-6 h-6" />,
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop"
     }
   ];
 
@@ -120,45 +132,53 @@ const PortfolioSection = () => {
 
         {/* Highlighted Data Assets Section */}
         <div className="mb-16">
-          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-8 border border-blue-200/50 dark:border-blue-700/50">
-            <div className="text-center mb-8">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Database className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-                <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100">
-                  Data Assets & Analytics
-                </h3>
-              </div>
-              <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-                Specialized in creating data-driven solutions for public governance and social impact
-              </p>
+          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-8 border border-blue-200/50 dark:border-blue-700/50 relative overflow-hidden">
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <Database className="absolute top-4 right-4 w-24 h-24 text-blue-500" />
+              <BarChart className="absolute bottom-4 left-4 w-20 h-20 text-cyan-500" />
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              <div className="text-center p-4">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
-                <div className="text-sm text-slate-600 dark:text-slate-300">Interactive Data Assets</div>
+            <div className="relative z-10">
+              <div className="text-center mb-8">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <Database className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                  <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100">
+                    Data Assets & Analytics
+                  </h3>
+                </div>
+                <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+                  Specialized in creating data-driven solutions for public governance and social impact
+                </p>
               </div>
-              <div className="text-center p-4">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">1000+</div>
-                <div className="text-sm text-slate-600 dark:text-slate-300">Datasets Curated</div>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-4">
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">Interactive Data Assets</div>
+                </div>
+                <div className="text-center p-4">
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">1000+</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">Datasets Curated</div>
+                </div>
+                <div className="text-center p-4">
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">90%</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">Efficiency Improvement</div>
+                </div>
               </div>
-              <div className="text-center p-4">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">90%</div>
-                <div className="text-sm text-slate-600 dark:text-slate-300">Efficiency Improvement</div>
-              </div>
-            </div>
 
-            <div className="text-center">
-              <Button 
-                variant="outline" 
-                size="lg"
-                onClick={() => window.open('/data-assets', '_blank')}
-                className="group border-blue-300 dark:border-blue-600 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30"
-              >
-                <Database className="w-4 h-4 mr-2" />
-                Explore Data Assets
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <div className="text-center">
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  onClick={() => window.open('/data-assets', '_blank')}
+                  className="group border-blue-300 dark:border-blue-600 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30"
+                >
+                  <Database className="w-4 h-4 mr-2" />
+                  Explore Data Assets
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -170,7 +190,19 @@ const PortfolioSection = () => {
           </h3>
           <div className="grid md:grid-cols-2 gap-8">
             {cvProjects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  <div className="absolute top-4 left-4 text-white">
+                    {project.icon}
+                  </div>
+                </div>
+                
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
@@ -218,6 +250,16 @@ const PortfolioSection = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
                 <Card key={project.id} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+                  {project.image_url && (
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={project.image_url} 
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+                  
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between">
                       <CardTitle className="text-xl font-serif text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">

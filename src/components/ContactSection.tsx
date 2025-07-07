@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Mail, MessageSquare, Send, ExternalLink } from "lucide-react";
+import { Mail, MessageSquare, Send, ExternalLink, MapPin, Phone, Linkedin, Github } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,119 +51,159 @@ const ContactSection = () => {
           <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto mt-6"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-12">
           {/* Contact Form */}
-          <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-slate-800 dark:text-slate-100">
-                <MessageSquare className="w-5 h-5" />
-                Send a Message
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Input
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
-                  />
-                </div>
-                
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
-                  />
-                </div>
-                
-                <div>
-                  <Textarea
-                    name="message"
-                    placeholder="Your Message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 resize-none"
-                  />
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full bg-slate-800 hover:bg-slate-700 dark:bg-slate-100 dark:hover:bg-white dark:text-slate-900 text-white"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="w-4 h-4 ml-2" />
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+          <div className="lg:col-span-2">
+            <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-slate-800 dark:text-slate-100">
+                  <MessageSquare className="w-5 h-5" />
+                  Send a Message
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Input
+                        name="name"
+                        placeholder="Your Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+                      />
+                    </div>
+                    <div>
+                      <Input
+                        name="email"
+                        type="email"
+                        placeholder="Your Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <Textarea
+                      name="message"
+                      placeholder="Your Message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={6}
+                      className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 resize-none"
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-slate-800 hover:bg-slate-700 dark:bg-slate-100 dark:hover:bg-white dark:text-slate-900 text-white"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      "Sending..."
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="w-4 h-4 ml-2" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
 
-          {/* Contact Info */}
-          <div className="space-y-8">
+          {/* Contact Info Sidebar */}
+          <div className="space-y-6">
+            {/* Contact Details */}
             <Card className="bg-gradient-to-br from-blue-50 to-stone-50 dark:from-blue-900/10 dark:to-stone-900/10 border-blue-200/50 dark:border-blue-800/50">
-              <CardContent className="p-8">
+              <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-6">
                   <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  <h3 className="text-xl font-serif text-slate-800 dark:text-slate-100">
+                  <h3 className="text-lg font-serif text-slate-800 dark:text-slate-100">
                     Get in Touch
                   </h3>
                 </div>
                 
-                <div className="space-y-4 text-slate-600 dark:text-slate-300">
-                  <p className="leading-relaxed">
-                    I'm always interested in connecting with fellow practitioners, researchers, and changemakers working on public sector innovation.
-                  </p>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                    <Mail className="w-4 h-4 text-blue-500" />
+                    <span className="text-sm">aakashsharma.cs1@gmail.com</span>
+                  </div>
                   
-                  <div className="space-y-2">
-                    <p className="font-medium">I'm particularly excited to discuss:</p>
-                    <ul className="list-disc list-inside space-y-1 text-sm ml-4">
-                      <li>Data governance and policy</li>
-                      <li>Public sector technology</li>
-                      <li>Social impact measurement</li>
-                      <li>Rural development initiatives</li>
-                    </ul>
+                  <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                    <Phone className="w-4 h-4 text-green-500" />
+                    <span className="text-sm">+91-8890991609</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                    <MapPin className="w-4 h-4 text-red-500" />
+                    <span className="text-sm">Rajasthan, India</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
+            {/* Interests */}
+            <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/10 dark:to-blue-900/10 border-green-200/50 dark:border-green-800/50">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-serif text-slate-800 dark:text-slate-100 mb-4">
+                  I'm excited to discuss:
+                </h3>
+                
+                <div className="space-y-2 text-slate-600 dark:text-slate-300">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-sm">Data governance and policy</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-sm">Public sector technology</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <span className="text-sm">Social impact measurement</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    <span className="text-sm">Rural development initiatives</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Social Links */}
             <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
               <CardContent className="p-6">
                 <h3 className="text-lg font-serif text-slate-800 dark:text-slate-100 mb-4">
-                  Other Ways to Connect
+                  Connect with me
                 </h3>
                 
                 <div className="space-y-3">
                   <Button variant="outline" className="w-full justify-start" asChild>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
+                    <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="w-4 h-4 mr-2 text-blue-600" />
                       LinkedIn
                     </a>
                   </Button>
                   
                   <Button variant="outline" className="w-full justify-start" asChild>
-                    <a href="aakashsharma.cs1@gmail.com" target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Twitter
+                    <a href="https://github.com/your-profile" target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4 mr-2 dark:text-white" />
+                      GitHub
                     </a>
                   </Button>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center">
+                    "I'm always interested in connecting with fellow practitioners, researchers, and changemakers working on public sector innovation."
+                  </p>
                 </div>
               </CardContent>
             </Card>

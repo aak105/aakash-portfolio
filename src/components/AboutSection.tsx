@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { Heart, Target, BookOpen, Mountain, Music, Coffee } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -28,7 +29,7 @@ const AboutSection = () => {
         setContent(data.content as unknown as AboutContent);
       } catch (error) {
         console.error('Error fetching about content:', error);
-        // Updated fallback content based on the user's requirements
+        // Updated fallback content
         setContent({
           title: "About Me",
           content: "I'm Aakash Sharma — a data and governance professional working at the intersection of public policy, technology, and social impact. Born and raised in a small town in Rajasthan, I've always believed that quiet, thoughtful systems can create real change. My journey started with computer science and led me through grassroots governance, rural management, and data analytics — shaping me into someone who builds with empathy, not just efficiency.",
@@ -72,6 +73,16 @@ const AboutSection = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
             <div className="space-y-6">
+              {/* Personal Image */}
+              <div className="relative mb-8">
+                <img 
+                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=300&fit=crop" 
+                  alt="Governance and Technology" 
+                  className="w-full h-64 object-cover rounded-lg shadow-lg"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
+              </div>
+
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-light">
                 {content?.content}
               </p>
@@ -107,9 +118,12 @@ const AboutSection = () => {
             <div className="space-y-6">
               <Card className="bg-gradient-to-br from-blue-50 to-stone-50 dark:from-blue-900/10 dark:to-stone-900/10 border-blue-200/50 dark:border-blue-800/50">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-serif text-slate-800 dark:text-slate-100 mb-4">
-                    Mission
-                  </h3>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Target className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                    <h3 className="text-xl font-serif text-slate-800 dark:text-slate-100">
+                      Mission
+                    </h3>
+                  </div>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                     {content?.mission}
                   </p>
@@ -118,20 +132,46 @@ const AboutSection = () => {
 
               <Card className="bg-gradient-to-br from-stone-50 to-amber-50 dark:from-stone-900/10 dark:to-amber-900/10 border-amber-200/50 dark:border-amber-800/50">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-serif text-slate-800 dark:text-slate-100 mb-4">
-                    Vision
-                  </h3>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Heart className="w-6 h-6 text-amber-600 dark:text-amber-400" />
+                    <h3 className="text-xl font-serif text-slate-800 dark:text-slate-100">
+                      Vision
+                    </h3>
+                  </div>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                     To make a significant and lasting contribution to the world of open and public data — building systems that are ethical, accessible, and impactful. I envision a future where public data is not just open, but actively used to drive meaningful change, especially for communities that have long been underserved or excluded.
                   </p>
                 </CardContent>
               </Card>
 
-              <div className="text-center">
-                <blockquote className="text-sm text-slate-500 dark:text-slate-400 italic font-serif">
-                  "Outside work, I find inspiration in music, mountains, and meaningful conversations."
-                </blockquote>
-              </div>
+              {/* Interests Section */}
+              <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/10 dark:to-blue-900/10 border-green-200/50 dark:border-green-800/50">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <Coffee className="w-6 h-6 text-green-600 dark:text-green-400" />
+                    <h3 className="text-xl font-serif text-slate-800 dark:text-slate-100">
+                      Beyond Work
+                    </h3>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div className="flex flex-col items-center gap-2">
+                      <Music className="w-8 h-8 text-purple-500" />
+                      <span className="text-sm text-slate-600 dark:text-slate-400">Music</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <Mountain className="w-8 h-8 text-green-500" />
+                      <span className="text-sm text-slate-600 dark:text-slate-400">Mountains</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <BookOpen className="w-8 h-8 text-blue-500" />
+                      <span className="text-sm text-slate-600 dark:text-slate-400">Reading</span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 italic font-serif text-center mt-4">
+                    "Outside work, I find inspiration in music, mountains, and meaningful conversations."
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>

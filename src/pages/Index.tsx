@@ -22,18 +22,6 @@ const Index = () => {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${darkMode ? 'dark' : ''}`}>
-      {/* Dark/Light Mode Toggle */}
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 group shadow-lg"
-      >
-        {darkMode ? (
-          <Sun className="w-5 h-5 text-amber-500 group-hover:rotate-12 transition-transform duration-300" />
-        ) : (
-          <Moon className="w-5 h-5 text-slate-600 group-hover:rotate-12 transition-transform duration-300" />
-        )}
-      </button>
-
       {/* Navigation */}
       <Navigation />
 
@@ -46,6 +34,18 @@ const Index = () => {
         <BlogSection />
         <ContactSection />
       </main>
+
+      {/* Dark/Light Mode Toggle - Moved to bottom right */}
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 group shadow-lg"
+      >
+        {darkMode ? (
+          <Sun className="w-5 h-5 text-amber-500 group-hover:rotate-12 transition-transform duration-300" />
+        ) : (
+          <Moon className="w-5 h-5 text-slate-600 group-hover:rotate-12 transition-transform duration-300" />
+        )}
+      </button>
     </div>
   );
 };
