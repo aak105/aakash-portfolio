@@ -43,8 +43,8 @@ const HeroSection = () => {
         // Fallback content for graceful degradation
         setContent({
           title: "Solving Public Problems with Data, Design, and Grit",
-          subtitle: "I'm Aakash Sharma – a social impact & governance consultant blending data, policy, and innovation to drive change on the ground.",
-          quote: "You can't manage what you don't measure. - Peter Drucker",
+          subtitle: "I'm Aakash Sharma – a technologist-turned-governance consultant blending data systems, AI tools, and policy to drive change on the ground.",
+          quote: "Here's someone who cares deeply, works quietly, thinks structurally, and builds for people.",
           cta: "Let's build better systems together"
         });
       } finally {

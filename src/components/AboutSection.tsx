@@ -19,27 +19,49 @@ const AboutSection = () => {
     { icon: BookOpen, label: "Learning", color: "text-green-500" }
   ];
 
-  // Books that inspire me - data for the books section
+  // Inspiring books collection
   const inspiringBooks = [
     {
-      title: "The Righteous Mind",
-      author: "Jonathan Haidt",
-      description: "A fascinating exploration of moral psychology that helps understand how people make ethical decisions and why we disagree on moral issues."
+      title: "Mastering the Data Paradox",
+      author: "Nitin Seth",
+      description: "A pragmatic guide for navigating the overload and underuse of data in the AI era.",
+      goodreads: "#",
+      amazon: "#"
     },
     {
-      title: "Thinking, Fast and Slow",
-      author: "Daniel Kahneman",
-      description: "A groundbreaking work on behavioral economics and cognitive biases that shape how we think and make decisions."
+      title: "Homo Deus: A Brief History of Tomorrow",
+      author: "Yuval Noah Harari", 
+      description: "An exploration of humanity's future shaped by data, algorithms, and human desires.",
+      goodreads: "#",
+      amazon: "#"
     },
     {
-      title: "The Power of Now",
-      author: "Eckhart Tolle",
-      description: "A transformative guide to spiritual enlightenment and present-moment awareness that has influenced millions worldwide."
+      title: "I Too Had a Dream",
+      author: "Verghese Kurien",
+      description: "An inspiring memoir on cooperative action, systems thinking, and rural transformation.",
+      goodreads: "#",
+      amazon: "#"
     },
     {
-      title: "Sapiens",
-      author: "Yuval Noah Harari",
-      description: "A compelling narrative about the history of humankind and how we became the dominant species on Earth."
+      title: "World Development Report 2021: Data for Better Lives",
+      author: "World Bank",
+      description: "A foundational document exploring how public data can be responsibly used for development and inclusion.",
+      goodreads: "#",
+      amazon: "#"
+    },
+    {
+      title: "The Third Way: India's Revolutionary Approach to Data",
+      author: "Rahul Matthan",
+      description: "A compelling framework for India's distinct path in data governance, balancing innovation and public interest.",
+      goodreads: "#",
+      amazon: "#"
+    },
+    {
+      title: "The Emperor's Mirror",
+      author: "Dr. N. Bhaskaran Rao",
+      description: "A powerful critique of media narratives and their influence on perception, policy, and democratic discourse.",
+      goodreads: "#",
+      amazon: "#"
     }
   ];
 
