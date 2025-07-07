@@ -7,7 +7,7 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 /**
  * AboutSection Component
  * 
- * Comprehensive about section featuring personal story, vision, mission,
+ * Concise about section featuring personal story, vision, mission,
  * and core values. Enhanced with animated background and clean layout.
  */
 const AboutSection = () => {
@@ -20,24 +20,24 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-500 relative">
+    <section id="about" className="py-16 bg-white dark:bg-slate-900 transition-colors duration-500 relative">
       {/* Animated Background */}
       <AnimatedBackground variant="secondary" />
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 dark:text-slate-100 mb-6">
             About Me
           </h2>
           <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto space-y-16">
+        <div className="max-w-6xl mx-auto space-y-12">
           
           {/* Personal Story and Core Values Side by Side */}
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Personal Story */}
+          <div className="grid lg:grid-cols-2 gap-10">
+            {/* Personal Story - Shortened */}
             <Card className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700">
               <CardContent className="p-8">
                 <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -46,19 +46,11 @@ const AboutSection = () => {
                   </p>
                   
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-                    Born and raised in a small town in Rajasthan, I've always believed that quiet, thoughtful systems can create real change. My journey started with computer science and led me through grassroots governance, rural management, and data analytics — shaping me into someone who builds with empathy, not just efficiency.
-                  </p>
-                  
-                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-                    Over the years, I've worked with district administrations, think tanks, and consulting firms — from managing citizen grievance portals in the Chief Secretary's Office to automating dashboards with Sattva's India Data Insights, and co-creating inclusive metadata tools as a Belongg AI fellow.
-                  </p>
-                  
-                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-                    What ties my work together is a clear belief: <strong>data should serve people, not just systems</strong>. Whether I'm working with tribal communities, state governments, or public platforms — I focus on ethical data use, open systems, and inclusive design.
+                    My journey started with computer science and led me through grassroots governance, rural management, and data analytics — shaping me into someone who builds with empathy, not just efficiency.
                   </p>
                   
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Outside work, I find inspiration in music, mountains, and meaningful conversations. I write about data ethics and governance, and explore how we can build public systems that are not only efficient, but also just and compassionate.
+                    What ties my work together is a clear belief: <strong>data should serve people, not just systems</strong>. Whether I'm working with tribal communities, state governments, or public platforms — I focus on ethical data use, open systems, and inclusive design.
                   </p>
                 </div>
               </CardContent>
@@ -118,15 +110,7 @@ const AboutSection = () => {
             </Card>
           </div>
 
-          {/* Insights and Perspectives Section Placeholder */}
-          <div className="text-center py-8">
-            <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4">
-              💡 Insights & Perspectives
-            </h3>
-            <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              Through my work across government, consulting, and grassroots programs, I've developed unique perspectives on how data can transform public systems and create meaningful impact for communities.
-            </p>
-          </div>
+          {/* Removed: Insights and Perspectives Section */}
         </div>
       </div>
     </section>
