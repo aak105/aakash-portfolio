@@ -159,7 +159,7 @@ const ContactSection = () => {
                   </Button>
                   
                   <Button variant="outline" className="w-full justify-start" asChild>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                    <a href="aakashsharma.cs1@gmail.com" target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4 mr-2" />
                       Twitter
                     </a>
