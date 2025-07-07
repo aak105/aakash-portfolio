@@ -19,51 +19,7 @@ const AboutSection = () => {
     { icon: BookOpen, label: "Learning", color: "text-green-500" }
   ];
 
-  // Inspiring books collection
-  const inspiringBooks = [
-    {
-      title: "Mastering the Data Paradox",
-      author: "Nitin Seth",
-      description: "A pragmatic guide for navigating the overload and underuse of data in the AI era.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "Homo Deus: A Brief History of Tomorrow",
-      author: "Yuval Noah Harari", 
-      description: "An exploration of humanity's future shaped by data, algorithms, and human desires.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "I Too Had a Dream",
-      author: "Verghese Kurien",
-      description: "An inspiring memoir on cooperative action, systems thinking, and rural transformation.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "World Development Report 2021: Data for Better Lives",
-      author: "World Bank",
-      description: "A foundational document exploring how public data can be responsibly used for development and inclusion.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "The Third Way: India's Revolutionary Approach to Data",
-      author: "Rahul Matthan",
-      description: "A compelling framework for India's distinct path in data governance, balancing innovation and public interest.",
-      goodreads: "#",
-      amazon: "#"
-    },
-    {
-      title: "The Emperor's Mirror",
-      author: "Dr. N. Bhaskaran Rao",
-      description: "A powerful critique of media narratives and their influence on perception, policy, and democratic discourse.",
-      goodreads: "#",
-      amazon: "#"
-    }
-  ];
+  
 
   return (
     <section id="about" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-500 relative">
