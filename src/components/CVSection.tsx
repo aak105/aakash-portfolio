@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Calendar, MapPin, Download, Code, Database, BarChart3, Mail, Phone, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 /**
  * CVSection Component - Enhanced with Better Code Structure
