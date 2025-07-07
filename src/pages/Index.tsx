@@ -8,7 +8,6 @@ import PortfolioSection from "@/components/PortfolioSection";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import Navigation from "@/components/Navigation";
-import PageNavigation from "@/components/PageNavigation";
 
 const Index = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -37,9 +36,6 @@ const Index = () => {
 
       {/* Navigation */}
       <Navigation />
-
-      {/* Page Navigation */}
-      <PageNavigation />
 
       {/* Main Content */}
       <main className="bg-gradient-to-br from-slate-50 via-stone-50 to-blue-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900/20 transition-colors duration-500">

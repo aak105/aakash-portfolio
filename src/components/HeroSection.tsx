@@ -25,7 +25,7 @@ const HeroSection = () => {
           .single();
 
         if (error) throw error;
-        setContent(data.content as HeroContent);
+        setContent(data.content as unknown as HeroContent);
       } catch (error) {
         console.error('Error fetching hero content:', error);
         // Fallback content
