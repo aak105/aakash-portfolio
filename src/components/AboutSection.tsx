@@ -20,20 +20,20 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-12 bg-white dark:bg-slate-900 transition-colors duration-500 relative">  {/* Changed from py-16 */}
+    <section id="about" className="py-16 bg-white dark:bg-slate-900 transition-colors duration-500 relative">
       {/* Animated Background */}
       <AnimatedBackground variant="secondary" />
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-8">  {/* Changed from mb-12 */}
-          <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 dark:text-slate-100 mb-4">  {/* Changed from mb-6 */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 dark:text-slate-100 mb-6">
             About Me
           </h2>
           <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto space-y-8">  {/* Changed from space-y-12 */}
+        <div className="max-w-6xl mx-auto space-y-12">
           
           {/* Personal Story and Core Values Side by Side */}
           <div className="grid lg:grid-cols-2 gap-10">
