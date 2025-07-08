@@ -177,6 +177,71 @@ const DataAssets = () => {
           </div>
         </section>
 
+        {/* KPI Statistics Section - Key Performance Metrics */}
+        <section className="py-12 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8 text-slate-800 dark:text-slate-100">Key Performance Highlights</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {/* KPI 1: Data Assets */}
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in">
+                <div className="text-center mb-4">
+                  <Database className="w-12 h-12 text-blue-500 dark:text-blue-400 mx-auto mb-3" />
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent mb-1">80+</div>
+                  <h3 className="text-lg font-serif font-medium text-slate-700 dark:text-slate-300">Data Assets Created</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-blue-600 dark:text-blue-400 font-semibold">50+</span> Interactive Dashboards</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-blue-600 dark:text-blue-400 font-semibold">20+</span> Reports & Data Stories</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-blue-600 dark:text-blue-400 font-semibold">10+</span> Insight Blogs</p>
+                </div>
+              </div>
+              
+              {/* KPI 2: SDGs Covered */}
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                <div className="text-center mb-4">
+                  <Target className="w-12 h-12 text-green-500 dark:text-green-400 mx-auto mb-3" />
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-500 dark:from-green-400 dark:to-emerald-300 bg-clip-text text-transparent mb-1">10+</div>
+                  <h3 className="text-lg font-serif font-medium text-slate-700 dark:text-slate-300">SDGs Covered</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Addressing <span className="text-green-600 dark:text-green-400 font-semibold">poverty</span>, <span className="text-green-600 dark:text-green-400 font-semibold">education</span>, and <span className="text-green-600 dark:text-green-400 font-semibold">health</span></p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Supporting <span className="text-green-600 dark:text-green-400 font-semibold">clean water</span> and <span className="text-green-600 dark:text-green-400 font-semibold">energy</span> initiatives</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Promoting <span className="text-green-600 dark:text-green-400 font-semibold">sustainable communities</span></p>
+                </div>
+              </div>
+              
+              {/* KPI 3: Domains Covered */}
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <div className="text-center mb-4">
+                  <Globe className="w-12 h-12 text-purple-500 dark:text-purple-400 mx-auto mb-3" />
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-500 dark:from-purple-400 dark:to-indigo-300 bg-clip-text text-transparent mb-1">12+</div>
+                  <h3 className="text-lg font-serif font-medium text-slate-700 dark:text-slate-300">Domains Covered</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-purple-600 dark:text-purple-400 font-semibold">Education</span> & <span className="text-purple-600 dark:text-purple-400 font-semibold">Healthcare</span> systems</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-purple-600 dark:text-purple-400 font-semibold">Water</span>, <span className="text-purple-600 dark:text-purple-400 font-semibold">Energy</span> & <span className="text-purple-600 dark:text-purple-400 font-semibold">Digital Access</span></p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-purple-600 dark:text-purple-400 font-semibold">Governance</span> & <span className="text-purple-600 dark:text-purple-400 font-semibold">Social Protection</span></p>
+                </div>
+              </div>
+              
+              {/* KPI 4: Dataset Types */}
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                <div className="text-center mb-4">
+                  <FileText className="w-12 h-12 text-amber-500 dark:text-amber-400 mx-auto mb-3" />
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-500 dark:from-amber-400 dark:to-orange-300 bg-clip-text text-transparent mb-1">15+</div>
+                  <h3 className="text-lg font-serif font-medium text-slate-700 dark:text-slate-300">Dataset Types</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-amber-600 dark:text-amber-400 font-semibold">Survey Data</span> (NFHS, UDISE+, NSS)</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-amber-600 dark:text-amber-400 font-semibold">Administrative Data</span> (State MIS)</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-amber-600 dark:text-amber-400 font-semibold">Economic</span> & <span className="text-amber-600 dark:text-amber-400 font-semibold">Environmental</span> metrics</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Professional Timeline - Improved Compact Design */}
         <section className="py-16 px-6 bg-slate-100/50 dark:bg-slate-800/50">
           <div className="max-w-6xl mx-auto">
