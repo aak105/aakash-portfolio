@@ -11,26 +11,9 @@ import ContactSection from "@/components/ContactSection";
 import Navigation from "@/components/Navigation";
 import AnimatedBackground from "@/components/AnimatedBackground";
 
-/**
- * Index Component - Main Landing Page
- * 
- * This is the main landing page that orchestrates all sections of the portfolio.
- * Features:
- * - Automatic dark/light mode detection based on system preference
- * - Dark/Light mode toggle (moved to bottom right)
- * - Animated background throughout the page
- * - Navigation between sections
- * - Responsive design with smooth transitions
- * - Proper spacing and visual hierarchy
- */
 const Index = () => {
-  // Theme state management with system preference detection
   const [darkMode, setDarkMode] = useState(false);
 
-  /**
-   * Effect to detect system theme preference and initialize theme
-   * Also handles dark mode class application to document
-   */
   useEffect(() => {
     // Check if user has a saved preference
     const savedTheme = localStorage.getItem('theme');
@@ -73,10 +56,6 @@ const Index = () => {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  /**
-   * Toggle theme handler with persistence
-   * Switches between light and dark modes and saves preference
-   */
   const toggleTheme = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
@@ -93,7 +72,7 @@ const Index = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${darkMode ? 'dark' : ''}`}>
+    <div className="min-h-screen transition-colors duration-500">
       <Navigation />
       
       {/* Main Content with Animated Background */}
@@ -101,33 +80,33 @@ const Index = () => {
         {/* Global Animated Background */}
         <AnimatedBackground variant="primary" />
         
-        {/* Content Sections with Reduced Spacing */}
+        {/* Content Sections */}
         <div className="relative z-10">
           <section id="home" className="min-h-screen">
             <HeroSection />
           </section>
           
-          <section id="about" className="py-12">
+          <section id="about" className="py-8">
             <AboutSection />
           </section>
 
-          <section id="cv" className="py-12">
+          <section id="cv" className="py-8">
             <CVSection />
           </section>
 
-          <section id="portfolio" className="py-12">
+          <section id="portfolio" className="py-8">
             <PortfolioSection />
           </section>
 
-          <section id="blog" className="py-12">
+          <section id="blog" className="py-8">
             <BlogSection />
           </section>
 
-          <section id="recommended-reading" className="py-12">
+          <section id="recommended-reading" className="py-8">
             <RecommendedReading />
           </section>
 
-          <section id="contact" className="py-12">
+          <section id="contact" className="py-8">
             <ContactSection />
           </section>
         </div>
