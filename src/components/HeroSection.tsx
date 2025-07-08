@@ -30,7 +30,7 @@ const HeroSection = () => {
 
   if (isLoading) {
     return (
-      <section className="min-h-screen flex items-center justify-center relative pt-20">
+      <section id="home" className="min-h-screen flex items-center justify-center relative pt-20">
         <div className="animate-pulse relative z-10 text-center">
           <div className="h-8 bg-slate-200 dark:bg-slate-700 rounded w-96 mb-4 mx-auto"></div>
           <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-64 mx-auto"></div>
@@ -40,7 +40,7 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background Icons */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
         <div className="absolute top-32 left-20 animate-pulse">
