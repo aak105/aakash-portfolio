@@ -158,12 +158,12 @@ const DataAssets = () => {
       <div className="bg-gradient-to-br from-slate-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900 transition-colors duration-500">
         
         {/* Hero Section */}
-        <section className="pt-20 pb-16 px-6">
+        <section className="pt-16 pb-12 px-6">  {/* Changed from pt-20 pb-16 */}
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent animate-fade-in">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent animate-fade-in">  {/* Changed from mb-6 */}
               Data Assets & Dashboards
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-6 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>  {/* Changed from mb-8 */}
               Showcasing analytical work during my tenure as <span className="font-semibold text-cyan-600 dark:text-cyan-400">Data Analyst</span> at India Data Insights – Sattva Consulting
             </p>
             <Button 
@@ -178,11 +178,11 @@ const DataAssets = () => {
         </section>
 
         {/* KPI Statistics Section - Key Performance Metrics */}
-        <section className="py-12 px-6">
+        <section className="py-8 px-6">  {/* Changed from py-12 */}
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8 text-slate-800 dark:text-slate-100">Key Performance Highlights</h2>
+            <h2 className="text-3xl font-bold text-center mb-6 text-slate-800 dark:text-slate-100">Key Performance Highlights</h2>  {/* Changed from mb-8 */}
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* KPI 1: Data Assets */}
               <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in">
                 <div className="text-center mb-4">
@@ -243,9 +243,9 @@ const DataAssets = () => {
         </section>
 
         {/* Professional Timeline - Improved Compact Design */}
-        <section className="py-16 px-6 bg-slate-100/50 dark:bg-slate-800/50">
+        <section className="py-12 px-6 bg-slate-100/50 dark:bg-slate-800/50">  {/* Changed from py-16 */}
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-slate-800 dark:text-slate-100">Professional Journey</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-slate-800 dark:text-slate-100">Professional Journey</h2>  {/* Changed from mb-12 */}
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {experiences.map((exp, index) => (
@@ -306,9 +306,9 @@ const DataAssets = () => {
         </section>
 
         {/* Section 1: Interactive Dashboards - Grid Layout */}
-        <section id="dashboards" className="py-20 px-6">
+        <section id="dashboards" className="py-16 px-6">  {/* Changed from py-20 */}
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">  {/* Changed from mb-16 */}
               <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
                 <BarChart3 className="w-10 h-10 text-cyan-600" />
                 <span className="bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent">
