@@ -123,7 +123,14 @@ This is a modern portfolio website built for Aakash Sharma, a data and governanc
 
 ## Changelog
 
-- July 08, 2025. Initial setup
+- July 08, 2025. Initial setup: Full-stack portfolio with PostgreSQL
+- July 08, 2025. Converted to static site for GitHub Pages deployment:
+  - Removed server-side dependencies and database
+  - Created static data files for all content
+  - Updated components to use static data instead of API calls
+  - Configured GitHub Actions workflow for automatic deployment
+  - Created manual static build with Tailwind CDN
+  - Added comprehensive deployment documentation
 
 ## User Preferences
 
