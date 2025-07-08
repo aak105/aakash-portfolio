@@ -72,11 +72,11 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen transition-colors duration-500">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-stone-50 to-blue-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900/20 transition-colors duration-500">
       <Navigation />
       
       {/* Main Content with Animated Background */}
-      <main className="relative bg-gradient-to-br from-slate-50 via-stone-50 to-blue-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900/20 transition-colors duration-500">
+      <main className="relative">
         {/* Global Animated Background */}
         <AnimatedBackground variant="primary" />
         

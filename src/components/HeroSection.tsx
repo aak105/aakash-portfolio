@@ -1,8 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { ChevronDown, Quote, Database, BarChart3, Users } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-import AnimatedBackground from "@/components/AnimatedBackground";
 
 interface HeroContent {
   title: string;
@@ -12,40 +10,27 @@ interface HeroContent {
 }
 
 const HeroSection = () => {
-  const [content, setContent] = useState<HeroContent | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchHeroContent = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('site_content')
-          .select('content')
-          .eq('section', 'hero')
-          .single();
+    // Simulate loading for better UX
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
 
-        if (error) throw error;
-        setContent(data.content as unknown as HeroContent);
-      } catch (error) {
-        console.error('Error fetching hero content:', error);
-        // Fallback content for graceful degradation
-        setContent({
-          title: "Solving Public Problems with Data, Design, and Grit",
-          subtitle: "I'm Aakash Sharma – a technologist-turned-governance consultant blending data systems, AI tools, and policy to drive change on the ground.",
-          quote: "You can't manage what you don't measure",
-          cta: "Let's build better systems together"
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchHeroContent();
+    return () => clearTimeout(timer);
   }, []);
+
+  const content: HeroContent = {
+    title: "Solving Public Problems with Data, Design, and Grit",
+    subtitle: "I'm Aakash Sharma – a technologist-turned-governance consultant blending data systems, AI tools, and policy to drive change on the ground.",
+    quote: "You can't manage what you don't measure",
+    cta: "Let's build better systems together"
+  };
 
   if (isLoading) {
     return (
-      <section id="home" className="min-h-screen flex items-center justify-center relative pt-20">
+      <section className="min-h-screen flex items-center justify-center relative pt-20">
         <div className="animate-pulse relative z-10 text-center">
           <div className="h-8 bg-slate-200 dark:bg-slate-700 rounded w-96 mb-4 mx-auto"></div>
           <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-64 mx-auto"></div>
@@ -55,7 +40,7 @@ const HeroSection = () => {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background Icons */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
         <div className="absolute top-32 left-20 animate-pulse">
@@ -76,11 +61,11 @@ const HeroSection = () => {
           {/* Main Title and Subtitle */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light text-slate-800 dark:text-slate-100 leading-tight tracking-tight">
-              {content?.title || "Solving Public Problems with Data, Design, and Grit"}
+              {content.title}
             </h1>
             
             <p className="text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 font-light leading-relaxed max-w-3xl mx-auto">
-              {content?.subtitle || "I'm Aakash Sharma – a technologist-turned-governance consultant blending data systems, AI tools, and policy to drive change on the ground."}
+              {content.subtitle}
             </p>
           </div>
 
