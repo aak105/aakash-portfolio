@@ -87,10 +87,10 @@ const HeroSection = () => {
       
       {/* Main Content */}
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-6">  {/* Changed from space-y-8 */}
+        <div className="max-w-4xl mx-auto text-center space-y-8">
           
           {/* Main Title and Subtitle */}
-          <div className="space-y-4">  {/* Changed from space-y-6 */}
+          <div className="space-y-6">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light text-slate-800 dark:text-slate-100 leading-tight tracking-tight">
               {content?.title}
             </h1>
@@ -101,8 +101,8 @@ const HeroSection = () => {
           </div>
 
           {/* Quote Section with Enhanced Styling */}
-          <div className="relative py-6">  {/* Changed from py-8 */}
-            <Quote className="w-8 h-8 text-blue-400 dark:text-blue-500 mx-auto mb-3" />  {/* Changed from mb-4 */}
+          <div className="relative py-8">
+            <Quote className="w-8 h-8 text-blue-400 dark:text-blue-500 mx-auto mb-4" />
             <blockquote className="text-base md:text-lg italic font-serif text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">
               "{content?.quote}"
             </blockquote>
@@ -110,30 +110,19 @@ const HeroSection = () => {
           </div>
 
           {/* Statistics Section - Key Performance Metrics */}
-          <div className="grid grid-cols-3 gap-6 py-6 max-w-3xl mx-auto">  {/* Changed from gap-8 py-8 */}
+          <div className="grid grid-cols-3 gap-8 py-8 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">5+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Years of Experience across government, consulting, and grassroots programs</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400"><span className="font-semibold text-blue-600 dark:text-blue-400">Years of Experience</span> across government, consulting, and grassroots programs</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400 mb-2">30+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Total Projects Executed in public sector and social impact</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400"><span className="font-semibold text-green-600 dark:text-green-400">Total Projects Executed</span> in public sector and social impact</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">100+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Government Schemes Worked On across 30+ departments</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400"><span className="font-semibold text-purple-600 dark:text-purple-400">Government Schemes Worked On</span> across 30+ departments</div>
             </div>
-          </div>
-
-          {/* Call to Action Button */}
-          <div className="pt-8">
-            <Button 
-              size="lg" 
-              className="bg-slate-800 hover:bg-slate-700 dark:bg-slate-100 dark:hover:bg-white dark:text-slate-900 text-white px-8 py-3 text-base font-medium transition-all duration-300 rounded-full shadow-lg hover:shadow-xl"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              {content?.cta}
-            </Button>
           </div>
         </div>
       </div>

@@ -138,12 +138,12 @@ const DataAssets = () => {
       <div className="bg-gradient-to-br from-slate-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900 transition-colors duration-500">
         
         {/* Hero Section */}
-        <section className="pt-16 pb-12 px-6">  {/* Changed from pt-20 pb-16 */}
+        <section className="pt-20 pb-16 px-6">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent animate-fade-in">  {/* Changed from mb-6 */}
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent animate-fade-in">
               Data Assets & Dashboards
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-6 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>  {/* Changed from mb-8 */}
+            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Showcasing analytical work during my tenure as <span className="font-semibold text-cyan-600 dark:text-cyan-400">Data Analyst</span> at India Data Insights – Sattva Consulting
             </p>
             <Button 
@@ -157,138 +157,10 @@ const DataAssets = () => {
           </div>
         </section>
 
-        {/* KPI Statistics Section - Key Performance Metrics */}
-        <section className="py-12 px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8 text-slate-800 dark:text-slate-100">Key Performance Highlights</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* KPI 1: Data Assets */}
-              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in">
-                <div className="text-center mb-4">
-                  <Database className="w-12 h-12 text-blue-500 dark:text-blue-400 mx-auto mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent mb-1">80+</div>
-                  <h3 className="text-lg font-serif font-medium text-slate-700 dark:text-slate-300">Data Assets Created</h3>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-blue-600 dark:text-blue-400 font-semibold">50+</span> Interactive Dashboards</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-blue-600 dark:text-blue-400 font-semibold">20+</span> Reports & Data Stories</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-blue-600 dark:text-blue-400 font-semibold">10+</span> Insight Blogs</p>
-                </div>
-              </div>
-              
-              {/* KPI 2: SDGs Covered */}
-              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <div className="text-center mb-4">
-                  <Target className="w-12 h-12 text-green-500 dark:text-green-400 mx-auto mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-500 dark:from-green-400 dark:to-emerald-300 bg-clip-text text-transparent mb-1">10+</div>
-                  <h3 className="text-lg font-serif font-medium text-slate-700 dark:text-slate-300">SDGs Covered</h3>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Addressing <span className="text-green-600 dark:text-green-400 font-semibold">poverty</span>, <span className="text-green-600 dark:text-green-400 font-semibold">education</span>, and <span className="text-green-600 dark:text-green-400 font-semibold">health</span></p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Supporting <span className="text-green-600 dark:text-green-400 font-semibold">clean water</span> and <span className="text-green-600 dark:text-green-400 font-semibold">energy</span> initiatives</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Promoting <span className="text-green-600 dark:text-green-400 font-semibold">sustainable communities</span></p>
-                </div>
-              </div>
-              
-              {/* KPI 3: Domains Covered */}
-              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <div className="text-center mb-4">
-                  <Globe className="w-12 h-12 text-purple-500 dark:text-purple-400 mx-auto mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-500 dark:from-purple-400 dark:to-indigo-300 bg-clip-text text-transparent mb-1">12+</div>
-                  <h3 className="text-lg font-serif font-medium text-slate-700 dark:text-slate-300">Domains Covered</h3>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-purple-600 dark:text-purple-400 font-semibold">Education</span> & <span className="text-purple-600 dark:text-purple-400 font-semibold">Healthcare</span> systems</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-purple-600 dark:text-purple-400 font-semibold">Water</span>, <span className="text-purple-600 dark:text-purple-400 font-semibold">Energy</span> & <span className="text-purple-600 dark:text-purple-400 font-semibold">Digital Access</span></p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-purple-600 dark:text-purple-400 font-semibold">Governance</span> & <span className="text-purple-600 dark:text-purple-400 font-semibold">Social Protection</span></p>
-                </div>
-              </div>
-              
-              {/* KPI 4: Dataset Types */}
-              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                <div className="text-center mb-4">
-                  <FileText className="w-12 h-12 text-amber-500 dark:text-amber-400 mx-auto mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-500 dark:from-amber-400 dark:to-orange-300 bg-clip-text text-transparent mb-1">15+</div>
-                  <h3 className="text-lg font-serif font-medium text-slate-700 dark:text-slate-300">Dataset Types</h3>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-amber-600 dark:text-amber-400 font-semibold">Survey Data</span> (NFHS, UDISE+, NSS)</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-amber-600 dark:text-amber-400 font-semibold">Administrative Data</span> (State MIS)</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium"><span className="text-amber-600 dark:text-amber-400 font-semibold">Economic</span> & <span className="text-amber-600 dark:text-amber-400 font-semibold">Environmental</span> metrics</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Professional Timeline - Improved Compact Design */}
-        <section className="py-16 px-6 bg-slate-100/50 dark:bg-slate-800/50">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-slate-800 dark:text-slate-100">Professional Journey</h2>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {experiences.map((exp, index) => (
-                <div key={index} className="group relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                  {/* Company Logo */}
-                  <div className="flex items-center mb-4">
-                    <img 
-                      src={exp.logo} 
-                      alt={exp.organization}
-                      className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-cyan-200 dark:border-cyan-600"
-                    />
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
-                        {exp.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 dark:text-slate-300 font-medium">{exp.organization}</p>
-                    </div>
-                  </div>
-
-                  {/* Basic Info */}
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-sm text-cyan-600 dark:text-cyan-400">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      {exp.period}
-                    </div>
-                    <div className="flex items-center text-sm text-slate-500">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      {exp.location}
-                    </div>
-                  </div>
-
-                  {/* Hover Details */}
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 space-y-4">
-                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {exp.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {exp.skills.map((skill, skillIndex) => (
-                        <span 
-                          key={skillIndex}
-                          className="px-2 py-1 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-xs font-medium"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Expand Indicator */}
-                  <div className="flex justify-center mt-4 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
-                    <ChevronRight className="w-5 h-5 text-cyan-500 transform group-hover:rotate-90 transition-transform duration-300" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Section 1: Interactive Dashboards - Grid Layout */}
+        {/* Section 1: Interactive Dashboards */}
         <section id="dashboards" className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">  {/* Changed from mb-16 */}
+            <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
                 <BarChart3 className="w-10 h-10 text-cyan-600" />
                 <span className="bg-gradient-to-r from-slate-800 via-blue-700 to-cyan-600 dark:from-slate-100 dark:via-blue-300 dark:to-cyan-300 bg-clip-text text-transparent">
