@@ -16,6 +16,7 @@ import AnimatedBackground from "@/components/AnimatedBackground";
  * 
  * This is the main landing page that orchestrates all sections of the portfolio.
  * Features:
+ * - Automatic dark/light mode detection based on system preference
  * - Dark/Light mode toggle (moved to bottom right)
  * - Animated background throughout the page
  * - Navigation between sections
@@ -23,26 +24,73 @@ import AnimatedBackground from "@/components/AnimatedBackground";
  * - Proper spacing and visual hierarchy
  */
 const Index = () => {
-  // Theme state management
+  // Theme state management with system preference detection
   const [darkMode, setDarkMode] = useState(false);
 
   /**
-   * Effect to handle dark mode class application to document
-   * Ensures theme persistence and proper CSS class management
+   * Effect to detect system theme preference and initialize theme
+   * Also handles dark mode class application to document
    */
   useEffect(() => {
-    if (darkMode) {
+    // Check if user has a saved preference
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+      // Use saved preference
+      const isDark = savedTheme === 'dark';
+      setDarkMode(isDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    } else {
+      // Detect system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setDarkMode(prefersDark);
+      if (prefersDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Only auto-update if user hasn't manually set a preference
+      if (!localStorage.getItem('theme')) {
+        setDarkMode(e.matches);
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  /**
+   * Toggle theme handler with persistence
+   * Switches between light and dark modes and saves preference
+   */
+  const toggleTheme = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    
+    // Save user preference
+    localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
+    
+    // Apply theme
+    if (newDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, [darkMode]);
-
-  /**
-   * Toggle theme handler
-   * Switches between light and dark modes
-   */
-  const toggleTheme = () => setDarkMode(!darkMode);
+  };
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${darkMode ? 'dark' : ''}`}>
