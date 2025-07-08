@@ -181,43 +181,6 @@ const CVSection = () => {
   };
 
   /**
-   * Render Skills Section with Highlighted Boxes
-   */
-  const renderSkillsSection = () => (
-    <div className="grid md:grid-cols-2 gap-8">
-      {Object.entries(skillsData).map(([key, skillGroup]) => (
-        <Card key={key} className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
-          <CardContent className="p-6">
-            <h3 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-6">
-              {skillGroup.title}
-            </h3>
-            
-            <div className="space-y-6">
-              {Object.entries(skillGroup.categories).map(([category, skills]) => (
-                <div key={category}>
-                  <h4 className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-3 uppercase tracking-wider">
-                    {category}
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.map((skill, index) => (
-                      <div 
-                        key={index} 
-                        className="px-3 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-400/20 dark:to-purple-400/20 border border-blue-200 dark:border-blue-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md"
-                      >
-                        {skill}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  );
-
-  /**
    * Render Professional Timeline
    */
   const renderProfessionalTimeline = () => (
@@ -294,6 +257,43 @@ const CVSection = () => {
   );
 
   /**
+   * Render Skills Section with Highlighted Boxes
+   */
+  const renderSkillsSection = () => (
+    <div className="grid md:grid-cols-2 gap-8">
+      {Object.entries(skillsData).map(([key, skillGroup]) => (
+        <Card key={key} className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
+          <CardContent className="p-6">
+            <h3 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-6">
+              {skillGroup.title}
+            </h3>
+            
+            <div className="space-y-6">
+              {Object.entries(skillGroup.categories).map(([category, skills]) => (
+                <div key={category}>
+                  <h4 className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-3 uppercase tracking-wider">
+                    {category}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill, index) => (
+                      <div 
+                        key={index} 
+                        className="px-3 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-400/20 dark:to-purple-400/20 border border-blue-200 dark:border-blue-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md"
+                      >
+                        {skill}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+
+  /**
    * Render Education Section - Horizontal Layout
    */
   const renderEducationSection = () => (
@@ -327,7 +327,7 @@ const CVSection = () => {
   );
 
   return (
-    <section id="cv" className="py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 relative">
+    <section id="cv" className="py-12 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 relative">
       {/* Animated Background */}
       <AnimatedBackground variant="tertiary" />
       
@@ -345,20 +345,20 @@ const CVSection = () => {
 
         <div className="max-w-6xl mx-auto space-y-16">
           
-          {/* Skills Section */}
-          <div>
-            <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 text-center mb-8">
-              💼 Skills & Expertise
-            </h3>
-            {renderSkillsSection()}
-          </div>
-
-          {/* Professional Experience */}
+          {/* Professional Experience - Now First */}
           <div>
             <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 text-center mb-8">
               🏢 Professional Experience
             </h3>
             {renderProfessionalTimeline()}
+          </div>
+
+          {/* Skills Section - Now Second */}
+          <div>
+            <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 text-center mb-8">
+              💼 Skills & Expertise
+            </h3>
+            {renderSkillsSection()}
           </div>
 
           {/* Education */}

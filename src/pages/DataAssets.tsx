@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Moon, Sun, ExternalLink, BarChart3, FileText, Instagram, TrendingUp, Building2, Calendar, MapPin, ChevronRight } from "lucide-react";
+import { Moon, Sun, ExternalLink, BarChart3, FileText, Instagram, TrendingUp, Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -20,56 +20,48 @@ const DataAssets = () => {
       title: "Aadhaar Coverage",
       description: "Comprehensive analysis of Aadhaar adoption across India",
       url: "https://indiadatainsights.com/IDI-Interact/aadhaar-coverage/",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop&crop=center",
       theme: "Identity & Digital Infrastructure"
     },
     {
       title: "Telecom Usage",
       description: "India's telecommunications infrastructure and usage patterns",
       url: "https://indiadatainsights.com/IDI-Interact/indias-telecom-usage/",
-      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop&crop=center",
       theme: "Telecommunications & Connectivity"
     },
     {
       title: "Economic Indicators",
       description: "Key economic metrics and trends analysis",
       url: "https://indiadatainsights.com/IDI-Interact/economic-indicators/",
-      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=250&fit=crop&crop=center",
       theme: "Economic Growth & Development"
     },
     {
       title: "Water Quality",
       description: "Water quality assessment across Indian states",
       url: "https://indiadatainsights.com/IDI-Interact/water-quality-dashboard/",
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop&crop=center",
       theme: "Environmental Monitoring"
     },
     {
       title: "Rural Water Supply",
       description: "Rural piped water supply coverage analysis",
       url: "https://indiadatainsights.com/IDI-Interact/rural-piped-water-supply-coverage/",
-      image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&h=250&fit=crop&crop=center",
       theme: "Rural Infrastructure"
     },
     {
       title: "Education PGI",
       description: "Performance Grading Index for education sector",
       url: "https://indiadatainsights.com/IDI-Interact/performance-grading-index/",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop&crop=center",
       theme: "Education Analytics"
     },
     {
       title: "SDG Score",
       description: "Sustainable Development Goals progress tracking",
       url: "https://indiadatainsights.com/IDI-Interact/sdg-score-dashboard/",
-      image: "https://images.unsplash.com/photo-1569163139394-de4e4f43e4e5?w=400&h=250&fit=crop&crop=center",
       theme: "Sustainable Development"
     },
     {
       title: "School Dashboard",
       description: "Comprehensive education infrastructure analysis",
       url: "https://indiadatainsights.com/IDI-Interact/education-in-india-schools/",
-      image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=250&fit=crop&crop=center",
       theme: "Educational Infrastructure"
     }
   ];
@@ -77,66 +69,54 @@ const DataAssets = () => {
   const sdgReports = [
     {
       title: "SDG 1 – No Poverty",
-      url: "https://indiadatainsights.com/reports/sdg-1-no-poverty-datashots/",
-      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/reports/sdg-1-no-poverty-datashots/"
     },
     {
       title: "SDG 2 – Zero Hunger",
-      url: "https://indiadatainsights.com/reports/sdg-2-zero-hunger-datashots/",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/reports/sdg-2-zero-hunger-datashots/"
     },
     {
       title: "SDG 4 – Quality Education",
-      url: "https://indiadatainsights.com/reports/sdg-4-quality-education-datashots/",
-      image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/reports/sdg-4-quality-education-datashots/"
     },
     {
       title: "SDG 9 – Innovation",
-      url: "https://indiadatainsights.com/reports/sdg-9-industry-infrastructure-and-innovation-datashots/",
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/reports/sdg-9-industry-infrastructure-and-innovation-datashots/"
     },
     {
       title: "SDG 8 – Decent Work",
-      url: "https://indiadatainsights.com/reports/sdg-8-decent-work-and-economic-growth-datashots/",
-      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/reports/sdg-8-decent-work-and-economic-growth-datashots/"
     },
     {
       title: "SDG 7 – Clean Energy",
-      url: "https://indiadatainsights.com/reports/sdg-7-affordable-and-clean-energy-datashots/",
-      image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/reports/sdg-7-affordable-and-clean-energy-datashots/"
     }
   ];
 
   const articles = [
     {
       title: "Are All Our Children in School?",
-      url: "https://indiadatainsights.com/are-all-our-children-in-school/",
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/are-all-our-children-in-school/"
     },
     {
       title: "What Does the NFHS Show About Women's Health in India?",
-      url: "https://indiadatainsights.com/what-does-the-nfhs-show-about-womens-health-in-india/",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/what-does-the-nfhs-show-about-womens-health-in-india/"
     },
     {
       title: "The State of Schools in India",
-      url: "https://indiadatainsights.com/the-state-of-schools-in-india/",
-      image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/the-state-of-schools-in-india/"
     },
     {
       title: "Groundwater: Making the Invisible Visible",
-      url: "https://indiadatainsights.com/groundwater-making-the-invisible-visible/",
-      image: "https://images.unsplash.com/photo-1441148345475-384310d6369d?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/groundwater-making-the-invisible-visible/"
     },
     {
       title: "Tuberculosis Post-Pandemic: A Call for Better Health Infrastructure Funding",
-      url: "https://indiadatainsights.com/tuberculosis-post-pandemic-a-call-for-better-health-infrastructure-funding/",
-      image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/tuberculosis-post-pandemic-a-call-for-better-health-infrastructure-funding/"
     },
     {
       title: "On the Road to Climate Resilience: Sustainable Agriculture in India",
-      url: "https://indiadatainsights.com/on-the-road-to-climate-resilience-sustainable-agriculture-in-india/",
-      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=300&h=200&fit=crop&crop=center"
+      url: "https://indiadatainsights.com/on-the-road-to-climate-resilience-sustainable-agriculture-in-india/"
     }
   ];
 
@@ -178,11 +158,11 @@ const DataAssets = () => {
         </section>
 
         {/* KPI Statistics Section - Key Performance Metrics */}
-        <section className="py-8 px-6">  {/* Changed from py-12 */}
+        <section className="py-12 px-6">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-6 text-slate-800 dark:text-slate-100">Key Performance Highlights</h2>  {/* Changed from mb-8 */}
+            <h2 className="text-3xl font-bold text-center mb-8 text-slate-800 dark:text-slate-100">Key Performance Highlights</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* KPI 1: Data Assets */}
               <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-cyan-200/30 dark:border-cyan-700/30 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-500 transform hover:scale-105 animate-fade-in">
                 <div className="text-center mb-4">
@@ -243,9 +223,9 @@ const DataAssets = () => {
         </section>
 
         {/* Professional Timeline - Improved Compact Design */}
-        <section className="py-12 px-6 bg-slate-100/50 dark:bg-slate-800/50">  {/* Changed from py-16 */}
+        <section className="py-16 px-6 bg-slate-100/50 dark:bg-slate-800/50">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8 text-slate-800 dark:text-slate-100">Professional Journey</h2>  {/* Changed from mb-12 */}
+            <h2 className="text-3xl font-bold text-center mb-12 text-slate-800 dark:text-slate-100">Professional Journey</h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {experiences.map((exp, index) => (
@@ -306,7 +286,7 @@ const DataAssets = () => {
         </section>
 
         {/* Section 1: Interactive Dashboards - Grid Layout */}
-        <section id="dashboards" className="py-16 px-6">  {/* Changed from py-20 */}
+        <section id="dashboards" className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">  {/* Changed from mb-16 */}
               <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
@@ -323,21 +303,6 @@ const DataAssets = () => {
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
               {dashboards.map((dashboard, index) => (
                 <Card key={index} className="group hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 transform hover:scale-105 animate-fade-in border border-cyan-200/20 dark:border-cyan-700/20 overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
-                  {/* Theme Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={dashboard.image} 
-                      alt={dashboard.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-4 left-4">
-                      <span className="px-3 py-1 bg-cyan-500/90 text-white text-xs font-medium rounded-full">
-                        {dashboard.theme}
-                      </span>
-                    </div>
-                  </div>
-
                   <CardHeader>
                     <CardTitle className="text-xl text-slate-800 dark:text-slate-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
                       {dashboard.title}
@@ -372,7 +337,7 @@ const DataAssets = () => {
           </div>
         </section>
 
-        {/* Section 2: Data Stories & SDG Reports - Grid Layout */}
+        {/* Section 2: Data Stories & SDG Reports */}
         <section id="reports" className="py-20 px-6 bg-slate-100/50 dark:bg-slate-800/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -387,14 +352,6 @@ const DataAssets = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {sdgReports.map((report, index) => (
                 <Card key={index} onClick={() => window.open(report.url, '_blank')} className="cursor-pointer group hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 transform hover:scale-105 animate-fade-in border border-cyan-200/20 dark:border-cyan-700/20 overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="relative h-32 overflow-hidden">
-                    <img 
-                      src={report.image} 
-                      alt={report.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                  </div>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <h3 className="font-semibold text-slate-800 dark:text-slate-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
@@ -409,7 +366,7 @@ const DataAssets = () => {
           </div>
         </section>
 
-        {/* Section 3: Data Dialogue Articles - Grid Layout */}
+        {/* Section 3: Data Dialogue Articles */}
         <section id="articles" className="py-20 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -424,14 +381,6 @@ const DataAssets = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {articles.map((article, index) => (
                 <Card key={index} onClick={() => window.open(article.url, '_blank')} className="cursor-pointer group hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 transform hover:scale-105 animate-fade-in border border-cyan-200/20 dark:border-cyan-700/20 overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="relative h-40 overflow-hidden">
-                    <img 
-                      src={article.image} 
-                      alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  </div>
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <h3 className="text-lg font-medium text-slate-800 dark:text-slate-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300 leading-tight">
@@ -459,19 +408,6 @@ const DataAssets = () => {
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-8">
                 Created 10+ data stories between June 2022 and March 2023 for India Data Insights' Instagram page
               </p>
-              
-              {/* Instagram Preview */}
-              <div className="relative mb-8 max-w-md mx-auto">
-                <img 
-                  src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=400&fit=crop&crop=center" 
-                  alt="Instagram Data Stories Preview"
-                  className="w-full h-64 object-cover rounded-2xl shadow-lg"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-2xl"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-white text-sm font-medium">Sample Data Story Posts</p>
-                </div>
-              </div>
             </div>
 
             <Button 
