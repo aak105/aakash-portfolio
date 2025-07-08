@@ -1,27 +1,16 @@
 
-import { useState, useEffect } from "react";
 import { Calendar, Clock, ArrowRight, PenTool, Globe, Users } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  content: string;
-  excerpt: string;
-  image_url: string;
-  published: boolean;
-  tags: string[];
-  reading_time: number;
-  created_at: string;
-}
+import { BlogPost } from "@shared/schema";
 
 const BlogSection = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { data: posts = [], isLoading } = useQuery<BlogPost[]>({
+    queryKey: ['/api/blog-posts', { published: true }],
+    queryFn: () => fetch('/api/blog-posts?published=true').then(res => res.json())
+  });
 
   // Featured blog posts with enhanced content
   const featuredPosts = [
@@ -60,27 +49,7 @@ const BlogSection = () => {
     }
   ];
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('published', true)
-          .order('created_at', { ascending: false })
-          .limit(6);
-
-        if (error) throw error;
-        setPosts(data || []);
-      } catch (error) {
-        console.error('Error fetching blog posts:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+  // Database posts are now fetched via React Query above
 
   if (isLoading) {
     return (

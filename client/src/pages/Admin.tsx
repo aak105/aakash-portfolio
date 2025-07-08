@@ -1,6 +1,6 @@
 
-import { useState, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,93 +9,82 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Edit2, Trash2, Save } from "lucide-react";
+import { apiRequest } from "@/lib/queryClient";
+import { Project, BlogPost, DataAsset } from "@shared/schema";
 
 const Admin = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [projects, setProjects] = useState([]);
-  const [blogPosts, setBlogPosts] = useState([]);
-  const [dataAssets, setDataAssets] = useState([]);
-  const [editingItem, setEditingItem] = useState(null);
-  const [newItem, setNewItem] = useState({});
+  const [editingItem, setEditingItem] = useState<any>(null);
+  const [newItem, setNewItem] = useState<any>({});
   const { toast } = useToast();
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    checkAdminStatus();
-    fetchData();
-  }, []);
+  // Fetch data using React Query
+  const { data: projects = [], isLoading: projectsLoading } = useQuery<Project[]>({
+    queryKey: ['/api/projects'],
+  });
+  
+  const { data: blogPosts = [], isLoading: blogLoading } = useQuery<BlogPost[]>({
+    queryKey: ['/api/blog-posts'],
+  });
+  
+  const { data: dataAssets = [], isLoading: assetsLoading } = useQuery<DataAsset[]>({
+    queryKey: ['/api/data-assets'],
+  });
 
-  const checkAdminStatus = async () => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        setLoading(false);
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from('admin_users')
-        .select('is_admin')
-        .eq('email', user.email)
-        .single();
-
-      if (error) throw error;
-      setIsAdmin(data?.is_admin || false);
-    } catch (error) {
-      console.error('Error checking admin status:', error);
-    } finally {
-      setLoading(false);
+  // Mutations for CRUD operations
+  const createProjectMutation = useMutation({
+    mutationFn: (data: any) => apiRequest('/api/projects', { method: 'POST', body: JSON.stringify(data) }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/projects'] });
+      toast({ title: "Success", description: "Project created successfully!" });
+      setNewItem({});
+    },
+    onError: () => {
+      toast({ title: "Error", description: "Failed to create project.", variant: "destructive" });
     }
-  };
+  });
 
-  const fetchData = async () => {
-    try {
-      const [projectsRes, blogRes, assetsRes] = await Promise.all([
-        supabase.from('projects').select('*').order('created_at', { ascending: false }),
-        supabase.from('blog_posts').select('*').order('created_at', { ascending: false }),
-        supabase.from('data_assets').select('*').order('created_at', { ascending: false })
-      ]);
-
-      setProjects(projectsRes.data || []);
-      setBlogPosts(blogRes.data || []);
-      setDataAssets(assetsRes.data || []);
-    } catch (error) {
-      console.error('Error fetching data:', error);
+  const updateProjectMutation = useMutation({
+    mutationFn: ({ id, data }: { id: string; data: any }) => 
+      apiRequest(`/api/projects/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/projects'] });
+      toast({ title: "Success", description: "Project updated successfully!" });
+      setEditingItem(null);
+    },
+    onError: () => {
+      toast({ title: "Error", description: "Failed to update project.", variant: "destructive" });
     }
-  };
+  });
 
-  const handleSave = async (table, item) => {
+  const deleteProjectMutation = useMutation({
+    mutationFn: (id: string) => apiRequest(`/api/projects/${id}`, { method: 'DELETE' }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/projects'] });
+      toast({ title: "Success", description: "Project deleted successfully!" });
+    },
+    onError: () => {
+      toast({ title: "Error", description: "Failed to delete project.", variant: "destructive" });
+    }
+  });
+
+  const handleSave = async (table: string, item: any) => {
     try {
       if (item.id) {
         // Update existing
-        const { error } = await supabase
-          .from(table)
-          .update(item)
-          .eq('id', item.id);
-        if (error) throw error;
+        if (table === 'projects') {
+          updateProjectMutation.mutate({ id: item.id, data: item });
+        }
+        // Add other table mutations here as needed
       } else {
         // Create new
-        const { error } = await supabase
-          .from(table)
-          .insert([item]);
-        if (error) throw error;
+        if (table === 'projects') {
+          createProjectMutation.mutate(item);
+        }
+        // Add other table mutations here as needed
       }
-
-      toast({
-        title: "Success",
-        description: `${table} saved successfully!`,
-      });
-
-      setEditingItem(null);
-      setNewItem({});
-      fetchData();
     } catch (error) {
       console.error('Error saving:', error);
-      toast({
-        title: "Error",
-        description: "Failed to save. Please try again.",
-        variant: "destructive",
-      });
     }
   };
 

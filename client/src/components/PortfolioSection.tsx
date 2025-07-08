@@ -1,48 +1,16 @@
 
-import { useState, useEffect } from "react";
 import { ExternalLink, Github, ArrowRight, Database, TrendingUp, Users, FileText, BarChart } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "@/components/AnimatedBackground";
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  long_description: string;
-  tech_stack: string[];
-  image_url: string;
-  project_url: string;
-  github_url: string;
-  category: string;
-  featured: boolean;
-}
+import { Project } from "@shared/schema";
 
 const PortfolioSection = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('projects')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (error) throw error;
-        setProjects(data || []);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
+  const { data: projects = [], isLoading } = useQuery<Project[]>({
+    queryKey: ['/api/projects'],
+  });
 
   const cvProjects = [
     {
