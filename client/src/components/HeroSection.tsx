@@ -1,13 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { ChevronDown, Quote, Database, BarChart3, Users } from "lucide-react";
-
-interface HeroContent {
-  title: string;
-  subtitle: string;
-  quote: string;
-  cta: string;
-}
+import { siteContent } from "@/data/siteContent";
 
 const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,12 +15,7 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const content: HeroContent = {
-    title: "Solving Public Problems with Data, Design, and Grit",
-    subtitle: "I'm Aakash Sharma – a technologist-turned-governance consultant blending data systems, AI tools, and policy to drive change on the ground.",
-    quote: "You can't manage what you don't measure",
-    cta: "Let's build better systems together"
-  };
+  const content = siteContent.hero;
 
   if (isLoading) {
     return (

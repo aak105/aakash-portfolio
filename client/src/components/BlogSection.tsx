@@ -1,16 +1,13 @@
 
 import { Calendar, Clock, ArrowRight, PenTool, Globe, Users } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BlogPost } from "@shared/schema";
+import { blogPosts } from "@/data/blogPosts";
 
 const BlogSection = () => {
-  const { data: posts = [], isLoading } = useQuery<BlogPost[]>({
-    queryKey: ['/api/blog-posts', { published: true }],
-    queryFn: () => fetch('/api/blog-posts?published=true').then(res => res.json())
-  });
+  const posts = blogPosts.filter(post => post.published);
+  const isLoading = false;
 
   // Featured blog posts with enhanced content
   const featuredPosts = [

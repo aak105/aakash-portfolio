@@ -1,16 +1,13 @@
 
 import { ExternalLink, Github, ArrowRight, Database, TrendingUp, Users, FileText, BarChart } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "@/components/AnimatedBackground";
-import { Project } from "@shared/schema";
+import { projects } from "@/data/projects";
 
 const PortfolioSection = () => {
-  const { data: projects = [], isLoading } = useQuery<Project[]>({
-    queryKey: ['/api/projects'],
-  });
+  const isLoading = false;
 
   const cvProjects = [
     {
