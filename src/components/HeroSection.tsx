@@ -44,7 +44,7 @@ const HeroSection = () => {
         setContent({
           title: "Solving Public Problems with Data, Design, and Grit",
           subtitle: "I'm Aakash Sharma – a technologist-turned-governance consultant blending data systems, AI tools, and policy to drive change on the ground.",
-          quote: "You can't manage what you don't measure",
+          quote: "you cant improve, what you cant measure",
           cta: "Let's build better systems together"
         });
       } finally {
