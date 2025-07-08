@@ -53,33 +53,33 @@ const Index = () => {
         {/* Global Animated Background */}
         <AnimatedBackground variant="primary" />
         
-        {/* Content Sections with Proper Spacing */}
+        {/* Content Sections with Reduced Spacing */}
         <div className="relative z-10">
-          <section id="home" className="min-h-screen py-20">
+          <section id="home" className="min-h-screen">
             <HeroSection />
           </section>
           
-          <section id="about" className="min-h-screen py-20">
+          <section id="about" className="py-12">
             <AboutSection />
           </section>
 
-          <section id="cv" className="min-h-screen py-20">
+          <section id="cv" className="py-12">
             <CVSection />
           </section>
 
-          <section id="portfolio" className="min-h-screen py-20">
+          <section id="portfolio" className="py-12">
             <PortfolioSection />
           </section>
 
-          <section id="blog" className="min-h-screen py-20">
+          <section id="blog" className="py-12">
             <BlogSection />
           </section>
 
-          <section id="recommended-reading" className="min-h-screen py-20">
+          <section id="recommended-reading" className="py-12">
             <RecommendedReading />
           </section>
 
-          <section id="contact" className="min-h-screen py-20">
+          <section id="contact" className="py-12">
             <ContactSection />
           </section>
         </div>

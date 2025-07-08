@@ -97,7 +97,7 @@ const PortfolioSection = () => {
 
   if (isLoading) {
     return (
-      <section id="portfolio" className="py-20 bg-slate-50 dark:bg-slate-800 relative">
+      <section id="portfolio" className="py-12 bg-slate-50 dark:bg-slate-800 relative">
         <AnimatedBackground variant="secondary" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="animate-pulse">
@@ -114,7 +114,7 @@ const PortfolioSection = () => {
   }
 
   return (
-    <section id="portfolio" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-500 relative">
+    <section id="portfolio" className="py-12 bg-slate-50 dark:bg-slate-800 transition-colors duration-500 relative">
       <AnimatedBackground variant="secondary" />
       
       <div className="container mx-auto px-6 relative z-10">
@@ -153,26 +153,36 @@ const PortfolioSection = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <div className="text-center p-4">
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">20+</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">Dashboards Built for decision-making and monitoring</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">
+                    <span className="font-semibold text-blue-600 dark:text-blue-400">Dashboards Built</span> for decision-making and monitoring
+                  </div>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">100+</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">Data Assets Developed including visualizations, indicators, and reports</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">
+                    <span className="font-semibold text-blue-600 dark:text-blue-400">Data Assets Developed</span> including visualizations, indicators, and reports
+                  </div>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">Datasets Handled from NFHS, Census, State MIS, and international databases</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">
+                    <span className="font-semibold text-blue-600 dark:text-blue-400">Datasets Handled</span> from NFHS, Census, State MIS, and international databases
+                  </div>
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="text-center p-4">
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">10+</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">Tech Tools Used (SQL, Python, Tableau, Google Cloud, Metabase, etc.)</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">
+                    <span className="font-semibold text-blue-600 dark:text-blue-400">Tech Tools Used</span> (SQL, Python, Tableau, Google Cloud, Metabase, etc.)
+                  </div>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">6</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">Domains Covered: Governance, Education, Health, Nutrition, Livelihood, Gender</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">
+                    <span className="font-semibold text-blue-600 dark:text-blue-400">Domains Covered:</span> Governance, Education, Health, Nutrition, Livelihood, Gender
+                  </div>
                 </div>
               </div>
 

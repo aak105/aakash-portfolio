@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { ChevronDown, Quote, Database, BarChart3, Users } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { Button } from "@/components/ui/button";
 import AnimatedBackground from "@/components/AnimatedBackground";
 
 interface HeroContent {
@@ -44,7 +43,7 @@ const HeroSection = () => {
         setContent({
           title: "Solving Public Problems with Data, Design, and Grit",
           subtitle: "I'm Aakash Sharma – a technologist-turned-governance consultant blending data systems, AI tools, and policy to drive change on the ground.",
-          quote: "you cant improve, what you cant measure",
+          quote: "You can't manage what you don't measure",
           cta: "Let's build better systems together"
         });
       } finally {
@@ -114,27 +113,16 @@ const HeroSection = () => {
           <div className="grid grid-cols-3 gap-8 py-8 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">5+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Years of Experience across government, consulting, and grassroots programs</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400"><span className="font-semibold text-blue-600 dark:text-blue-400">Years of Experience</span> across government, consulting, and grassroots programs</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400 mb-2">30+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Total Projects Executed in public sector and social impact</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400"><span className="font-semibold text-green-600 dark:text-green-400">Total Projects Executed</span> in public sector and social impact</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">100+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Government Schemes Worked On across 30+ departments</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400"><span className="font-semibold text-purple-600 dark:text-purple-400">Government Schemes Worked On</span> across 30+ departments</div>
             </div>
-          </div>
-
-          {/* Call to Action Button */}
-          <div className="pt-8">
-            <Button 
-              size="lg" 
-              className="bg-slate-800 hover:bg-slate-700 dark:bg-slate-100 dark:hover:bg-white dark:text-slate-900 text-white px-8 py-3 text-base font-medium transition-all duration-300 rounded-full shadow-lg hover:shadow-xl"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              {content?.cta}
-            </Button>
           </div>
         </div>
       </div>
