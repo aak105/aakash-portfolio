@@ -1,10 +1,11 @@
 
 import { useState, useEffect } from "react";
-import { ExternalLink, Github, ArrowRight, Database, TrendingUp, Users, FileText, BarChart } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Database, TrendingUp, Users, FileText, BarChart, ChevronDown, ChevronUp } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import AnimatedBackground from "@/components/AnimatedBackground";
 
 interface Project {
@@ -23,6 +24,7 @@ interface Project {
 const PortfolioSection = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDataAssetsOpen, setIsDataAssetsOpen] = useState(false);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -95,6 +97,29 @@ const PortfolioSection = () => {
     }
   ];
 
+  const dataAssetsDetails = {
+    dashboards: [
+      { title: "Aadhaar Coverage", description: "Comprehensive analysis of Aadhaar adoption across India", theme: "Identity & Digital Infrastructure" },
+      { title: "Telecom Usage", description: "India's telecommunications infrastructure and usage patterns", theme: "Telecommunications & Connectivity" },
+      { title: "Economic Indicators", description: "Key economic metrics and trends analysis", theme: "Economic Growth & Development" },
+      { title: "Water Quality", description: "Water quality assessment across Indian states", theme: "Environmental Monitoring" },
+      { title: "Rural Water Supply", description: "Rural piped water supply coverage analysis", theme: "Rural Infrastructure" },
+      { title: "Education PGI", description: "Performance Grading Index for education sector", theme: "Education Analytics" },
+      { title: "SDG Score", description: "Sustainable Development Goals progress tracking", theme: "Sustainable Development" },
+      { title: "School Dashboard", description: "Comprehensive education infrastructure analysis", theme: "Educational Infrastructure" }
+    ],
+    reports: [
+      "SDG 1 – No Poverty", "SDG 2 – Zero Hunger", "SDG 4 – Quality Education", 
+      "SDG 9 – Innovation", "SDG 8 – Decent Work", "SDG 7 – Clean Energy"
+    ],
+    articles: [
+      "Are All Our Children in School?", "What Does the NFHS Show About Women's Health in India?",
+      "The State of Schools in India", "Groundwater: Making the Invisible Visible",
+      "Tuberculosis Post-Pandemic: A Call for Better Health Infrastructure Funding",
+      "On the Road to Climate Resilience: Sustainable Agriculture in India"
+    ]
+  };
+
   if (isLoading) {
     return (
       <section id="portfolio" className="py-12 bg-slate-50 dark:bg-slate-800 relative">
@@ -128,7 +153,7 @@ const PortfolioSection = () => {
           <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto mt-6"></div>
         </div>
 
-        {/* Highlighted Data Assets Section */}
+        {/* Data Assets Section with Collapsible Details */}
         <div className="mb-16">
           <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-8 border border-blue-200/50 dark:border-blue-700/50 relative overflow-hidden">
             {/* Background pattern */}
@@ -154,55 +179,104 @@ const PortfolioSection = () => {
                 <div className="text-center p-4">
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">20+</div>
                   <div className="text-sm text-slate-600 dark:text-slate-300">
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">Dashboards Built</span> for decision-making and monitoring
+                    <span className="font-semibold text-blue-600 dark:text-blue-400">Dashboards Built</span> for decision-making
                   </div>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">100+</div>
                   <div className="text-sm text-slate-600 dark:text-slate-300">
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">Data Assets Developed</span> including visualizations, indicators, and reports
+                    <span className="font-semibold text-blue-600 dark:text-blue-400">Data Assets</span> including reports and visualizations
                   </div>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
                   <div className="text-sm text-slate-600 dark:text-slate-300">
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">Datasets Handled</span> from NFHS, Census, State MIS, and international databases
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">10+</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">Tech Tools Used</span> (SQL, Python, Tableau, Google Cloud, Metabase, etc.)
-                  </div>
-                </div>
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">6</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300">
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">Domains Covered:</span> Governance, Education, Health, Nutrition, Livelihood, Gender
+                    <span className="font-semibold text-blue-600 dark:text-blue-400">Datasets</span> from government and international sources
                   </div>
                 </div>
               </div>
 
               <div className="text-center">
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  onClick={() => window.open('/data-assets', '_blank')}
-                  className="group border-blue-300 dark:border-blue-600 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30"
-                >
-                  <Database className="w-4 h-4 mr-2" />
-                  Explore Data Assets
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Collapsible open={isDataAssetsOpen} onOpenChange={setIsDataAssetsOpen}>
+                  <CollapsibleTrigger asChild>
+                    <Button 
+                      variant="outline" 
+                      size="lg"
+                      className="group border-blue-300 dark:border-blue-600 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30"
+                    >
+                      <Database className="w-4 h-4 mr-2" />
+                      Explore Data Assets
+                      {isDataAssetsOpen ? (
+                        <ChevronUp className="w-4 h-4 ml-2 group-hover:-translate-y-1 transition-transform" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform" />
+                      )}
+                    </Button>
+                  </CollapsibleTrigger>
+                  
+                  <CollapsibleContent className="mt-8">
+                    <div className="space-y-8">
+                      {/* Interactive Dashboards */}
+                      <div>
+                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+                          <BarChart className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                          Interactive Dashboards
+                        </h4>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                          {dataAssetsDetails.dashboards.map((dashboard, index) => (
+                            <Card key={index} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
+                              <CardContent className="p-4">
+                                <h5 className="font-medium text-slate-800 dark:text-slate-100 mb-2">{dashboard.title}</h5>
+                                <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">{dashboard.description}</p>
+                                <Badge variant="outline" className="text-xs">{dashboard.theme}</Badge>
+                              </CardContent>
+                            </Card>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* SDG Reports */}
+                      <div>
+                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+                          <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+                          SDG Data Stories & Reports
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {dataAssetsDetails.reports.map((report, index) => (
+                            <Badge key={index} variant="secondary" className="text-xs">{report}</Badge>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Articles */}
+                      <div>
+                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+                          <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                          Data Dialogue Articles
+                        </h4>
+                        <div className="grid md:grid-cols-2 gap-3">
+                          {dataAssetsDetails.articles.map((article, index) => (
+                            <div key={index} className="text-sm text-slate-600 dark:text-slate-300 p-2 bg-white/60 dark:bg-slate-800/60 rounded">
+                              {article}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="text-center pt-4">
+                        <p className="text-sm text-slate-500 dark:text-slate-400 italic">
+                          Built during tenure at India Data Insights – Sattva Consulting
+                        </p>
+                      </div>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
               </div>
             </div>
           </div>
         </div>
 
-        {/* CV Projects Section - No Images */}
+        {/* CV Projects Section */}
         <div className="mb-16">
           <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-8 text-center">
             Featured Projects
@@ -253,7 +327,7 @@ const PortfolioSection = () => {
           </div>
         </div>
 
-        {/* Database Projects - No Images */}
+        {/* Database Projects */}
         {projects.length > 0 && (
           <div>
             <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-8 text-center">
