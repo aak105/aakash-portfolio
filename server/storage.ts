@@ -1,3 +1,4 @@
+
 import { 
   users, projects, blogPosts, dataAssets, contactMessages, adminUsers, siteContent,
   type User, type InsertUser, type Project, type InsertProject,
@@ -263,9 +264,17 @@ export class MockStorage implements IStorage {
   }
 
   async createProject(project: InsertProject): Promise<Project> {
-    const newProject = { 
-      ...project, 
+    const newProject: Project = { 
       id: crypto.randomUUID(),
+      title: project.title,
+      description: project.description ?? null,
+      long_description: project.long_description ?? null,
+      tech_stack: project.tech_stack ?? null,
+      image_url: project.image_url ?? null,
+      project_url: project.project_url ?? null,
+      github_url: project.github_url ?? null,
+      category: project.category ?? null,
+      featured: project.featured ?? null,
       created_at: new Date(),
       updated_at: new Date()
     };
@@ -292,22 +301,36 @@ export class MockStorage implements IStorage {
     }
   }
 
-  // Mock implementations for other methods...
   async getBlogPosts(): Promise<BlogPost[]> { return [...this.mockData.blogPosts]; }
   async getPublishedBlogPosts(): Promise<BlogPost[]> { return this.mockData.blogPosts.filter(p => p.published); }
   async getBlogPost(id: string): Promise<BlogPost | undefined> { return this.mockData.blogPosts.find(p => p.id === id); }
   async getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> { return this.mockData.blogPosts.find(p => p.slug === slug); }
+  
   async createBlogPost(post: InsertBlogPost): Promise<BlogPost> { 
-    const newPost = { ...post, id: crypto.randomUUID(), created_at: new Date(), updated_at: new Date() };
+    const newPost: BlogPost = {
+      id: crypto.randomUUID(),
+      title: post.title,
+      slug: post.slug,
+      image_url: post.image_url ?? null,
+      content: post.content ?? null,
+      excerpt: post.excerpt ?? null,
+      published: post.published ?? null,
+      tags: post.tags ?? null,
+      reading_time: post.reading_time ?? null,
+      created_at: new Date(),
+      updated_at: new Date()
+    };
     this.mockData.blogPosts.push(newPost);
     return newPost;
   }
+  
   async updateBlogPost(id: string, post: Partial<InsertBlogPost>): Promise<BlogPost> {
     const index = this.mockData.blogPosts.findIndex(p => p.id === id);
     if (index === -1) throw new Error('Blog post not found');
     this.mockData.blogPosts[index] = { ...this.mockData.blogPosts[index], ...post, updated_at: new Date() };
     return this.mockData.blogPosts[index];
   }
+  
   async deleteBlogPost(id: string): Promise<void> {
     const index = this.mockData.blogPosts.findIndex(p => p.id === id);
     if (index !== -1) this.mockData.blogPosts.splice(index, 1);
@@ -315,17 +338,32 @@ export class MockStorage implements IStorage {
 
   async getDataAssets(): Promise<DataAsset[]> { return [...this.mockData.dataAssets]; }
   async getDataAsset(id: string): Promise<DataAsset | undefined> { return this.mockData.dataAssets.find(d => d.id === id); }
+  
   async createDataAsset(asset: InsertDataAsset): Promise<DataAsset> {
-    const newAsset = { ...asset, id: crypto.randomUUID(), created_at: new Date(), last_updated: new Date() };
+    const newAsset: DataAsset = {
+      id: crypto.randomUUID(),
+      title: asset.title,
+      description: asset.description ?? null,
+      category: asset.category ?? null,
+      tags: asset.tags ?? null,
+      dataset_url: asset.dataset_url ?? null,
+      visualization_url: asset.visualization_url ?? null,
+      file_size: asset.file_size ?? null,
+      format: asset.format ?? null,
+      created_at: new Date(),
+      last_updated: new Date()
+    };
     this.mockData.dataAssets.push(newAsset);
     return newAsset;
   }
+  
   async updateDataAsset(id: string, asset: Partial<InsertDataAsset>): Promise<DataAsset> {
     const index = this.mockData.dataAssets.findIndex(d => d.id === id);
     if (index === -1) throw new Error('Data asset not found');
     this.mockData.dataAssets[index] = { ...this.mockData.dataAssets[index], ...asset, last_updated: new Date() };
     return this.mockData.dataAssets[index];
   }
+  
   async deleteDataAsset(id: string): Promise<void> {
     const index = this.mockData.dataAssets.findIndex(d => d.id === id);
     if (index !== -1) this.mockData.dataAssets.splice(index, 1);
@@ -333,11 +371,20 @@ export class MockStorage implements IStorage {
 
   async getContactMessages(): Promise<ContactMessage[]> { return [...this.mockData.contactMessages]; }
   async getContactMessage(id: string): Promise<ContactMessage | undefined> { return this.mockData.contactMessages.find(m => m.id === id); }
+  
   async createContactMessage(message: InsertContactMessage): Promise<ContactMessage> {
-    const newMessage = { ...message, id: crypto.randomUUID(), created_at: new Date(), status: 'unread' };
+    const newMessage: ContactMessage = {
+      id: crypto.randomUUID(),
+      name: message.name,
+      email: message.email,
+      message: message.message,
+      status: 'unread',
+      created_at: new Date()
+    };
     this.mockData.contactMessages.push(newMessage);
     return newMessage;
   }
+  
   async updateContactMessage(id: string, message: Partial<InsertContactMessage>): Promise<ContactMessage> {
     const index = this.mockData.contactMessages.findIndex(m => m.id === id);
     if (index === -1) throw new Error('Contact message not found');
@@ -348,11 +395,18 @@ export class MockStorage implements IStorage {
   async getAdminUsers(): Promise<AdminUser[]> { return [...this.mockData.adminUsers]; }
   async getAdminUser(id: string): Promise<AdminUser | undefined> { return this.mockData.adminUsers.find(u => u.id === id); }
   async getAdminUserByEmail(email: string): Promise<AdminUser | undefined> { return this.mockData.adminUsers.find(u => u.email === email); }
+  
   async createAdminUser(user: InsertAdminUser): Promise<AdminUser> {
-    const newUser = { ...user, id: crypto.randomUUID(), created_at: new Date() };
+    const newUser: AdminUser = {
+      id: crypto.randomUUID(),
+      email: user.email,
+      is_admin: user.is_admin ?? null,
+      created_at: new Date()
+    };
     this.mockData.adminUsers.push(newUser);
     return newUser;
   }
+  
   async updateAdminUser(id: string, user: Partial<InsertAdminUser>): Promise<AdminUser> {
     const index = this.mockData.adminUsers.findIndex(u => u.id === id);
     if (index === -1) throw new Error('Admin user not found');
@@ -362,17 +416,25 @@ export class MockStorage implements IStorage {
 
   async getSiteContent(): Promise<SiteContent[]> { return [...this.mockData.siteContent]; }
   async getSiteContentBySection(section: string): Promise<SiteContent | undefined> { return this.mockData.siteContent.find(s => s.section === section); }
+  
   async createSiteContent(content: InsertSiteContent): Promise<SiteContent> {
-    const newContent = { ...content, id: crypto.randomUUID(), updated_at: new Date() };
+    const newContent: SiteContent = {
+      id: crypto.randomUUID(),
+      section: content.section,
+      content: content.content,
+      updated_at: new Date()
+    };
     this.mockData.siteContent.push(newContent);
     return newContent;
   }
+  
   async updateSiteContent(id: string, content: Partial<InsertSiteContent>): Promise<SiteContent> {
     const index = this.mockData.siteContent.findIndex(s => s.id === id);
     if (index === -1) throw new Error('Site content not found');
     this.mockData.siteContent[index] = { ...this.mockData.siteContent[index], ...content, updated_at: new Date() };
     return this.mockData.siteContent[index];
   }
+  
   async updateSiteContentBySection(section: string, content: Partial<InsertSiteContent>): Promise<SiteContent> {
     const index = this.mockData.siteContent.findIndex(s => s.section === section);
     if (index === -1) throw new Error('Site content not found');
