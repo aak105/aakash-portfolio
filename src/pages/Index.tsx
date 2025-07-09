@@ -16,19 +16,26 @@ import AnimatedBackground from "@/components/AnimatedBackground";
  * 
  * This is the main landing page that orchestrates all sections of the portfolio.
  * Features:
- * - Dark/Light mode toggle (moved to bottom right)
+ * - Dark/Light mode toggle with device default detection
  * - Animated background throughout the page
  * - Navigation between sections
  * - Responsive design with smooth transitions
  * - Proper spacing and visual hierarchy
  */
 const Index = () => {
-  // Theme state management
-  const [darkMode, setDarkMode] = useState(false);
+  // Theme state management with device default detection
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check for user's device preference
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
 
   /**
    * Effect to handle dark mode class application to document
    * Ensures theme persistence and proper CSS class management
+   * Also listens for system theme changes
    */
   useEffect(() => {
     if (darkMode) {
@@ -36,6 +43,15 @@ const Index = () => {
     } else {
       document.documentElement.classList.remove('dark');
     }
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      setDarkMode(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, [darkMode]);
 
   /**

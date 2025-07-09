@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ExternalLink, Github, ArrowRight, Database, TrendingUp, Users, FileText, BarChart, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Database, TrendingUp, Users, FileText, BarChart, ChevronDown, ChevronUp, Brain, Target, Globe, Zap, BookOpen, PieChart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -69,7 +69,7 @@ const PortfolioSection = () => {
       category: "AI/ML",
       techStack: ["LLMs", "Vector Database", "SQL", "Data Cleaning", "Python"],
       impact: "Automated metadata generation and improved accessibility data quality by 90%",
-      icon: <Database className="w-6 h-6" />
+      icon: <Brain className="w-6 h-6" />
     },
     {
       title: "Citizen Grievance Portal",
@@ -85,7 +85,7 @@ const PortfolioSection = () => {
       category: "Public Policy",
       techStack: ["Data Framework", "KPI Design", "Survey Tools", "Analytics"],
       impact: "Enabled data-led planning across 13,000+ panchayats",
-      icon: <FileText className="w-6 h-6" />
+      icon: <Target className="w-6 h-6" />
     },
     {
       title: "NITI Aayog Dashboard",
@@ -93,20 +93,68 @@ const PortfolioSection = () => {
       category: "Government Analytics",
       techStack: ["Power BI", "DAX", "Data Integration", "Tableau"],
       impact: "Streamlined policy monitoring and state performance tracking at national level",
-      icon: <BarChart className="w-6 h-6" />
+      icon: <Globe className="w-6 h-6" />
     }
   ];
 
   const dataAssetsDetails = {
     dashboards: [
-      { title: "Aadhaar Coverage", description: "Comprehensive analysis of Aadhaar adoption across India", theme: "Identity & Digital Infrastructure", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/AadhaarCoverage/Dashboard" },
-      { title: "Telecom Usage", description: "India's telecommunications infrastructure and usage patterns", theme: "Telecommunications & Connectivity", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/TelecomUsage/Dashboard" },
-      { title: "Economic Indicators", description: "Key economic metrics and trends analysis", theme: "Economic Growth & Development", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/EconomicIndicators/Dashboard" },
-      { title: "Water Quality", description: "Water quality assessment across Indian states", theme: "Environmental Monitoring", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/WaterQuality/Dashboard" },
-      { title: "Rural Water Supply", description: "Rural piped water supply coverage analysis", theme: "Rural Infrastructure", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/RuralWaterSupply/Dashboard" },
-      { title: "Education PGI", description: "Performance Grading Index for education sector", theme: "Education Analytics", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/EducationPGI/Dashboard" },
-      { title: "SDG Score", description: "Sustainable Development Goals progress tracking", theme: "Sustainable Development", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/SDGScore/Dashboard" },
-      { title: "School Dashboard", description: "Comprehensive education infrastructure analysis", theme: "Educational Infrastructure", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/SchoolDashboard/Dashboard" }
+      { 
+        title: "Aadhaar Coverage", 
+        description: "Comprehensive analysis of Aadhaar adoption across India", 
+        theme: "Identity & Digital Infrastructure", 
+        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/AadhaarCoverage/Dashboard",
+        icon: <Database className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+      },
+      { 
+        title: "Telecom Usage", 
+        description: "India's telecommunications infrastructure and usage patterns", 
+        theme: "Telecommunications & Connectivity", 
+        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/TelecomUsage/Dashboard",
+        icon: <Zap className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+      },
+      { 
+        title: "Economic Indicators", 
+        description: "Key economic metrics and trends analysis", 
+        theme: "Economic Growth & Development", 
+        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/EconomicIndicators/Dashboard",
+        icon: <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+      },
+      { 
+        title: "Water Quality", 
+        description: "Water quality assessment across Indian states", 
+        theme: "Environmental Monitoring", 
+        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/WaterQuality/Dashboard",
+        icon: <BarChart className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+      },
+      { 
+        title: "Rural Water Supply", 
+        description: "Rural piped water supply coverage analysis", 
+        theme: "Rural Infrastructure", 
+        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/RuralWaterSupply/Dashboard",
+        icon: <Users className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+      },
+      { 
+        title: "Education PGI", 
+        description: "Performance Grading Index for education sector", 
+        theme: "Education Analytics", 
+        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/EducationPGI/Dashboard",
+        icon: <BookOpen className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+      },
+      { 
+        title: "SDG Score", 
+        description: "Sustainable Development Goals progress tracking", 
+        theme: "Sustainable Development", 
+        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/SDGScore/Dashboard",
+        icon: <Target className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+      },
+      { 
+        title: "School Dashboard", 
+        description: "Comprehensive education infrastructure analysis", 
+        theme: "Educational Infrastructure", 
+        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/SchoolDashboard/Dashboard",
+        icon: <PieChart className="w-5 h-5 text-pink-600 dark:text-pink-400" />
+      }
     ],
     reports: [
       { title: "SDG 1 – No Poverty", link: "https://sattva.co.in/knowledge/sdg-report-poverty" },
@@ -158,6 +206,57 @@ const PortfolioSection = () => {
           </p>
           
           <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto"></div>
+        </div>
+
+        {/* Featured Projects Section - Moved above Data Assets */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-8 text-center">
+            Featured Projects
+          </h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            {cvProjects.map((project, index) => (
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+                <CardHeader className="pb-4">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                          {project.icon}
+                        </div>
+                        <Badge variant="outline" className="text-xs">
+                          {project.category}
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-xl font-serif text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
+                        {project.title}
+                      </CardTitle>
+                    </div>
+                  </div>
+                </CardHeader>
+                
+                <CardContent className="space-y-4">
+                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-3">
+                    <div className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">Impact:</div>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 italic">
+                      {project.impact}
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-1">
+                    {project.techStack.map((tech, techIndex) => (
+                      <Badge key={techIndex} variant="secondary" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
         {/* Data Assets Section with Enhanced Visual Styling */}
@@ -226,45 +325,54 @@ const PortfolioSection = () => {
                   
                   <CollapsibleContent className="mt-8">
                     <div className="space-y-8">
-                      {/* Interactive Dashboards */}
+                      {/* Interactive Dashboards with Enhanced Design */}
                       <div>
-                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
-                          <BarChart className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-3">
+                          <div className="p-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg shadow-md">
+                            <BarChart className="w-5 h-5 text-white" />
+                          </div>
                           Interactive Dashboards
                         </h4>
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                           {dataAssetsDetails.dashboards.map((dashboard, index) => (
-                            <Card key={index} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm group hover:shadow-lg transition-all duration-300">
-                              <CardContent className="p-4">
-                                <h5 className="font-medium text-slate-800 dark:text-slate-100 mb-2">{dashboard.title}</h5>
-                                <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">{dashboard.description}</p>
-                                <div className="flex items-center justify-between">
-                                  <Badge variant="outline" className="text-xs">{dashboard.theme}</Badge>
-                                  <Button variant="ghost" size="sm" asChild className="opacity-0 group-hover:opacity-100 transition-opacity">
+                            <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm group hover:shadow-xl hover:scale-105 transition-all duration-300 border-0 shadow-lg">
+                              <CardContent className="p-5">
+                                <div className="flex items-start justify-between mb-3">
+                                  <div className="p-2 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 rounded-lg">
+                                    {dashboard.icon}
+                                  </div>
+                                  <Button variant="ghost" size="sm" asChild className="opacity-0 group-hover:opacity-100 transition-opacity p-2">
                                     <a href={dashboard.link} target="_blank" rel="noopener noreferrer">
-                                      <ExternalLink className="w-3 h-3" />
+                                      <ExternalLink className="w-4 h-4" />
                                     </a>
                                   </Button>
                                 </div>
+                                <h5 className="font-semibold text-slate-800 dark:text-slate-100 mb-2 leading-snug">{dashboard.title}</h5>
+                                <p className="text-xs text-slate-600 dark:text-slate-300 mb-3 leading-relaxed">{dashboard.description}</p>
+                                <Badge variant="outline" className="text-xs font-medium bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300">
+                                  {dashboard.theme}
+                                </Badge>
                               </CardContent>
                             </Card>
                           ))}
                         </div>
                       </div>
 
-                      {/* SDG Reports */}
+                      {/* SDG Reports with Enhanced Design */}
                       <div>
-                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
-                          <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-3">
+                          <div className="p-2 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg shadow-md">
+                            <TrendingUp className="w-5 h-5 text-white" />
+                          </div>
                           SDG Data Stories & Reports
                         </h4>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                           {dataAssetsDetails.reports.map((report, index) => (
                             <div key={index} className="group">
-                              <Button variant="ghost" className="w-full justify-between text-left h-auto p-3" asChild>
+                              <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-green-50 hover:to-teal-50 dark:hover:from-green-900/20 dark:hover:to-teal-900/20 rounded-lg transition-all duration-300" asChild>
                                 <a href={report.link} target="_blank" rel="noopener noreferrer">
-                                  <span className="text-sm text-slate-600 dark:text-slate-300">{report.title}</span>
-                                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                  <span className="text-sm text-slate-600 dark:text-slate-300 font-medium">{report.title}</span>
+                                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-green-600 dark:text-green-400" />
                                 </a>
                               </Button>
                             </div>
@@ -272,19 +380,21 @@ const PortfolioSection = () => {
                         </div>
                       </div>
 
-                      {/* Articles */}
+                      {/* Articles with Enhanced Design */}
                       <div>
-                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
-                          <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-3">
+                          <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-md">
+                            <FileText className="w-5 h-5 text-white" />
+                          </div>
                           Data Dialogue Articles
                         </h4>
                         <div className="grid md:grid-cols-2 gap-3">
                           {dataAssetsDetails.articles.map((article, index) => (
                             <div key={index} className="group">
-                              <Button variant="ghost" className="w-full justify-between text-left h-auto p-3" asChild>
+                              <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/20 dark:hover:to-pink-900/20 rounded-lg transition-all duration-300" asChild>
                                 <a href={article.link} target="_blank" rel="noopener noreferrer">
-                                  <span className="text-sm text-slate-600 dark:text-slate-300">{article.title}</span>
-                                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                  <span className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">{article.title}</span>
+                                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-purple-600 dark:text-purple-400" />
                                 </a>
                               </Button>
                             </div>
@@ -292,7 +402,7 @@ const PortfolioSection = () => {
                         </div>
                       </div>
 
-                      <div className="text-center pt-4">
+                      <div className="text-center pt-6 border-t border-slate-200/50 dark:border-slate-700/50">
                         <p className="text-sm text-slate-500 dark:text-slate-400 italic">
                           Built during tenure at India Data Insights – Sattva Consulting
                         </p>
@@ -302,57 +412,6 @@ const PortfolioSection = () => {
                 </Collapsible>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* CV Projects Section */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-8 text-center">
-            Featured Projects
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            {cvProjects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
-                <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                          {project.icon}
-                        </div>
-                        <Badge variant="outline" className="text-xs">
-                          {project.category}
-                        </Badge>
-                      </div>
-                      <CardTitle className="text-xl font-serif text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
-                        {project.title}
-                      </CardTitle>
-                    </div>
-                  </div>
-                </CardHeader>
-                
-                <CardContent className="space-y-4">
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-3">
-                    <div className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">Impact:</div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 italic">
-                      {project.impact}
-                    </p>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-1">
-                    {project.techStack.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="secondary" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
 
