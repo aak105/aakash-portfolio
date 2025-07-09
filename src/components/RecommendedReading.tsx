@@ -68,7 +68,7 @@ const RecommendedReading = () => {
               <Card key={index} className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow duration-300 overflow-hidden">
                 <CardContent className="p-0">
                   {book.image && (
-                    <div className="aspect-[3/4] overflow-hidden">
+                    <div className="aspect-[3/4] h-48 overflow-hidden">
                       <img 
                         src={book.image} 
                         alt={book.title}

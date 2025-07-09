@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ChevronDown, Quote, Database, BarChart3, Users } from "lucide-react";
+import { Quote, Database, BarChart3, Users } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import AnimatedBackground from "@/components/AnimatedBackground";
 
@@ -125,11 +125,6 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ChevronDown className="w-6 h-6 text-slate-400 dark:text-slate-500" />
       </div>
     </section>
   );
