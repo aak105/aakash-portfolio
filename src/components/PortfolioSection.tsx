@@ -99,24 +99,30 @@ const PortfolioSection = () => {
 
   const dataAssetsDetails = {
     dashboards: [
-      { title: "Aadhaar Coverage", description: "Comprehensive analysis of Aadhaar adoption across India", theme: "Identity & Digital Infrastructure" },
-      { title: "Telecom Usage", description: "India's telecommunications infrastructure and usage patterns", theme: "Telecommunications & Connectivity" },
-      { title: "Economic Indicators", description: "Key economic metrics and trends analysis", theme: "Economic Growth & Development" },
-      { title: "Water Quality", description: "Water quality assessment across Indian states", theme: "Environmental Monitoring" },
-      { title: "Rural Water Supply", description: "Rural piped water supply coverage analysis", theme: "Rural Infrastructure" },
-      { title: "Education PGI", description: "Performance Grading Index for education sector", theme: "Education Analytics" },
-      { title: "SDG Score", description: "Sustainable Development Goals progress tracking", theme: "Sustainable Development" },
-      { title: "School Dashboard", description: "Comprehensive education infrastructure analysis", theme: "Educational Infrastructure" }
+      { title: "Aadhaar Coverage", description: "Comprehensive analysis of Aadhaar adoption across India", theme: "Identity & Digital Infrastructure", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/AadhaarCoverage/Dashboard" },
+      { title: "Telecom Usage", description: "India's telecommunications infrastructure and usage patterns", theme: "Telecommunications & Connectivity", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/TelecomUsage/Dashboard" },
+      { title: "Economic Indicators", description: "Key economic metrics and trends analysis", theme: "Economic Growth & Development", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/EconomicIndicators/Dashboard" },
+      { title: "Water Quality", description: "Water quality assessment across Indian states", theme: "Environmental Monitoring", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/WaterQuality/Dashboard" },
+      { title: "Rural Water Supply", description: "Rural piped water supply coverage analysis", theme: "Rural Infrastructure", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/RuralWaterSupply/Dashboard" },
+      { title: "Education PGI", description: "Performance Grading Index for education sector", theme: "Education Analytics", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/EducationPGI/Dashboard" },
+      { title: "SDG Score", description: "Sustainable Development Goals progress tracking", theme: "Sustainable Development", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/SDGScore/Dashboard" },
+      { title: "School Dashboard", description: "Comprehensive education infrastructure analysis", theme: "Educational Infrastructure", link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/SchoolDashboard/Dashboard" }
     ],
     reports: [
-      "SDG 1 – No Poverty", "SDG 2 – Zero Hunger", "SDG 4 – Quality Education", 
-      "SDG 9 – Innovation", "SDG 8 – Decent Work", "SDG 7 – Clean Energy"
+      { title: "SDG 1 – No Poverty", link: "https://sattva.co.in/knowledge/sdg-report-poverty" },
+      { title: "SDG 2 – Zero Hunger", link: "https://sattva.co.in/knowledge/sdg-report-hunger" },
+      { title: "SDG 4 – Quality Education", link: "https://sattva.co.in/knowledge/sdg-report-education" },
+      { title: "SDG 9 – Innovation", link: "https://sattva.co.in/knowledge/sdg-report-innovation" },
+      { title: "SDG 8 – Decent Work", link: "https://sattva.co.in/knowledge/sdg-report-work" },
+      { title: "SDG 7 – Clean Energy", link: "https://sattva.co.in/knowledge/sdg-report-energy" }
     ],
     articles: [
-      "Are All Our Children in School?", "What Does the NFHS Show About Women's Health in India?",
-      "The State of Schools in India", "Groundwater: Making the Invisible Visible",
-      "Tuberculosis Post-Pandemic: A Call for Better Health Infrastructure Funding",
-      "On the Road to Climate Resilience: Sustainable Agriculture in India"
+      { title: "Are All Our Children in School?", link: "https://sattva.co.in/knowledge/children-school-analysis" },
+      { title: "What Does the NFHS Show About Women's Health in India?", link: "https://sattva.co.in/knowledge/nfhs-womens-health" },
+      { title: "The State of Schools in India", link: "https://sattva.co.in/knowledge/state-schools-india" },
+      { title: "Groundwater: Making the Invisible Visible", link: "https://sattva.co.in/knowledge/groundwater-analysis" },
+      { title: "Tuberculosis Post-Pandemic: A Call for Better Health Infrastructure Funding", link: "https://sattva.co.in/knowledge/tuberculosis-health-infrastructure" },
+      { title: "On the Road to Climate Resilience: Sustainable Agriculture in India", link: "https://sattva.co.in/knowledge/climate-agriculture" }
     ]
   };
 
@@ -147,10 +153,21 @@ const PortfolioSection = () => {
           <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 dark:text-slate-100 mb-6">
             Projects & Impact
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8">
             Building systems that bridge technology and governance for meaningful change
           </p>
-          <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto mt-6"></div>
+          
+          {/* Peter Drucker Quote with increased font size */}
+          <div className="bg-gradient-to-r from-blue-50/50 to-purple-50/50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-6 max-w-3xl mx-auto border border-blue-200/30 dark:border-blue-700/30">
+            <blockquote className="text-xl md:text-2xl font-serif italic text-slate-700 dark:text-slate-200 leading-relaxed">
+              "The best way to predict the future is to create it."
+            </blockquote>
+            <cite className="block text-base text-slate-500 dark:text-slate-400 mt-3 font-medium">
+              — Peter Drucker
+            </cite>
+          </div>
+          
+          <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto mt-8"></div>
         </div>
 
         {/* Data Assets Section with Collapsible Details */}
@@ -224,11 +241,18 @@ const PortfolioSection = () => {
                         </h4>
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                           {dataAssetsDetails.dashboards.map((dashboard, index) => (
-                            <Card key={index} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
+                            <Card key={index} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm group hover:shadow-lg transition-all duration-300">
                               <CardContent className="p-4">
                                 <h5 className="font-medium text-slate-800 dark:text-slate-100 mb-2">{dashboard.title}</h5>
                                 <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">{dashboard.description}</p>
-                                <Badge variant="outline" className="text-xs">{dashboard.theme}</Badge>
+                                <div className="flex items-center justify-between">
+                                  <Badge variant="outline" className="text-xs">{dashboard.theme}</Badge>
+                                  <Button variant="ghost" size="sm" asChild className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <a href={dashboard.link} target="_blank" rel="noopener noreferrer">
+                                      <ExternalLink className="w-3 h-3" />
+                                    </a>
+                                  </Button>
+                                </div>
                               </CardContent>
                             </Card>
                           ))}
@@ -241,9 +265,16 @@ const PortfolioSection = () => {
                           <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
                           SDG Data Stories & Reports
                         </h4>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                           {dataAssetsDetails.reports.map((report, index) => (
-                            <Badge key={index} variant="secondary" className="text-xs">{report}</Badge>
+                            <div key={index} className="group">
+                              <Button variant="ghost" className="w-full justify-between text-left h-auto p-3" asChild>
+                                <a href={report.link} target="_blank" rel="noopener noreferrer">
+                                  <span className="text-sm text-slate-600 dark:text-slate-300">{report.title}</span>
+                                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </a>
+                              </Button>
+                            </div>
                           ))}
                         </div>
                       </div>
@@ -256,8 +287,13 @@ const PortfolioSection = () => {
                         </h4>
                         <div className="grid md:grid-cols-2 gap-3">
                           {dataAssetsDetails.articles.map((article, index) => (
-                            <div key={index} className="text-sm text-slate-600 dark:text-slate-300 p-2 bg-white/60 dark:bg-slate-800/60 rounded">
-                              {article}
+                            <div key={index} className="group">
+                              <Button variant="ghost" className="w-full justify-between text-left h-auto p-3" asChild>
+                                <a href={article.link} target="_blank" rel="noopener noreferrer">
+                                  <span className="text-sm text-slate-600 dark:text-slate-300">{article.title}</span>
+                                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </a>
+                              </Button>
                             </div>
                           ))}
                         </div>
