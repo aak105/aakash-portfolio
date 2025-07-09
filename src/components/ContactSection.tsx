@@ -1,58 +1,10 @@
 
-import { useState } from "react";
-import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { supabase } from "@/integrations/supabase/client";
 import AnimatedBackground from "@/components/AnimatedBackground";
 
 const ContactSection = () => {
-  // Form state management
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            message: formData.message
-          }
-        ]);
-
-      if (error) throw error;
-
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-500 relative">
       {/* Animated Background */}
@@ -115,64 +67,28 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Tableau Portfolio */}
             <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
               <CardContent className="p-6">
-                {isSubmitted ? (
-                  <div className="text-center py-8">
-                    <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-slate-800 dark:text-slate-100 mb-2">
-                      Message Sent!
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-300">
-                      Thank you for reaching out. I'll get back to you soon.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <Input
-                        type="text"
-                        name="name"
-                        placeholder="Your Name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full"
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        type="email"
-                        name="email"
-                        placeholder="Your Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full"
-                      />
-                    </div>
-                    <div>
-                      <Textarea
-                        name="message"
-                        placeholder="Your Message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={4}
-                        className="w-full"
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full flex items-center gap-2"
+                <div className="text-center">
+                  <h3 className="text-xl font-medium text-slate-800 dark:text-slate-100 mb-4">
+                    Data Visualizations
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-300 mb-6">
+                    Explore my interactive dashboards and data stories on Tableau Public
+                  </p>
+                  <Button asChild className="w-full">
+                    <a
+                      href="https://public.tableau.com/app/profile/aakash.sharma2258"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
                     >
-                      <Send className="w-4 h-4" />
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </Button>
-                  </form>
-                )}
+                      <ExternalLink className="w-4 h-4" />
+                      View Tableau Portfolio
+                    </a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>

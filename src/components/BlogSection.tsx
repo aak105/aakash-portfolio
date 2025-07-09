@@ -240,19 +240,6 @@ const BlogSection = () => {
             </div>
           </div>
         )}
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <p className="text-slate-600 dark:text-slate-300 mb-6">
-            Interested in exploring more thoughts on governance and technology?
-          </p>
-          <Button variant="outline" size="lg" asChild>
-            <a href="https://www.linkedin.com/in/aakash-sharma-profile" target="_blank" rel="noopener noreferrer">
-              Follow on LinkedIn
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
-          </Button>
-        </div>
       </div>
     </section>
   );
