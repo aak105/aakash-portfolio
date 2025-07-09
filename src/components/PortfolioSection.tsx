@@ -157,58 +157,51 @@ const PortfolioSection = () => {
             Building systems that bridge technology and governance for meaningful change
           </p>
           
-          {/* Peter Drucker Quote with increased font size */}
-          <div className="bg-gradient-to-r from-blue-50/50 to-purple-50/50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-6 max-w-3xl mx-auto border border-blue-200/30 dark:border-blue-700/30">
-            <blockquote className="text-xl md:text-2xl font-serif italic text-slate-700 dark:text-slate-200 leading-relaxed">
-              "The best way to predict the future is to create it."
-            </blockquote>
-            <cite className="block text-base text-slate-500 dark:text-slate-400 mt-3 font-medium">
-              — Peter Drucker
-            </cite>
-          </div>
-          
-          <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto mt-8"></div>
+          <div className="w-24 h-px bg-slate-300 dark:bg-slate-600 mx-auto"></div>
         </div>
 
-        {/* Data Assets Section with Collapsible Details */}
+        {/* Data Assets Section with Enhanced Visual Styling */}
         <div className="mb-16">
-          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-8 border border-blue-200/50 dark:border-blue-700/50 relative overflow-hidden">
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <Database className="absolute top-4 right-4 w-24 h-24 text-blue-500" />
-              <BarChart className="absolute bottom-4 left-4 w-20 h-20 text-cyan-500" />
+          <div className="bg-gradient-to-br from-blue-50 via-indigo-50/50 to-purple-50/30 dark:from-blue-900/30 dark:via-indigo-900/20 dark:to-purple-900/20 rounded-3xl p-8 border border-blue-200/60 dark:border-blue-700/40 relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+            {/* Enhanced Background Pattern */}
+            <div className="absolute inset-0 opacity-5 dark:opacity-10">
+              <Database className="absolute top-6 right-6 w-32 h-32 text-blue-500 animate-pulse" />
+              <BarChart className="absolute bottom-6 left-6 w-28 h-28 text-indigo-500 animate-pulse delay-1000" />
+              <TrendingUp className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 text-purple-500 animate-pulse delay-2000" />
             </div>
             
             <div className="relative z-10">
               <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Database className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-                  <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl shadow-lg">
+                    <Database className="w-10 h-10 text-white" />
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-serif font-medium bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
                     Data Assets & Analytics
                   </h3>
                 </div>
-                <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+                <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
                   Specialized in creating data-driven solutions for public governance and social impact
                 </p>
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">20+</div>
+                <div className="text-center p-6 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-blue-200/40 dark:border-blue-700/40">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent mb-3">20+</div>
                   <div className="text-sm text-slate-600 dark:text-slate-300">
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">Dashboards Built</span> for decision-making
+                    <span className="font-semibold text-blue-700 dark:text-blue-400">Dashboards Built</span> for decision-making
                   </div>
                 </div>
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">100+</div>
+                <div className="text-center p-6 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-indigo-200/40 dark:border-indigo-700/40">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent mb-3">100+</div>
                   <div className="text-sm text-slate-600 dark:text-slate-300">
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">Data Assets</span> including reports and visualizations
+                    <span className="font-semibold text-indigo-700 dark:text-indigo-400">Data Assets</span> including reports and visualizations
                   </div>
                 </div>
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
+                <div className="text-center p-6 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-purple-200/40 dark:border-purple-700/40">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent mb-3">50+</div>
                   <div className="text-sm text-slate-600 dark:text-slate-300">
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">Datasets</span> from government and international sources
+                    <span className="font-semibold text-purple-700 dark:text-purple-400">Datasets</span> from government and international sources
                   </div>
                 </div>
               </div>
@@ -219,14 +212,14 @@ const PortfolioSection = () => {
                     <Button 
                       variant="outline" 
                       size="lg"
-                      className="group border-blue-300 dark:border-blue-600 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30"
+                      className="group border-2 border-blue-300/60 dark:border-blue-600/60 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300"
                     >
-                      <Database className="w-4 h-4 mr-2" />
+                      <Database className="w-5 h-5 mr-2" />
                       Explore Data Assets
                       {isDataAssetsOpen ? (
-                        <ChevronUp className="w-4 h-4 ml-2 group-hover:-translate-y-1 transition-transform" />
+                        <ChevronUp className="w-5 h-5 ml-2 group-hover:-translate-y-1 transition-transform" />
                       ) : (
-                        <ChevronDown className="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform" />
+                        <ChevronDown className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" />
                       )}
                     </Button>
                   </CollapsibleTrigger>

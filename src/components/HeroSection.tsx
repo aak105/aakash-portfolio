@@ -100,13 +100,13 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Quote Section with Enhanced Styling */}
+          {/* Quote Section with Enhanced Styling and Larger Font */}
           <div className="relative py-8">
-            <Quote className="w-8 h-8 text-blue-400 dark:text-blue-500 mx-auto mb-4" />
-            <blockquote className="text-base md:text-lg italic font-serif text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">
+            <Quote className="w-10 h-10 text-blue-400 dark:text-blue-500 mx-auto mb-6" />
+            <blockquote className="text-xl md:text-2xl lg:text-3xl italic font-serif text-slate-700 dark:text-slate-200 max-w-3xl mx-auto leading-relaxed">
               "{content?.quote}"
             </blockquote>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">- Peter Drucker</p>
+            <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 mt-4">- Peter Drucker</p>
           </div>
 
           {/* Statistics Section - Key Performance Metrics */}
