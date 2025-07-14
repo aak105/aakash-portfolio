@@ -50,23 +50,26 @@
         function updateCalendlyTheme() {
           const calendlyWidget = document.querySelector('.calendly-badge-widget');
           if (calendlyWidget) {
-            // Position below navigation bar
+            // Position in bottom right (where day/night toggle was)
             calendlyWidget.style.right = '24px';
-            calendlyWidget.style.top = '80px'; // Moved below nav bar
-            calendlyWidget.style.bottom = 'auto';
+            calendlyWidget.style.top = 'auto';
+            calendlyWidget.style.bottom = '24px';
             calendlyWidget.style.transform = 'none';
             calendlyWidget.style.borderRadius = '50px';
             calendlyWidget.style.border = 'none';
             calendlyWidget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
             calendlyWidget.style.zIndex = '60';
+            calendlyWidget.style.fontSize = '12px'; // Smaller text
+            calendlyWidget.style.padding = '8px 16px'; // Smaller padding
+            calendlyWidget.style.opacity = '0.8'; // Make transparent
             
-            // Theme-responsive colors
+            // Theme-responsive colors with transparency
             const isDark = document.documentElement.classList.contains('dark');
             if (isDark) {
-              calendlyWidget.style.backgroundColor = '#1e293b';
+              calendlyWidget.style.backgroundColor = 'rgba(30, 41, 59, 0.7)'; // Transparent dark
               calendlyWidget.style.color = '#ffffff';
             } else {
-              calendlyWidget.style.backgroundColor = '#0069ff';
+              calendlyWidget.style.backgroundColor = 'rgba(0, 105, 255, 0.7)'; // Transparent blue
               calendlyWidget.style.color = '#ffffff';
             }
           }

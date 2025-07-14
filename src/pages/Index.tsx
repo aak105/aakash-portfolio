@@ -101,10 +101,10 @@ const Index = () => {
         </div>
       </main>
       
-      {/* Dark/Light Mode Toggle - Bottom Right Position */}
+      {/* Dark/Light Mode Toggle - Bottom Left Position */}
       <button
         onClick={toggleTheme}
-        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 group shadow-lg hover:shadow-xl"
+        className="fixed bottom-6 left-6 z-50 p-3 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 group shadow-lg hover:shadow-xl"
         aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
       >
         {darkMode ? (
