@@ -50,14 +50,15 @@
         function updateCalendlyTheme() {
           const calendlyWidget = document.querySelector('.calendly-badge-widget');
           if (calendlyWidget) {
-            // Position in middle right
+            // Position in top right corner
             calendlyWidget.style.right = '24px';
-            calendlyWidget.style.top = '50%';
+            calendlyWidget.style.top = '24px';
             calendlyWidget.style.bottom = 'auto';
-            calendlyWidget.style.transform = 'translateY(-50%)';
+            calendlyWidget.style.transform = 'none';
             calendlyWidget.style.borderRadius = '50px';
             calendlyWidget.style.border = 'none';
             calendlyWidget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            calendlyWidget.style.zIndex = '60';
             
             // Theme-responsive colors
             const isDark = document.documentElement.classList.contains('dark');
@@ -89,7 +90,7 @@
         transition: all 0.3s ease !important;
       }
       .calendly-badge-widget:hover {
-        transform: translateY(-50%) scale(1.05) !important;
+        transform: scale(1.05) !important;
       }
     </style>
     <!-- Calendly badge widget end -->
