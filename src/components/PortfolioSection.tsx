@@ -337,7 +337,7 @@ const PortfolioSection = () => {
                           Interactive Dashboards
                         </h4>
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                          {dataAssetsDetails.dashboards.map((dashboard, index) => (
+                          {(dataAssetsDetails.dashboards || []).map((dashboard, index) => (
                             <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm group hover:shadow-xl hover:scale-105 transition-all duration-300 border-0 shadow-lg">
                               <CardContent className="p-5">
                                 <div className="flex items-start justify-between mb-3">
@@ -367,7 +367,7 @@ const PortfolioSection = () => {
                           SDG Data Stories & Reports
                         </h4>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                          {dataAssetsDetails.sdgReports.map((report, index) => (
+                          {(dataAssetsDetails.sdgReports || []).map((report, index) => (
                             <div key={index} className="group">
                               <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-green-50 hover:to-teal-50 dark:hover:from-green-900/20 dark:hover:to-teal-900/20 rounded-lg transition-all duration-300" asChild>
                                 <a href={report.link} target="_blank" rel="noopener noreferrer">
@@ -389,7 +389,7 @@ const PortfolioSection = () => {
                           Data Dialogue Articles
                         </h4>
                         <div className="grid md:grid-cols-2 gap-3">
-                          {dataAssetsDetails.dataDialogue.map((article, index) => (
+                          {(dataAssetsDetails.dataDialogue || []).map((article, index) => (
                             <div key={index} className="group">
                               <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/20 dark:hover:to-pink-900/20 rounded-lg transition-all duration-300" asChild>
                                 <a href={article.link} target="_blank" rel="noopener noreferrer">
@@ -411,7 +411,7 @@ const PortfolioSection = () => {
                           Sustainable Agriculture Reports
                         </h4>
                         <div className="grid md:grid-cols-2 gap-3">
-                          {dataAssetsDetails.sustainableAgriculture.map((report, index) => (
+                          {(dataAssetsDetails.sustainableAgriculture || []).map((report, index) => (
                             <div key={index} className="group">
                               <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-green-50 dark:hover:from-emerald-900/20 dark:hover:to-green-900/20 rounded-lg transition-all duration-300" asChild>
                                 <a href={report.link} target="_blank" rel="noopener noreferrer">
@@ -433,7 +433,7 @@ const PortfolioSection = () => {
                           Data Storytelling & Social Media
                         </h4>
                         <div className="grid md:grid-cols-1 gap-3">
-                          {dataAssetsDetails.socialMedia.map((content, index) => (
+                          {(dataAssetsDetails.socialMedia || []).map((content, index) => (
                             <div key={index} className="group">
                               <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-pink-50 hover:to-rose-50 dark:hover:from-pink-900/20 dark:hover:to-rose-900/20 rounded-lg transition-all duration-300" asChild>
                                 <a href={content.link} target="_blank" rel="noopener noreferrer">
