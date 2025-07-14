@@ -98,79 +98,82 @@ const PortfolioSection = () => {
   ];
 
   const dataAssetsDetails = {
+    dataDialogue: [
+      { title: "Are all our children in school?", link: "https://indiadatainsights.com/are-all-our-children-in-school/" },
+      { title: "what does the nfhs show about womens health in India ?", link: "https://indiadatainsights.com/what-does-the-nfhs-show-about-womens-health-in-india/" },
+      { title: "State of Schools in India", link: "https://indiadatainsights.com/the-state-of-schools-in-india/" },
+      { title: "Groundwater", link: "https://indiadatainsights.com/groundwater-making-the-invisible-visible/" },
+      { title: "TB post pandemic", link: "https://indiadatainsights.com/tuberculosis-post-pandemic-a-call-for-better-health-infrastructure-funding/" },
+      { title: "Access to Clean water", link: "https://indiadatainsights.com/sdg-6-cleanwater-sanitation/" },
+      { title: "Access to Clean Energy", link: "https://indiadatainsights.com/this-month-from-india-data-insights-we-are-looking-at-sdg-7/" },
+      { title: "Startup & Innovation", link: "https://indiadatainsights.com/exploring-indias-innovation-and-startup-landscape-insights-from-the-latest-data/" }
+    ],
     dashboards: [
       { 
-        title: "Aadhaar Coverage", 
-        description: "Comprehensive analysis of Aadhaar adoption across India", 
-        theme: "Identity & Digital Infrastructure", 
-        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/AadhaarCoverage/Dashboard",
+        title: "Aadhar Coverage Dashboard", 
+        description: "Enhancing the interactive dashboard with updated Aadhaar coverage data", 
+        link: "https://indiadatainsights.com/IDI-Interact/aadhaar-coverage/",
         icon: <Database className="w-5 h-5 text-blue-600 dark:text-blue-400" />
       },
       { 
-        title: "Telecom Usage", 
-        description: "India's telecommunications infrastructure and usage patterns", 
-        theme: "Telecommunications & Connectivity", 
-        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/TelecomUsage/Dashboard",
+        title: "Indias Telecome Usage Data", 
+        description: "Updating and maintaining an interactive dashboard on India's telecom usage", 
+        link: "https://indiadatainsights.com/IDI-Interact/indias-telecom-usage/",
         icon: <Zap className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
       },
       { 
-        title: "Economic Indicators", 
-        description: "Key economic metrics and trends analysis", 
-        theme: "Economic Growth & Development", 
-        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/EconomicIndicators/Dashboard",
+        title: "India's Economic Indicators", 
+        description: "Developing an interactive dashboard showcasing economic indicators", 
+        link: "https://indiadatainsights.com/IDI-Interact/economic-indicators/",
         icon: <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
       },
       { 
-        title: "Water Quality", 
-        description: "Water quality assessment across Indian states", 
-        theme: "Environmental Monitoring", 
-        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/WaterQuality/Dashboard",
+        title: "Drinking Water Quality", 
+        description: "Creating and maintaining a dashboard on water quality indicators", 
+        link: "https://indiadatainsights.com/IDI-Interact/water-quality-dashboard/",
         icon: <BarChart className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
       },
       { 
-        title: "Rural Water Supply", 
-        description: "Rural piped water supply coverage analysis", 
-        theme: "Rural Infrastructure", 
-        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/RuralWaterSupply/Dashboard",
+        title: "Rural piped water supply coverage", 
+        description: "Creating and updating a dashboard on rural piped water supply", 
+        link: "https://indiadatainsights.com/IDI-Interact/rural-piped-water-supply-coverage/",
         icon: <Users className="w-5 h-5 text-teal-600 dark:text-teal-400" />
       },
       { 
-        title: "Education PGI", 
-        description: "Performance Grading Index for education sector", 
-        theme: "Education Analytics", 
-        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/EducationPGI/Dashboard",
+        title: "Performance Grading Index", 
+        description: "Designing and updating a dashboard on education performance", 
+        link: "https://indiadatainsights.com/IDI-Interact/performance-grading-index/",
         icon: <BookOpen className="w-5 h-5 text-purple-600 dark:text-purple-400" />
       },
       { 
-        title: "SDG Score", 
-        description: "Sustainable Development Goals progress tracking", 
-        theme: "Sustainable Development", 
-        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/SDGScore/Dashboard",
+        title: "SDG Index Dashboard", 
+        description: "Developing an interactive dashboard for SDG index data", 
+        link: "https://indiadatainsights.com/IDI-Interact/sdg-score-dashboard/",
         icon: <Target className="w-5 h-5 text-orange-600 dark:text-orange-400" />
       },
       { 
-        title: "School Dashboard", 
-        description: "Comprehensive education infrastructure analysis", 
-        theme: "Educational Infrastructure", 
-        link: "https://public.tableau.com/app/profile/aakash.sharma7942/viz/SchoolDashboard/Dashboard",
+        title: "Education in Indian Schools", 
+        description: "Updating interactive dashboards with school-related data", 
+        link: "https://indiadatainsights.com/IDI-Interact/education-in-india-schools/",
         icon: <PieChart className="w-5 h-5 text-pink-600 dark:text-pink-400" />
       }
     ],
-    reports: [
-      { title: "SDG 1 – No Poverty", link: "https://sattva.co.in/knowledge/sdg-report-poverty" },
-      { title: "SDG 2 – Zero Hunger", link: "https://sattva.co.in/knowledge/sdg-report-hunger" },
-      { title: "SDG 4 – Quality Education", link: "https://sattva.co.in/knowledge/sdg-report-education" },
-      { title: "SDG 9 – Innovation", link: "https://sattva.co.in/knowledge/sdg-report-innovation" },
-      { title: "SDG 8 – Decent Work", link: "https://sattva.co.in/knowledge/sdg-report-work" },
-      { title: "SDG 7 – Clean Energy", link: "https://sattva.co.in/knowledge/sdg-report-energy" }
+    sdgReports: [
+      { title: "SDG data story from SDG 1", link: "https://indiadatainsights.com/reports/sdg-1-no-poverty-datashots/" },
+      { title: "SDG data story from SDG 2", link: "https://indiadatainsights.com/reports/sdg-2-zero-hunger-datashots/" },
+      { title: "SDG data story from SDG 4", link: "https://indiadatainsights.com/reports/sdg-4-quality-education-datashots/" },
+      { title: "SDG data story from SDG 9", link: "https://indiadatainsights.com/reports/sdg-9-industry-infrastructure-and-innovation-datashots/" },
+      { title: "SDG data story from SDG 8", link: "https://indiadatainsights.com/reports/sdg-8-decent-work-and-economic-growth-datashots/" },
+      { title: "SDG data story from SDG 7", link: "https://indiadatainsights.com/reports/sdg-7-affordable-and-clean-energy-datashots/" }
     ],
-    articles: [
-      { title: "Are All Our Children in School?", link: "https://sattva.co.in/knowledge/children-school-analysis" },
-      { title: "What Does the NFHS Show About Women's Health in India?", link: "https://sattva.co.in/knowledge/nfhs-womens-health" },
-      { title: "The State of Schools in India", link: "https://sattva.co.in/knowledge/state-schools-india" },
-      { title: "Groundwater: Making the Invisible Visible", link: "https://sattva.co.in/knowledge/groundwater-analysis" },
-      { title: "Tuberculosis Post-Pandemic: A Call for Better Health Infrastructure Funding", link: "https://sattva.co.in/knowledge/tuberculosis-health-infrastructure" },
-      { title: "On the Road to Climate Resilience: Sustainable Agriculture in India", link: "https://sattva.co.in/knowledge/climate-agriculture" }
+    sustainableAgriculture: [
+      { title: "Sustainable Agriculture - Organic Farming", link: "https://indiadatainsights.com/product/sustainable-agriculture-in-india-organic-farming/" },
+      { title: "Sustainable Agriculture - Soil Health", link: "https://indiadatainsights.com/product/sustainable-agriculture-in-india-soil-health/" },
+      { title: "Sustainable Agriculture - Water Management", link: "https://indiadatainsights.com/product/sustainable-agriculture-in-india-water-management/" },
+      { title: "Sustainable Agriculture - Agriculture Input", link: "https://indiadatainsights.com/product/sustainable-agriculture-in-india-agriculture-inputs/" }
+    ],
+    socialMedia: [
+      { title: "Create Data Design and story for online reach", link: "https://www.instagram.com/indiadatainsights/" }
     ]
   };
 
@@ -349,9 +352,6 @@ const PortfolioSection = () => {
                                 </div>
                                 <h5 className="font-semibold text-slate-800 dark:text-slate-100 mb-2 leading-snug">{dashboard.title}</h5>
                                 <p className="text-xs text-slate-600 dark:text-slate-300 mb-3 leading-relaxed">{dashboard.description}</p>
-                                <Badge variant="outline" className="text-xs font-medium bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300">
-                                  {dashboard.theme}
-                                </Badge>
                               </CardContent>
                             </Card>
                           ))}
@@ -367,7 +367,7 @@ const PortfolioSection = () => {
                           SDG Data Stories & Reports
                         </h4>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                          {dataAssetsDetails.reports.map((report, index) => (
+                          {dataAssetsDetails.sdgReports.map((report, index) => (
                             <div key={index} className="group">
                               <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-green-50 hover:to-teal-50 dark:hover:from-green-900/20 dark:hover:to-teal-900/20 rounded-lg transition-all duration-300" asChild>
                                 <a href={report.link} target="_blank" rel="noopener noreferrer">
@@ -380,7 +380,7 @@ const PortfolioSection = () => {
                         </div>
                       </div>
 
-                      {/* Articles with Enhanced Design */}
+                      {/* Data Dialogue Articles */}
                       <div>
                         <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-3">
                           <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-md">
@@ -389,12 +389,56 @@ const PortfolioSection = () => {
                           Data Dialogue Articles
                         </h4>
                         <div className="grid md:grid-cols-2 gap-3">
-                          {dataAssetsDetails.articles.map((article, index) => (
+                          {dataAssetsDetails.dataDialogue.map((article, index) => (
                             <div key={index} className="group">
                               <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/20 dark:hover:to-pink-900/20 rounded-lg transition-all duration-300" asChild>
                                 <a href={article.link} target="_blank" rel="noopener noreferrer">
                                   <span className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">{article.title}</span>
                                   <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-purple-600 dark:text-purple-400" />
+                                </a>
+                              </Button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Sustainable Agriculture Reports */}
+                      <div>
+                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-3">
+                          <div className="p-2 bg-gradient-to-r from-emerald-500 to-green-500 rounded-lg shadow-md">
+                            <Target className="w-5 h-5 text-white" />
+                          </div>
+                          Sustainable Agriculture Reports
+                        </h4>
+                        <div className="grid md:grid-cols-2 gap-3">
+                          {dataAssetsDetails.sustainableAgriculture.map((report, index) => (
+                            <div key={index} className="group">
+                              <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-green-50 dark:hover:from-emerald-900/20 dark:hover:to-green-900/20 rounded-lg transition-all duration-300" asChild>
+                                <a href={report.link} target="_blank" rel="noopener noreferrer">
+                                  <span className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">{report.title}</span>
+                                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-emerald-600 dark:text-emerald-400" />
+                                </a>
+                              </Button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Social Media Content */}
+                      <div>
+                        <h4 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-3">
+                          <div className="p-2 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg shadow-md">
+                            <Users className="w-5 h-5 text-white" />
+                          </div>
+                          Data Storytelling & Social Media
+                        </h4>
+                        <div className="grid md:grid-cols-1 gap-3">
+                          {dataAssetsDetails.socialMedia.map((content, index) => (
+                            <div key={index} className="group">
+                              <Button variant="ghost" className="w-full justify-between text-left h-auto p-4 hover:bg-gradient-to-r hover:from-pink-50 hover:to-rose-50 dark:hover:from-pink-900/20 dark:hover:to-rose-900/20 rounded-lg transition-all duration-300" asChild>
+                                <a href={content.link} target="_blank" rel="noopener noreferrer">
+                                  <span className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">{content.title}</span>
+                                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-pink-600 dark:text-pink-400" />
                                 </a>
                               </Button>
                             </div>
