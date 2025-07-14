@@ -1,5 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { BookOpen } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
 
@@ -69,34 +70,40 @@ const RecommendedReading = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {inspiringBooks.map((book, index) => (
-              <Card key={index} className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-                <CardContent className="p-0">
-                  {book.image && (
-                    <div className="aspect-[3/4] h-48 overflow-hidden">
-                      <img 
-                        src={book.image} 
-                        alt={book.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <div className="p-6">
-                    <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-2 line-clamp-2">
-                      {book.title}
-                    </h4>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
-                      by {book.author}
-                    </p>
-                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                      {book.description}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <Carousel className="w-full max-w-6xl mx-auto">
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {inspiringBooks.map((book, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow duration-300 overflow-hidden h-full">
+                    <CardContent className="p-0 h-full flex flex-col">
+                      {book.image && (
+                        <div className="aspect-[3/4] h-48 overflow-hidden">
+                          <img 
+                            src={book.image} 
+                            alt={book.title}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                      )}
+                      <div className="p-6 flex-1 flex flex-col">
+                        <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-2 line-clamp-2">
+                          {book.title}
+                        </h4>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+                          by {book.author}
+                        </p>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex-1">
+                          {book.description}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
       </div>
     </section>
