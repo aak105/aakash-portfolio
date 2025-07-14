@@ -20,7 +20,7 @@ const RecommendedReading = () => {
       image: "/lovable-uploads/85568b84-9355-460b-9b52-e6f00e681509.png"
     },
     {
-      title: "I Too Had a Dream",
+      title: "I Had a Dream",
       author: "Verghese Kurien",
       description: "An inspiring memoir on cooperative action, systems thinking, and rural transformation.",
       image: "/lovable-uploads/056b2bad-2659-437c-8a1a-350fca3aae54.png"
