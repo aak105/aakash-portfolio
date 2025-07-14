@@ -50,9 +50,9 @@
         function updateCalendlyTheme() {
           const calendlyWidget = document.querySelector('.calendly-badge-widget');
           if (calendlyWidget) {
-            // Position in top right corner
+            // Position below navigation bar
             calendlyWidget.style.right = '24px';
-            calendlyWidget.style.top = '24px';
+            calendlyWidget.style.top = '80px'; // Moved below nav bar
             calendlyWidget.style.bottom = 'auto';
             calendlyWidget.style.transform = 'none';
             calendlyWidget.style.borderRadius = '50px';
