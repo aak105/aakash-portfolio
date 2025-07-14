@@ -34,7 +34,13 @@ const RecommendedReading = () => {
       title: "The Third Way: India's Revolutionary Approach to Data",
       author: "Rahul Matthan",
       description: "A compelling framework for India's distinct path in data governance, balancing innovation and public interest.",
-      image: "" // No image provided for this book
+      image: "/lovable-uploads/f70bb283-fd4f-4373-aa4e-ea31a23df97d.png"
+    },
+    {
+      title: "Factfulness",
+      author: "Hans Rosling",
+      description: "Ten reasons we're wrong about the world—and why things are better than you think. A data-driven approach to understanding global progress.",
+      image: "/lovable-uploads/e0488fee-8215-46bf-928b-998da19e46d0.png"
     },
     {
       title: "The Emperor's Mirror",

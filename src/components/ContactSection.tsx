@@ -55,7 +55,7 @@ const ContactSection = () => {
                     <span>LinkedIn</span>
                   </a>
                   <a
-                    href="https://github.com/aakashsharma"
+                    href="https://github.com/aak105"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-800 transition-colors"
@@ -79,7 +79,7 @@ const ContactSection = () => {
                   </p>
                   <Button asChild className="w-full">
                     <a
-                      href="https://public.tableau.com/app/profile/aakash.sharma2258"
+                      href="https://public.tableau.com/app/profile/aakash.sharma7942/vizzes"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
