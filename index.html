@@ -37,7 +37,61 @@
     
     <!-- Calendly badge widget begin -->
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/aakashsharma-workmail/30min', text: 'Book a 1-on-1 call', color: '#0069ff', textColor: '#ffffff' }); }</script>
+    <script type="text/javascript">
+      window.onload = function() { 
+        Calendly.initBadgeWidget({ 
+          url: 'https://calendly.com/aakashsharma-workmail/30min', 
+          text: 'Book a 1-on-1 call', 
+          color: '#0069ff', 
+          textColor: '#ffffff' 
+        }); 
+        
+        // Custom positioning and theme-responsive styling
+        function updateCalendlyTheme() {
+          const calendlyWidget = document.querySelector('.calendly-badge-widget');
+          if (calendlyWidget) {
+            // Position in middle right
+            calendlyWidget.style.right = '24px';
+            calendlyWidget.style.top = '50%';
+            calendlyWidget.style.bottom = 'auto';
+            calendlyWidget.style.transform = 'translateY(-50%)';
+            calendlyWidget.style.borderRadius = '50px';
+            calendlyWidget.style.border = 'none';
+            calendlyWidget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            
+            // Theme-responsive colors
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) {
+              calendlyWidget.style.backgroundColor = '#1e293b';
+              calendlyWidget.style.color = '#ffffff';
+            } else {
+              calendlyWidget.style.backgroundColor = '#0069ff';
+              calendlyWidget.style.color = '#ffffff';
+            }
+          }
+        }
+        
+        // Initial styling
+        setTimeout(updateCalendlyTheme, 1000);
+        
+        // Watch for theme changes
+        const observer = new MutationObserver(updateCalendlyTheme);
+        observer.observe(document.documentElement, { 
+          attributes: true, 
+          attributeFilter: ['class'] 
+        });
+      }
+    </script>
+    <style>
+      /* Remove blue line and improve styling */
+      .calendly-badge-widget {
+        border-bottom: none !important;
+        transition: all 0.3s ease !important;
+      }
+      .calendly-badge-widget:hover {
+        transform: translateY(-50%) scale(1.05) !important;
+      }
+    </style>
     <!-- Calendly badge widget end -->
   </body>
 </html>
