@@ -70,29 +70,29 @@ const RecommendedReading = () => {
             </p>
           </div>
           
-          <Carousel className="w-full max-w-6xl mx-auto">
-            <CarouselContent className="-ml-2 md:-ml-4">
+          <Carousel className="w-full max-w-7xl mx-auto">
+            <CarouselContent className="-ml-3 md:-ml-4">
               {inspiringBooks.map((book, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-3 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
                   <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow duration-300 overflow-hidden h-full">
                     <CardContent className="p-0 h-full flex flex-col">
                       {book.image && (
-                        <div className="aspect-[3/4] h-48 overflow-hidden">
+                        <div className="aspect-[3/4] w-full">
                           <img 
                             src={book.image} 
                             alt={book.title}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-contain bg-white hover:scale-105 transition-transform duration-300"
                           />
                         </div>
                       )}
-                      <div className="p-6 flex-1 flex flex-col">
-                        <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-2 line-clamp-2">
+                      <div className="p-4 flex-1 flex flex-col">
+                        <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-1 text-sm line-clamp-2">
                           {book.title}
                         </h4>
-                        <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">
                           by {book.author}
                         </p>
-                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex-1">
+                        <p className="text-slate-600 dark:text-slate-300 text-xs leading-relaxed flex-1 line-clamp-3">
                           {book.description}
                         </p>
                       </div>
