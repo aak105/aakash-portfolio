@@ -1,10 +1,11 @@
 
 import { useState, useEffect } from "react";
-import { Calendar, Clock, ArrowRight, PenTool, Globe, Users } from "lucide-react";
+import { Calendar, Clock, ArrowRight, PenTool, Globe, Users, Eye } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import BlogModal from "./BlogModal";
 
 interface BlogPost {
   id: string;
@@ -22,6 +23,18 @@ interface BlogPost {
 const BlogSection = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedPost, setSelectedPost] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleReadHere = (post: any) => {
+    setSelectedPost(post);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPost(null);
+  };
 
   // Featured blog posts with enhanced content
   const featuredPosts = [
@@ -162,10 +175,19 @@ const BlogSection = () => {
                   ))}
                 </div>
                 
-                <div className="pt-2">
-                  <Button variant="outline" size="sm" asChild>
+                <div className="pt-2 flex gap-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => handleReadHere(post)}
+                    className="flex-1"
+                  >
+                    <Eye className="w-4 h-4 mr-1" />
+                    Read Here
+                  </Button>
+                  <Button variant="outline" size="sm" asChild className="flex-1">
                     <a href={post.linkedinUrl} target="_blank" rel="noopener noreferrer" className="group">
-                      Read on LinkedIn
+                      LinkedIn
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </a>
                   </Button>
@@ -240,6 +262,12 @@ const BlogSection = () => {
             </div>
           </div>
         )}
+
+        <BlogModal 
+          post={selectedPost}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+        />
       </div>
     </section>
   );
