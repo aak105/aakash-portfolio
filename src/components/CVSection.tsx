@@ -84,12 +84,27 @@ const CVSection = () => {
    */
   const professionalExperience = [
     {
+      id: "ashoka-dataset-lead",
+      position: "Dataset Lead",
+      organization: "Centre for Data Science and Analytics, Ashoka University",
+      location: "Sonipat",
+      duration: "Sept'25 - Present",
+      type: "Current",
+      summary: "Leading data science initiatives and analytics projects at Ashoka University's Centre for Data Science and Analytics.",
+      details: [
+        "Leading dataset development and management for data science research projects",
+        "Collaborating with faculty and researchers on data-driven research initiatives",
+        "Developing data analytics frameworks and methodologies for academic and policy research",
+        "Managing data infrastructure and ensuring data quality standards across projects"
+      ]
+    },
+    {
       id: "cs-haryana",
       position: "Consultant",
       organization: "Chief Secretary to Government of Haryana' Office",
       location: "Chandigarh",
-      duration: "July'24 - Present",
-      type: "Current",
+      duration: "July'24 - Aug'25",
+      type: "Government",
       summary: "Led monitoring of ~1,30,000 citizen grievances across 80+ categories, achieving 80% resolution rate.",
       details: [
         "Led the monitoring of ~1,30,000 citizen grievances across 80+ grievances categories by developing a citizen-centric online portal; achieved an 80% resolution rate",
