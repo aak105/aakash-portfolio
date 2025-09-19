@@ -1,7 +1,8 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Target, BookOpen, Lightbulb } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Heart, Target, BookOpen, Lightbulb, Expand } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ikigaiImage from "@/assets/ikigai-diagram.png";
 
@@ -84,15 +85,15 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Vision & Mission */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Vision First */}
+          {/* Vision, Mission & Ikigai */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Vision */}
             <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border-green-200/50 dark:border-green-800/50">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-3">
                   🌟 Vision
                 </h3>
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
                   To make a significant and lasting contribution to the world of open and public data.
                 </p>
               </CardContent>
@@ -100,31 +101,48 @@ const AboutSection = () => {
 
             {/* Mission */}
             <Card className="bg-gradient-to-br from-blue-50 to-slate-50 dark:from-blue-900/20 dark:to-slate-800 border-blue-200/50 dark:border-blue-800/50">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-4">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-3">
                   🎯 Mission
                 </h3>
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                  To design and deliver people-first data systems that improve public governance and create room for equity, trust, and transparency in social development.
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+                  To design and deliver people-first data systems that improve public governance and create room for equity, trust, and transparency.
                 </p>
               </CardContent>
             </Card>
-          </div>
 
-          {/* Ikigai - Purpose Statement */}
-          <div className="flex justify-center">
-            <Card className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 border-slate-200 dark:border-slate-700 max-w-lg">
-              <CardContent className="p-8 text-center">
-                <div className="mb-6">
-                  <img 
-                    src={ikigaiImage} 
-                    alt="Ikigai diagram showing the intersection of what I love, what I'm good at, what I can be paid for, and what the world needs - centered around public data and social impact"
-                    className="w-full max-w-sm mx-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-                <p className="text-sm text-slate-600 dark:text-slate-400 italic">
-                  My ikigai: bridging technology and humanity through data for social impact
-                </p>
+            {/* Ikigai */}
+            <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-purple-200/50 dark:border-purple-800/50">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-3">
+                  🎭 Purpose
+                </h3>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="cursor-pointer group">
+                      <div className="relative mb-3">
+                        <img 
+                          src={ikigaiImage} 
+                          alt="Ikigai diagram showing the intersection of what I love, what I'm good at, what I can be paid for, and what the world needs"
+                          className="w-full h-32 object-cover rounded-lg opacity-90 group-hover:opacity-100 transition-all duration-300"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-lg transition-colors duration-300 flex items-center justify-center">
+                          <Expand className="w-6 h-6 text-white opacity-0 group-hover:opacity-80 transition-opacity duration-300" />
+                        </div>
+                      </div>
+                      <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                        Bridging technology and humanity through data for social impact.
+                      </p>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-3xl">
+                    <img 
+                      src={ikigaiImage} 
+                      alt="Ikigai diagram showing the intersection of what I love, what I'm good at, what I can be paid for, and what the world needs - centered around public data and social impact"
+                      className="w-full rounded-lg"
+                    />
+                  </DialogContent>
+                </Dialog>
               </CardContent>
             </Card>
           </div>
