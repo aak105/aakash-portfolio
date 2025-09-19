@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Target, BookOpen, Lightbulb } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import ikigaiImage from "@/assets/ikigai-diagram.png";
 
 /**
  * AboutSection Component
@@ -105,6 +106,24 @@ const AboutSection = () => {
                 </h3>
                 <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
                   To design and deliver people-first data systems that improve public governance and create room for equity, trust, and transparency in social development.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Ikigai - Purpose Statement */}
+          <div className="flex justify-center">
+            <Card className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 border-slate-200 dark:border-slate-700 max-w-lg">
+              <CardContent className="p-8 text-center">
+                <div className="mb-6">
+                  <img 
+                    src={ikigaiImage} 
+                    alt="Ikigai diagram showing the intersection of what I love, what I'm good at, what I can be paid for, and what the world needs - centered around public data and social impact"
+                    className="w-full max-w-sm mx-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+                <p className="text-sm text-slate-600 dark:text-slate-400 italic">
+                  My ikigai: bridging technology and humanity through data for social impact
                 </p>
               </CardContent>
             </Card>
