@@ -115,7 +115,7 @@ const AboutSection = () => {
             <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-purple-200/50 dark:border-purple-800/50">
               <CardContent className="p-6">
                 <h3 className="text-xl font-serif font-medium text-slate-800 dark:text-slate-100 mb-3">
-                  🎭 Purpose
+                  🎭 My Ikigai
                 </h3>
                 <Dialog>
                   <DialogTrigger asChild>
