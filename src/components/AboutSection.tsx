@@ -131,7 +131,7 @@ const AboutSection = () => {
                         </div>
                       </div>
                       <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
-                        Bridging technology and humanity through data for social impact.
+                        To improve public data for better public policy design and implementation for social impact.
                       </p>
                     </div>
                   </DialogTrigger>
